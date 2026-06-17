@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Yoka Gustiyadi — Portofolio</title>
+<style>
+/* ── TOKENS & RESET (LIGHT MODE VIBRANT THEME) ─────────────────────────────────── */
+:root {
+  --bg: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --glass: rgba(255, 255, 255, 0.7);
+  --border: rgba(148, 163, 184, 0.2);
+  --accent: #3B82F6;
+  --accent-glow: rgba(59, 130, 246, 0.15);
+  --text: #0F172A;
+  --muted: #64748B;
+
+  /* Vibrant palette from photos */
+  --pink: #EC4899;
+  --blue: #3B82F6;
+  --yellow: #F59E0B;
+  --green: #10B981;
+  --purple: #8B5CF6;
+  --cyan: #06B6D4;
+
+  /* Font resmi Apple */
+  --font-head: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; cursor: none; }
+body {
+  background-color: var(--bg); color: var(--text);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.5;
+  overflow-x: hidden; letter-spacing: -0.01em;
+}
+
+/* ── CUSTOM SCROLLBAR (Sleek Light) ────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+::selection { background: var(--accent); color: #FFF; }
+
+/* ── IPADOS STYLE MAGIC CURSOR ───────────────────────── */
+.cursor-outline {
+  position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
+  width: 20px; height: 20px; background-color: rgba(59, 130, 246, 0.25);
+  border-radius: 50%; z-index: 9999; pointer-events: none;
+  backdrop-filter: blur(2px); transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+/* ── BACKGROUND CANVAS (SUBTLE PARTICLES) ────────────────── */
+#particle-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; opacity: 0.4; }
+
+/* ── LAYOUT BASE ─────────────────────────────────────── */
+.wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+section { padding: 140px 0; }
+
+/* ── NAV (FROSTED GLASS LIGHT) ───────────────────────── */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(25px) saturate(180%);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+}
+.nav-inner { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+/* Style untuk titik kontrol jendela */
+.window-controls {
+  display: flex;
+  gap: 6px;
+  margin-right: 12px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red { background-color: #FF5F56; }
+.yellow { background-color: #FFBD2E; }
+.green { background-color: #27C93F; }
+
+.nav-logo { font-family: var(--font-head); font-weight: 600; font-size: 1.1rem; color: var(--text); display: flex; align-items: center; gap: 6px; }
+.nav-logo svg { width: 16px; height: 16px; fill: currentColor; }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a { font-size: 12px; color: var(--text); opacity: 0.8; transition: 0.2s; }
+.nav-links a:hover { opacity: 1; color: var(--accent); }
+
+/* ── HERO (VIBRANT GRADIENT STYLE) ───────────────────── */
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; }
+.hero-content { max-width: 800px; display: flex; flex-direction: column; align-items: center; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px;
+  background: #FFFFFF; border: 1px solid var(--border); border-radius: 50px;
+  font-size: 12px; color: var(--muted); margin-bottom: 24px; font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.eyebrow span { width: 6px; height: 6px; background: #10B981; border-radius: 50%; box-shadow: 0 0 8px #10B981; }
+
+/* Cinematic Text Shimmer */
+.pro-title {
+  font-family: var(--font-head); font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700; line-height: 1.05; letter-spacing: -0.04em;
+  background: linear-gradient(to right, var(--blue) 20%, var(--purple) 40%, var(--pink) 60%, var(--blue) 80%);
+  background-size: 200% auto; color: transparent;
+  -webkit-background-clip: text; animation: shine 5s linear infinite;
+  margin-bottom: 24px;
+}
+
+.hero-desc { font-size: 1.3rem; color: var(--muted); margin-bottom: 40px; font-weight: 400; max-width: 600px; letter-spacing: -0.01em; line-height: 1.4; }
+
+.btn-ios {
+  display: inline-flex; align-items: center; padding: 14px 28px;
+  background: var(--text); color: #FFF; border-radius: 50px;
+  font-size: 15px; font-weight: 600; cursor: pointer; transition: 0.3s;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+}
+.btn-ios:hover { transform: scale(1.02); background: #1E293B; }
+
+/* ── MARQUEE (INFINITE SCROLL) ───────────────────────── */
+.marquee-container {
+  width: 100%; overflow: hidden; background: #FFFFFF; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  padding: 16px 0; display: flex; white-space: nowrap; position: relative; z-index: 5;
+}
+.marquee-content {
+  display: flex; gap: 40px; animation: scrollMarquee 20s linear infinite;
+  font-family: var(--font-mono); font-size: 13px; color: var(--muted); letter-spacing: 1px;
+}
+.marquee-item { display: flex; align-items: center; gap: 10px; }
+.marquee-item::after { content: '·'; margin-left: 40px; color: #CBD5E1; }
+
+/* ── WIDGET CARDS (LIGHT GLASS STYLE) ────────────────────────── */
+.sec-title { font-family: var(--font-head); font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 60px; letter-spacing: -0.02em; color: var(--text); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+/* 3D Tilt Card Light Style */
+.widget-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 28px; padding: 32px; backdrop-filter: blur(30px);
+  transform-style: preserve-3d; transition: transform 0.1s, box-shadow 0.3s; position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+.widget-card:hover {
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.08);
+}
+
+/* Profil Widget */
+.profile-grid { display: grid; grid-template-columns: 280px 1fr; gap: 24px; }
+.profile-img {
+  width: 100%; height: 100%; object-fit: cover; border-radius: 20px;
+  transform: translateZ(30px); filter: grayscale(20%);
+}
+.p-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; transform: translateZ(40px); color: var(--text); }
+.p-subtitle { color: var(--accent); font-weight: 500; margin-bottom: 24px; transform: translateZ(30px); }
+.p-list { list-style: none; font-size: 15px; color: var(--text); transform: translateZ(20px); }
+.p-list li { padding: 12px 0; border-bottom: 1px solid #E2E8F0; display: flex; gap: 12px; }
+.p-list span { color: var(--muted); }
+
+/* Portfolio Widget */
+.port-img-wrap { height: 220px; border-radius: 16px; overflow: hidden; margin-bottom: 24px; transform: translateZ(30px); }
+.port-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.widget-card:hover .port-img-wrap img { transform: scale(1.05); }
+.port-tags { display: flex; gap: 8px; margin-top: 16px; transform: translateZ(20px); flex-wrap: wrap; }
+.tag { font-size: 12px; font-weight: 500; padding: 4px 12px; background: #F1F5F9; border-radius: 50px; color: var(--text); }
+
+/* Feature Widget */
+.feat-icon { width: 48px; height: 48px; background: #F8FAFC; border: 1px solid var(--border); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 20px; transform: translateZ(30px); }
+.feat-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 10px; transform: translateZ(20px); color: var(--text); }
+.feat-desc { color: var(--muted); font-size: 14px; transform: translateZ(10px); }
+
+/* Tech Stack Specific */
+.tech-container { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; transform: translateZ(20px); }
+.tech-badge { padding: 8px 16px; background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; font-size: 14px; font-weight: 500; color: var(--text); }
+
+/* CBT Gallery */
+.cbt-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+.cbt-gallery-item { border-radius: 20px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+.cbt-gallery-item img { width: 100%; height: auto; display: block; transition: transform 0.5s; }
+.cbt-gallery-item:hover img { transform: scale(1.03); }
+
+/* ── ANIMATIONS ──────────────────────────────────────── */
+@keyframes shine { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+@keyframes scrollMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  html { cursor: auto; }
+  .cursor-outline { display: none; }
+  .profile-grid, .grid-2, .grid-3, .cbt-gallery { grid-template-columns: 1fr; }
+  .pro-title { font-size: 3.5rem; }
+  .nav-links { display: none; }
+  .hero-desc { font-size: 1.1rem; }
+}
+
+/* ── TAMBAHAN: SCROLL REVEAL ────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── TAMBAHAN: FLOATING WHATSAPP BUTTON ─────────────── */
+.float-wa {
+  position: fixed; bottom: 28px; right: 28px; z-index: 500;
+  width: 56px; height: 56px; background: #25D366; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 24px rgba(37, 211, 102, 0.45);
+  cursor: pointer; transition: transform 0.25s, box-shadow 0.25s;
+  text-decoration: none;
+}
+.float-wa:hover {
+  transform: scale(1.12);
+  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.65);
+}
+.float-wa svg { width: 30px; height: 30px; fill: #fff; }
+.float-wa-tip {
+  position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
+  background: #FFFFFF; color: var(--text);
+  font-size: 13px; font-weight: 500; font-family: var(--font-body);
+  padding: 8px 14px; border-radius: 10px; white-space: nowrap;
+  border: 1px solid var(--border); opacity: 0; pointer-events: none;
+  transition: opacity 0.2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.float-wa:hover .float-wa-tip { opacity: 1; }
+
+@media (max-width: 900px) {
+  .float-wa { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+  .float-wa-tip { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- iPadOS Style Cursor -->
+<div class="cursor-outline" id="cursor-outline"></div>
+
+<!-- ── TAMBAHAN: Floating WhatsApp Button ── -->
+<a href="https://wa.me/6208820165947000" target="_blank" class="float-wa" aria-label="Chat via WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+  <span class="float-wa-tip">Chat via WhatsApp</span>
+</a>
+
+<!-- Background Particles -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- Navbar Logo yang telah diperbarui -->
+<nav>
+  <div class="wrap nav-inner">
+    <div class="nav-logo">
+      <div class="window-controls">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      Portofolio 
+    </div>
+    <div class="nav-links">
+      <a href="#about" class="hover-target">Ikhtisar</a>
+      <a href="#tech" class="hover-target">Tech Stack</a>
+      <a href="#work" class="hover-target">Proyek</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="wrap hero-content">
+    <div class="eyebrow"><span></span> Status: Online </div>
+    <h1 class="pro-title">Yoka Gustiyadi.</h1>
+    <p class="hero-desc">Membangun arsitektur digital tingkat lanjut. Dari Sistem Ujian Terintegrasi (CBT) dengan keamanan mutakhir, hingga Otomatisasi Bisnis berbasis Artificial Intelligence yang elegan dan mulus.</p>
+    <a href="#work" class="btn-ios hover-target">Lihat Karya</a>
+  </div>
+</section>
+
+<!-- Infinite Marquee -->
+<div class="marquee-container">
+  <div class="marquee-content" id="marquee">
+    <div class="marquee-item">Web Development</div>
+    <div class="marquee-item">Tailwind CSS</div>
+    <div class="marquee-item">Vanilla JS</div>
+    <div class="marquee-item">Prompt Engineering</div>
+    <div class="marquee-item">AI Integration</div>
+    <div class="marquee-item">RBAC Security</div>
+    <div class="marquee-item">Web Development</div>
+    <div class="marquee-item">Tailwind CSS</div>
+    <div class="marquee-item">Vanilla JS</div>
+    <div class="marquee-item">Prompt Engineering</div>
+    <div class="marquee-item">AI Integration</div>
+    <div class="marquee-item">RBAC Security</div>
+  </div>
+</div>
+
+<!-- Profile Section -->
+<section id="about">
+  <div class="wrap">
+    <h2 class="sec-title">Data Subjek.</h2>
+    <div class="profile-grid">
+      <div class="widget-card hover-target" style="padding: 0;">
+        <img src="2213.jpeg" alt="Yoka" class="profile-img">
+      </div>
+      <div class="widget-card hover-target">
+        <h3 class="p-title">Staff Administrasi & IT Support</h3>
+        <p class="p-subtitle">Posisi saat ini : SDI Abu Seno</p>
+        <p style="color: var(--muted); margin-bottom: 24px; line-height: 1.6;">Berlatar belakang pendidikan teknis SMK, latar belakang teknis saya membentuk saya menjadi pengembang yang praktis, cepat beradaptasi, dan selalu mengutamakan performa sistem. Saya berdedikasi untuk mentransformasi alur kerja manual menjadi ekosistem digital yang otonom dan efisien.</p>
+        <!-- Bagian Link CV -->
+    <a href="CV_Yoka-Gustiyadi.pdf" target="_blank" style="display: inline-block; color: var(--accent); font-weight: 600; text-decoration: none; margin-bottom: 20px;">
+      Lihat Resume Lengkap (PDF) ↗
+    </a>
+        <div style="margin-top: 15px;">
+    <!-- Link LinkedIn dengan Ikon -->
+<div style="margin-top: 15px;">
+  <a href="www.linkedin.com/in/yoka-gustiyadi" target="_blank" style="display: flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 600; text-decoration: none;">
+    <!-- Ikon LinkedIn SVG -->
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+    </svg>
+    Lihat Profil LinkedIn ↗
+  </a>
+</div>
+
+        <ul class="p-list" style="margin-top: 15px;">
+  <li><span>Lahir :</span> Bandung, 18 Agustus 1998</li>
+  <li><span>Kontak:</span> 0882-0165-94700</li>
+  <li><span>Fokus :</span> Teknis & AI Config</li>
+</ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tech Stack Section (NEW) -->
+<section id="tech" style="padding-top: 0;">
+  <div class="wrap">
+    <h2 class="sec-title">Tech Stack & Tools.</h2>
+    <div class="widget-card" style="text-align: center;">
+      <p style="color: var(--muted); margin-bottom: 20px;">Teknologi yang saya gunakan untuk menghadirkan solusi digital yang efisien:</p>
+      <div class="tech-container" style="justify-content: center;">
+        <span class="tech-badge">JavaScript (Node.js)</span>
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">Tailwind CSS</span>
+        <span class="tech-badge">MySQL / PostgreSQL</span>
+        <span class="tech-badge">OpenAI API / Gemini API / Groq API</span>
+        <span class="tech-badge">RBAC Security</span>
+        <span class="tech-badge">Git & Version Control</span>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Certificates Section -->
+<section id="sertifikat" style="padding-top: 0;">
+  <div class="wrap">
+    <h2 class="sec-title">Sertifikasi.</h2>
+    <div class="grid-3">
+      <div class="widget-card hover-target">
+        <div class="port-img-wrap"><img src="sertif 1.jpg" alt="Claude with Google Vertex AI"></div>
+        <h3 style="font-size: 1.2rem; color: var(--text);">Claude with Google Vertex AI</h3>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="port-img-wrap"><img src="sertif 2.jpg" alt="AI Fluency for educators"></div>
+        <h3 style="font-size: 1.2rem; color: var(--text);">AI Fluency for educators</h3>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="port-img-wrap"><img src="sertif 3.jpg" alt="AI Fluency for students"></div>
+        <h3 style="font-size: 1.2rem; color: var(--text);">AI Fluency for students</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="work">
+  <div class="wrap">
+    <h2 class="sec-title">Project Selesai</h2>
+    <div class="grid-2">
+      <div class="widget-card hover-target" onclick="window.open('https://v-project-steel.vercel.app', '_blank')" style="cursor: pointer;">
+        <div class="port-img-wrap"><img src="50.png" alt="V Project"></div>
+        <h3 style="font-size: 1.5rem; transform: translateZ(30px); color: var(--text);">V Project</h3>
+        <p style="color: var(--muted); margin-top: 8px; transform: translateZ(20px);">Infrastruktur web untuk manajemen servis dengan AI Assistant via WhatsApp. Mampu men-generate invoice otonom.</p>
+        <div class="port-tags">
+          <span class="tag" style="background: var(--accent); color: #fff;">Kunjungi Web ↗</span>
+          <span class="tag">Whatsapp AI Assistant</span>
+          <span class="tag">Web Dashboard</span>
+        </div>
+      </div>
+      <div class="widget-card hover-target" onclick="window.open('https://drive.google.com/drive/folders/1K34zxs3n6lYajXO1cHwfABLwAKdx38zK', '_blank')" style="cursor: pointer;">
+        <div class="port-img-wrap"><img src="45.jpg" alt="Sistem CBT"></div>
+        <h3 style="font-size: 1.5rem; transform: translateZ(30px); color: var(--text);">Sistem CBT Terintegrasi</h3>
+        <p style="color: var(--muted); margin-top: 8px; transform: translateZ(20px);">Platform ujian digital end-to-end. Ditenagai AI pembuat soal, sistem pengacakan pintar, dan anti-cheat real-time.</p>
+        <div class="port-tags">
+          <span class="tag" style="background: var(--text); color: #fff;">Lihat Drive ↗</span>
+          <span class="tag">RBAC</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CBT Gallery Section (NEW - Using uploaded images) -->
+<section id="cbt-gallery" style="padding-top: 0;">
+  <div class="wrap">
+    <h2 class="sec-title">Tampilan Sistem CBT.</h2>
+    <p style="text-align: center; color: var(--muted); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">Contoh antarmuka sistem ujian berbasis komputer yang telah dikembangkan dengan desain modern, intuitif, dan berwarna-warni.</p>
+    <div class="cbt-gallery">
+      <div class="cbt-gallery-item hover-target">
+        <img src="47777.png" alt="CBT Login Page - Halaman login sistem ujian dengan desain modern">
+      </div>
+      <div class="cbt-gallery-item hover-target">
+        <img src="47781.png" alt="CBT Exam Interface - Antarmuka ujian dengan navigasi soal dan timer">
+      </div>
+    </div>
+  </div>
+</section>
+
+ <!-- V Project Features Section -->
+<section id="V Project">
+  <div class="wrap">
+    <h2 class="sec-title">V Project — Ekosistem Bisnis.</h2>
+    <div style="text-align: center; margin-bottom: 40px;">
+      <a href="https://v-project-steel.vercel.app" target="_blank" class="btn-ios hover-target" style="display: inline-flex; gap: 8px; text-decoration: none;">
+        <span>🌐</span> Kunjungi Web V Project ↗
+      </a>
+    </div>
+    <div class="grid-3">
+      <div class="widget-card hover-target">
+        <div class="feat-icon">💬</div>
+        <h3 class="feat-title">Customer Service WhatsApp Otomatis</h3>
+        <p class="feat-desc">Layanan pelanggan berjalan 24/7 tanpa perlu operator manusia. Pertanyaan umum, status servis, hingga pencatatan keluhan ditangani langsung oleh AI secara real-time via WhatsApp.</p>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="feat-icon">🧠</div>
+        <h3 class="feat-title">AI Persona & State Management</h3>
+        <p class="feat-desc">Bot memiliki persona dan alur percakapan yang terstruktur. Sistem state management memastikan setiap pelanggan mendapatkan respons yang kontekstual dan konsisten dari awal hingga akhir sesi.</p>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="feat-icon">🧾</div>
+        <h3 class="feat-title">Invoice Generator Otonom</h3>
+        <p class="feat-desc">Setelah servis selesai, invoice dihasilkan secara otomatis berdasarkan data pekerjaan yang tercatat — tanpa perlu input manual dari teknisi.</p>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="feat-icon">📋</div>
+        <h3 class="feat-title">Lead Logging Otomatis</h3>
+        <p class="feat-desc">Setiap calon pelanggan yang masuk via WhatsApp dicatat otomatis ke spreadsheet Excel — nama, nomor, kebutuhan, dan waktu kontak. Tidak ada prospek yang terlewat.</p>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="feat-icon">📊</div>
+        <h3 class="feat-title">Web Dashboard Manajemen Servis</h3>
+        <p class="feat-desc">Antarmuka web terpusat untuk memantau status perbaikan, riwayat pelanggan, dan performa bisnis. Didesain bersih dan responsif untuk diakses dari perangkat apapun.</p>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="feat-icon">🔁</div>
+        <h3 class="feat-title">Eskalasi ke Admin Manusia</h3>
+        <p class="feat-desc">Ketika AI mendeteksi pertanyaan di luar kemampuannya, percakapan otomatis dieskalasi ke admin manusia — transisi mulus tanpa pelanggan perlu mengulang cerita dari awal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CBT Features Extended Section -->
+<section id="fitur-cbt">
+  <div class="wrap">
+    <h2 class="sec-title">Fitur CBT Lengkap.</h2>
+    <div class="grid-3">
+      <div class="widget-card hover-target">
+        <div class="feat-icon">🤖</div>
+        <h3 class="feat-title">AI Question Generator</h3>
+        <p class="feat-desc">Guru cukup tentukan topik dan jumlah soal — AI langsung menghasilkan bank soal pilihan ganda siap pakai. Koreksi jawaban pun bisa diserahkan ke AI untuk efisiensi waktu, atau dilakukan manual jika guru ingin meninjau satu per satu.</p>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="feat-icon">📥</div>
+        <h3 class="feat-title">Import Soal Massal</h3>
+        <p class="feat-desc">Upload hingga 40 soal sekaligus via Excel. Mendukung karakter Unicode penuh — Arab, Sunda, Mandarin, Jepang — tanpa encoding error sedikitpun.</p>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="feat-icon">🔀</div>
+        <h3 class="feat-title">Pengacakan Cerdas</h3>
+        <p class="feat-desc">Urutan soal dan pilihan jawaban A/B/C/D diacak per siswa, namun sistem tetap mengetahui jawaban yang benar sehingga penilaian tidak terpengaruh sama sekali.</p>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="feat-icon">💾</div>
+        <h3 class="feat-title">Auto-Save & Navigasi Soal</h3>
+        <p class="feat-desc">Jawaban tersimpan otomatis setiap kali siswa menekan Selanjutnya. Tampilan satu soal per halaman dengan daftar soal di samping untuk navigasi dan review ulang sebelum submit.</p>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="feat-icon">📚</div>
+        <h3 class="feat-title">Pojok Belajar</h3>
+        <p class="feat-desc">Guru mengunggah materi pelajaran dilengkapi link video YouTube. Siswa dapat menonton langsung di dalam platform tanpa membuka tab baru — pengalaman belajar terpusat dan tidak terganggu.</p>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="feat-icon">📊</div>
+        <h3 class="feat-title">Rekap Nilai Otomatis</h3>
+        <p class="feat-desc">Nilai dikalkulasi secara mutlak dan otomatis. Tersedia rekap per ujian serta profil nilai siswa yang merangkum performa di seluruh mata pelajaran dalam satu tampilan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills / Tech Stack Section -->
+<section id="skills">
+  <div class="wrap">
+    <h2 class="sec-title">Skill & Teknologi.</h2>
+    <div class="grid-3">
+      <div class="widget-card hover-target">
+        <div class="feat-icon">🎨</div>
+        <h3 class="feat-title">Frontend Development</h3>
+        <p class="feat-desc">Tailwind CSS, Vanilla JavaScript, HTML5. Membangun UI glassmorphism modern, responsif, dan ringan tanpa framework berat.</p>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="feat-icon">🤖</div>
+        <h3 class="feat-title">AI & Prompt Engineering</h3>
+        <p class="feat-desc">Integrasi AI API untuk generate soal, koreksi otonom, dan asisten berbasis WhatsApp. Berpengalaman menyusun prompt yang presisi dan efisien untuk kebutuhan nyata.</p>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="feat-icon">🔐</div>
+        <h3 class="feat-title">Sistem & Keamanan</h3>
+        <p class="feat-desc">Arsitektur RBAC 4 level, manajemen sesi, dan deteksi kecurangan real-time. Isolasi akses absolut di seluruh lapisan sistem tanpa celah.</p>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="feat-icon">📊</div>
+        <h3 class="feat-title">Microsoft Ecosystem</h3>
+        <p class="feat-desc">Excel / XLSX untuk import data massal, rekap nilai, dan administrasi sekolah. Berpengalaman dalam ekosistem Microsoft untuk kebutuhan operasional harian.</p>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="feat-icon">⚡</div>
+        <h3 class="feat-title">Node.js & Otomasi</h3>
+        <p class="feat-desc">Membangun bot WhatsApp berbasis Baileys dan Gemini AI dengan state management, FAQ handling, dan lead logging terintegrasi dalam satu ekosistem otonom.</p>
+      </div>
+      <div class="widget-card hover-target">
+        <div class="feat-icon">🖥️</div>
+        <h3 class="feat-title">IT Support & Jaringan</h3>
+        <p class="feat-desc">Diagnosis perangkat keras, konfigurasi LAN, remote desktop, dan pemeliharaan infrastruktur digital sekolah secara mandiri dan menyeluruh.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="kontak">
+  <div class="wrap">
+    <h2 class="sec-title">Hubungi Saya.</h2>
+    <div class="grid-2">
+      <div class="widget-card hover-target" style="display: flex; align-items: center; gap: 20px;">
+        <div class="feat-icon" style="flex-shrink: 0;">📱</div>
+        <div>
+          <h3 class="feat-title">WhatsApp / Telepon</h3>
+          <a href="https://wa.me/6208820165947000" target="_blank" style="color: var(--accent); font-size: 1.1rem; font-weight: 600; text-decoration: none;">0882-0165-94700</a>
+          <p class="feat-desc" style="margin-top: 6px;">Tersedia untuk diskusi proyek, kolaborasi, dan konsultasi teknis.</p>
+        </div>
+      </div>
+      <div class="widget-card hover-target" style="display: flex; align-items: center; gap: 20px;">
+        <div class="feat-icon" style="flex-shrink: 0;">✉️</div>
+        <div>
+          <h3 class="feat-title">Email</h3>
+          <a href="mailto:yokagustiyadi.dev@gmail.com" style="color: var(--accent); font-size: 1.1rem; font-weight: 600; text-decoration: none;">yokagustiyadi.dev@gmail.com</a>
+          <p class="feat-desc" style="margin-top: 6px;">Untuk penawaran, pertanyaan formal, atau detail proyek yang lebih lengkap.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted);">
+  <p>Dirancang oleh Yoka Gustiyadi © 2026</p>
+</footer>
+
+<script>
+/* ── 1. IPADOS STYLE CURSOR ── */
+const cursorOutline = document.getElementById('cursor-outline');
+const hoverTargets = document.querySelectorAll('.hover-target, a');
+
+window.addEventListener('mousemove', function(e) {
+  cursorOutline.animate({
+    left: `${e.clientX}px`,
+    top: `${e.clientY}px`
+  }, { duration: 100, fill: "forwards" });
+});
+
+hoverTargets.forEach(target => {
+  target.addEventListener('mouseenter', () => {
+    cursorOutline.style.width = '45px'; cursorOutline.style.height = '45px';
+    cursorOutline.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
+  });
+  target.addEventListener('mouseleave', () => {
+    cursorOutline.style.width = '20px'; cursorOutline.style.height = '20px';
+    cursorOutline.style.backgroundColor = 'rgba(59, 130, 246, 0.25)';
+  });
+});
+
+/* ── 2. 3D TILT EFFECT (SUBTLE APPLE STYLE) ── */
+const tiltCards = document.querySelectorAll('.widget-card, .cbt-gallery-item');
+tiltCards.forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+    const centerX = rect.width / 2; const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -5; 
+    const rotateY = ((x - centerX) / centerX) * 5;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+  });
+});
+
+/* ── 3. INTERACTIVE PARTICLE CANVAS (SUBTLE STARS) ── */
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+
+let particlesArray;
+let mouse = { x: null, y: null, radius: 100 };
+
+window.addEventListener('mousemove', function(event) {
+  mouse.x = event.x; mouse.y = event.y;
+});
+
+class Particle {
+  constructor(x, y, directionX, directionY, size) {
+    this.x = x; this.y = y; this.directionX = directionX; this.directionY = directionY; this.size = size;
+  }
+  draw() {
+    ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+    ctx.fillStyle = 'rgba(59, 130, 246, 0.15)'; ctx.fill();
+  }
+  update() {
+    if (this.x > canvas.width || this.x < 0) { this.directionX = -this.directionX; }
+    if (this.y > canvas.height || this.y < 0) { this.directionY = -this.directionY; }
+    this.x += this.directionX; this.y += this.directionY;
+    this.draw();
+  }
+}
+
+function init() {
+  particlesArray = [];
+  let numberOfParticles = (canvas.height * canvas.width) / 12000;
+  for (let i = 0; i < numberOfParticles; i++) {
+    let size = (Math.random() * 1.5) + 0.5;
+    let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+    let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+    let directionX = (Math.random() * 1) - 0.5;
+    let directionY = (Math.random() * 1) - 0.5;
+    particlesArray.push(new Particle(x, y, directionX, directionY, size));
+  }
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+  for (let i = 0; i < particlesArray.length; i++) { particlesArray[i].update(); }
+  connect();
+}
+
+function connect() {
+  let opacityValue = 1;
+  for (let a = 0; a < particlesArray.length; a++) {
+    for (let b = a; b < particlesArray.length; b++) {
+      let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) +
+                     ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+      if (distance < (canvas.width / 10) * (canvas.height / 10)) {
+        opacityValue = 1 - (distance / 15000);
+        ctx.strokeStyle = 'rgba(59, 130, 246,' + opacityValue * 0.1 + ')';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+window.addEventListener('resize', function() { canvas.width = innerWidth; canvas.height = innerHeight; init(); });
+window.addEventListener('mouseout', function() { mouse.x = undefined; mouse.y = undefined; });
+
+init(); animate();
+</script>
+
+<!-- ════════════════════════════════════════════════════════
+     ── TAMBAHAN: SCROLL REVEAL + FLOATING WA SCRIPT ──
+     ════════════════════════════════════════════════════════ -->
+<script>
+/* ── SCROLL REVEAL (Intersection Observer) ── */
+const revealEls = document.querySelectorAll('.widget-card, .sec-title, .cbt-gallery-item');
+revealEls.forEach(el => el.classList.add('reveal'));
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const siblings = [...entry.target.parentElement.children]
+        .filter(c => c.classList.contains('reveal'));
+      const idx = siblings.indexOf(entry.target);
+      entry.target.style.transitionDelay = (idx * 80) + 'ms';
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+});
+
+revealEls.forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
