@@ -186,6 +186,33 @@ nav {
 .tech-container { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; transform: translateZ(20px); }
 .tech-badge { padding: 8px 16px; background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; font-size: 14px; font-weight: 500; color: var(--text); }
 
+/* Visual Tech Stack Grid */
+.tech-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.tech-card {
+  background: #FFFFFF; border: 1px solid var(--border); border-radius: 20px;
+  padding: 28px 20px; text-align: center; transition: all 0.3s ease;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.tech-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+.tech-icon {
+  width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;
+  border-radius: 14px; margin-bottom: 4px;
+}
+.tech-icon svg { width: 32px; height: 32px; }
+.tech-name { font-size: 15px; font-weight: 600; color: var(--text); }
+.tech-card-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+@media (max-width: 900px) {
+  .tech-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .tech-grid { grid-template-columns: 1fr; }
+}
+
 /* CBT Gallery */
 .cbt-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
 .cbt-gallery-item { border-radius: 20px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
@@ -318,7 +345,7 @@ nav {
     <h2 class="sec-title">Data Subjek.</h2>
     <div class="profile-grid">
       <div class="widget-card hover-target" style="padding: 0;">
-        <img src="2213.png" alt="Yoka" class="profile-img">
+        <img src="2213.jpeg" alt="Yoka" class="profile-img">
       </div>
       <div class="widget-card hover-target">
         <h3 class="p-title">Staff Administrasi & IT Support</h3>
@@ -354,17 +381,72 @@ nav {
 <section id="tech" style="padding-top: 0;">
   <div class="wrap">
     <h2 class="sec-title">Tech Stack & Tools.</h2>
-    <div class="widget-card" style="text-align: center;">
-      <p style="color: var(--muted); margin-bottom: 20px;">Teknologi yang saya gunakan untuk menghadirkan solusi digital yang efisien:</p>
-      <div class="tech-container" style="justify-content: center;">
-        <span class="tech-badge">JavaScript (Node.js)</span>
-        <span class="tech-badge">Python</span>
-        <span class="tech-badge">Tailwind CSS</span>
-        <span class="tech-badge">MySQL / PostgreSQL</span>
-        <span class="tech-badge">OpenAI API / Gemini API / Groq API</span>
-        <span class="tech-badge">RBAC Security</span>
-        <span class="tech-badge">Git & Version Control</span>
+    <p style="text-align: center; color: var(--muted); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">Teknologi yang saya gunakan untuk menghadirkan solusi digital yang efisien:</p>
+    <div class="tech-grid">
+
+      <!-- JavaScript / Node.js -->
+      <div class="tech-card hover-target">
+        <div class="tech-icon" style="background: rgba(83, 158, 67, 0.1);">
+          <svg viewBox="0 0 128 128" fill="none"><path fill="#539E43" d="M64.004 0C28.664 0 0 28.66 0 64v.004c0 35.34 28.664 64 64 64 35.34 0 64-28.66 64-64V64c0-35.34-28.66-64-64-64zm32.588 95.63c-1.658 2.95-5.287 3.93-8.17 2.18-22.38-12.92-50.54-15.85-83.69-8.7-3.19.74-6.37-1.25-7.11-4.44-.75-3.19 1.26-6.37 4.45-7.12 36.27-8.16 67.3-4.88 92.87 9.72 2.88 1.66 3.87 5.34 2.21 8.18zm8.72-19.39c-2.08 3.37-6.5 4.43-9.88 2.34-25.61-15.76-64.66-20.34-94.97-11.14-3.81 1.15-7.84-.99-9-4.81-1.15-3.81 1-7.84 4.81-9 34.55-10.48 77.54-5.4 106.62 12.69 3.37 2.08 4.43 6.5 2.34 9.88zm.75-20.2c-30.73-18.24-81.5-19.93-110.74-11.03-4.57 1.39-9.4-1.18-10.79-5.75-1.38-4.57 1.18-9.4 5.75-10.79 33.38-10.13 88.74-8.25 123.8 12.69 4.12 2.44 5.48 7.76 3.04 11.88-2.44 4.12-7.76 5.48-11.88 3.04z"/></svg>
+        </div>
+        <div class="tech-name">JavaScript (Node.js)</div>
+        <div class="tech-card-desc">Backend API, bot WhatsApp & otomasi</div>
       </div>
+
+      <!-- Python -->
+      <div class="tech-card hover-target">
+        <div class="tech-icon" style="background: rgba(55, 118, 171, 0.1);">
+          <svg viewBox="0 0 128 128" fill="none"><path fill="#3776AB" d="M63.556 0C28.284 0 29.18 12.48 29.18 12.48l.03 12.97h34.36v3.9H18.27S0 27.84 0 63.27s15.9 28.2 15.9 28.2h9.48V79.36s-.51-15.9 15.6-15.9h26.86s15.07.24 15.07-14.56V15.08S103.2 0 63.56 0zm-17.1 8.7a5.05 5.05 0 110 10.1 5.05 5.05 0 010-10.1z"/><path fill="#FFD43B" d="M64.44 128c35.27 0 34.38-12.48 34.38-12.48l-.03-12.97H64.44v-3.9h45.28s18.27 1.52 18.27-33.9-15.9-28.2-15.9-28.2h-9.48v12.11s.51 15.9-15.6 15.9H49.05s-15.07-.24-15.07 14.56v25.03S24.8 128 64.44 128zm17.1-8.7a5.05 5.05 0 110-10.1 5.05 5.05 0 010 10.1z"/></svg>
+        </div>
+        <div class="tech-name">Python</div>
+        <div class="tech-card-desc">Scripting, data processing & AI</div>
+      </div>
+
+      <!-- Tailwind CSS -->
+      <div class="tech-card hover-target">
+        <div class="tech-icon" style="background: rgba(6, 182, 212, 0.1);">
+          <svg viewBox="0 0 128 128" fill="none"><path fill="#06B6D4" d="M64.004 49.33c-11.43 0-18.54 5.7-21.72 17.1 4.34-5.7 9.4-7.83 15.18-6.38 3.3.83 5.66 3.24 8.26 5.91 4.25 4.37 9.17 9.43 19.9 9.43 11.43 0 18.54-5.7 21.72-17.1-4.34 5.7-9.4 7.83-15.18 6.38-3.3-.83-5.66-3.24-8.26-5.91-4.25-4.37-9.17-9.43-19.9-9.43zM42.28 69.75c-11.43 0-18.54 5.7-21.72 17.1 4.34-5.7 9.4-7.83 15.18-6.38 3.3.83 5.66 3.24 8.26 5.91 4.25 4.37 9.17 9.43 19.9 9.43 11.43 0 18.54-5.7 21.72-17.1-4.34 5.7-9.4 7.83-15.18 6.38-3.3-.83-5.66-3.24-8.26-5.91-4.25-4.37-9.17-9.43-19.9-9.43z"/></svg>
+        </div>
+        <div class="tech-name">Tailwind CSS</div>
+        <div class="tech-card-desc">Utility-first styling & responsive UI</div>
+      </div>
+
+      <!-- MySQL / PostgreSQL -->
+      <div class="tech-card hover-target">
+        <div class="tech-icon" style="background: rgba(49, 100, 140, 0.1);">
+          <svg viewBox="0 0 128 128" fill="none"><path fill="#31648C" d="M93.81 11.03c-7.02-8.86-18.2-11.03-30.2-11.03H43.2C31.2 0 20 2.17 13 11.03 6 19.9 4.6 31.7 4.6 43.5v41c0 11.8 1.4 23.6 8.4 32.5 7 8.86 18.2 11.03 30.2 11.03h20.4c12 0 23.2-2.17 30.2-11.03 7-8.87 8.4-20.7 8.4-32.5v-41c0-11.8-1.4-23.6-8.4-32.5zM35.8 33.5h56.4v8H35.8v-8zm0 18h56.4v8H35.8v-8zm0 18h56.4v8H35.8v-8z"/></svg>
+        </div>
+        <div class="tech-name">MySQL / PostgreSQL</div>
+        <div class="tech-card-desc">Relational database & data storage</div>
+      </div>
+
+      <!-- AI APIs -->
+      <div class="tech-card hover-target">
+        <div class="tech-icon" style="background: rgba(16, 185, 129, 0.1);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-1a7 7 0 0 1-7 7h-1v1.27c.6.34 1 .99 1 1.73a2 2 0 0 1-2 2 2 2 0 0 1-2-2c0-.74.4-1.39 1-1.73V17h-1a7 7 0 0 1-7-7H2a2 2 0 0 1-2-2 2 2 0 0 1 2-2h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="tech-name">OpenAI / Gemini / Groq</div>
+        <div class="tech-card-desc">LLM integration & prompt engineering</div>
+      </div>
+
+      <!-- RBAC Security -->
+      <div class="tech-card hover-target">
+        <div class="tech-icon" style="background: rgba(239, 68, 68, 0.1);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="1" fill="#EF4444" stroke="none"/><path d="M12 11v3"/></svg>
+        </div>
+        <div class="tech-name">RBAC Security</div>
+        <div class="tech-card-desc">Role-based access control 4-level</div>
+      </div>
+
+      <!-- Git -->
+      <div class="tech-card hover-target">
+        <div class="tech-icon" style="background: rgba(234, 88, 12, 0.1);">
+          <svg viewBox="0 0 128 128" fill="none"><path fill="#EA580C" d="M124.74 58.23L69.77 3.26a7.11 7.11 0 00-10.06 0l-10.1 10.1 12.8 12.8a8.45 8.45 0 0110.7 10.7l12.33 12.33a8.45 8.45 0 1111.94 11.94l-12.4 12.4a8.45 8.45 0 01-14.33-4.3 8.45 8.45 0 01-11.5-10.2L57.3 49.6 19.7 87.2a7.11 7.11 0 000 10.06l54.97 54.97a7.11 7.11 0 0010.06 0l49.01-49.01a7.11 7.11 0 000-10.06z"/></svg>
+        </div>
+        <div class="tech-name">Git & Version Control</div>
+        <div class="tech-card-desc">Collaboration & code versioning</div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -405,7 +487,7 @@ nav {
         </div>
       </div>
       <div class="widget-card hover-target" onclick="window.open('https://drive.google.com/drive/folders/1K34zxs3n6lYajXO1cHwfABLwAKdx38zK', '_blank')" style="cursor: pointer;">
-        <div class="port-img-wrap"><img src="45.jpg" alt="Sistem CBT"></div>
+        <div class="port-img-wrap"><img src="50.png" alt="Sistem CBT"></div>
         <h3 style="font-size: 1.5rem; transform: translateZ(30px); color: var(--text);">Sistem CBT Terintegrasi</h3>
         <p style="color: var(--muted); margin-top: 8px; transform: translateZ(20px);">Platform ujian digital end-to-end. Ditenagai AI pembuat soal, sistem pengacakan pintar, dan anti-cheat real-time.</p>
         <div class="port-tags">
