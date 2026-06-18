@@ -62,11 +62,12 @@ nav {
 
 /* ── HERO ───────────────────── */
 .hero { min-height: auto; display: flex; align-items: center; padding-top: 80px; padding-bottom: 40px; position: relative; overflow: hidden; }
-.hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; }
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: 0; align-items: center; text-align: center; }
 
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 14px; color: var(--muted); margin-bottom: 20px; font-weight: 500;
+  justify-content: center;
 }
 .hero-eyebrow span { width: 8px; height: 8px; background: #10B981; border-radius: 0; display: inline-block; }
 
@@ -82,7 +83,7 @@ nav {
   color: var(--accent-dark); margin-bottom: 24px;
 }
 
-.hero-desc { font-size: 1.05rem; color: var(--muted); margin-bottom: 32px; max-width: 480px; line-height: 1.7; }
+.hero-desc { font-size: 1.05rem; color: var(--muted); margin-bottom: 32px; max-width: 480px; line-height: 1.7; margin-left: auto; margin-right: auto; }
 
 .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
 .btn-primary {
@@ -102,7 +103,7 @@ nav {
 }
 .btn-secondary:hover { transform: translateY(-2px); opacity: 0.9; }
 
-.hero-contact-info { margin-top: 32px; display: flex; gap: 32px; flex-wrap: wrap; }
+.hero-contact-info { margin-top: 32px; display: flex; gap: 32px; flex-wrap: wrap; justify-content: center; }
 .hero-contact-item { font-size: 13px; color: var(--muted); }
 .hero-contact-item strong { display: block; color: var(--text-heading); font-size: 13px; font-weight: 600; margin-bottom: 2px; }
 .hero-contact-item a { color: var(--muted); text-decoration: none; transition: 0.2s; }
@@ -191,7 +192,7 @@ nav {
   /* No border-radius, no box-shadow — PNG blends with blob */
 }
 .about-hi {
-  position: absolute; top: 10px; left: 10px; z-index: 2;
+  position: absolute; top: 55px; left: 10px; z-index: 2;
   font-family: var(--font-head); font-size: 2rem; font-weight: 800;
   color: var(--accent-dark); transform: rotate(-8deg);
   text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
@@ -484,10 +485,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
         </div>
       </div>
     </div>
-    <div class="hero-image-wrap">
-      <div class="hero-blob"></div>
-      <img src="2213.png" alt="Yoka Gustiyadi" class="hero-img">
-    </div>
+    <!-- Hero photo removed - text only -->
   </div>
 </section>
 
