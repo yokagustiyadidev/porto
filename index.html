@@ -3,6 +3,26 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="Portofolio Yoka Gustiyadi — Staff Administrasi, Tata Usaha & IT Support. Spesialis CBT Terintegrasi AI, WhatsApp Customer Service 24/7, dan Web Development."/>
+<meta name="author" content="Yoka Gustiyadi"/>
+<meta name="theme-color" content="#F5C518"/>
+
+<!-- Open Graph / Social Media -->
+<meta property="og:title" content="Yoka Gustiyadi — Portofolio"/>
+<meta property="og:description" content="Staff Administrasi, Tata Usaha & IT Support. Spesialis CBT Terintegrasi AI, WhatsApp Customer Service 24/7, dan Web Development."/>
+<meta property="og:image" content="https://yokagustiyadi.vercel.app/og-image.jpg"/>
+<meta property="og:url" content="https://yokagustiyadi.vercel.app"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="id_ID"/>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Yoka Gustiyadi — Portofolio"/>
+<meta name="twitter:description" content="Staff Administrasi, Tata Usaha & IT Support. Spesialis CBT Terintegrasi AI, WhatsApp Customer Service 24/7, dan Web Development."/>
+<meta name="twitter:image" content="https://yokagustiyadi.vercel.app/og-image.jpg"/>
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F5C518'/><text y='.9em' font-size='90' x='50%' text-anchor='middle' dominant-baseline='middle'>Y</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -696,6 +716,99 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   .service-card { padding: 20px; }
   .service-card h3 { font-size: 1.05rem; }
 }
+
+/* ── HAMBURGER MENU ─────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  z-index: 200;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-heading);
+  transition: 0.3s;
+  transform-origin: center;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile nav overlay */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(20px);
+  z-index: 150;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.mobile-nav.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.mobile-nav a {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  text-decoration: none;
+  transition: 0.2s;
+}
+.mobile-nav a:hover { color: var(--accent-dark); }
+.mobile-nav a.nav-cta-mobile {
+  background: var(--text-heading);
+  color: #fff;
+  padding: 14px 32px;
+  font-size: 1.1rem;
+}
+.mobile-nav a.nav-cta-mobile:hover {
+  background: var(--accent);
+  color: #1a1a1a;
+}
+
+.mobile-nav-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-heading);
+  transition: 0.2s;
+  z-index: 10;
+}
+.mobile-nav-close:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #1a1a1a;
+}
+
+@media (max-width: 900px) {
+  .hamburger { display: flex; }
+  .mobile-nav { display: flex; }
+}
 </style>
 </head>
 <body>
@@ -715,8 +828,25 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
       <a href="#work">Proyek</a>
       <a href="#kontak" class="nav-cta">Kontak</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile Navigation Overlay -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Tutup menu">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+  </button>
+  <a href="#about" onclick="closeMobileNav()">Ikhtisar</a>
+  <a href="#tech" onclick="closeMobileNav()">Tech Stack</a>
+  <a href="#work" onclick="closeMobileNav()">Proyek</a>
+  <a href="#services" onclick="closeMobileNav()">Layanan</a>
+  <a href="#kontak" class="nav-cta-mobile" onclick="closeMobileNav()">Kontak</a>
+</div>
 
 <!-- Hero Section -->
 <section class="hero">
@@ -963,7 +1093,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 <section id="cbt-gallery" style="padding-top: 0;">
   <div class="wrap">
     <div class="sec-header center">
-      <h2 class="sec-title">Contoh Tampilan Sistem CBT.</h2>
+      <h2 class="sec-title">Tampilan Sistem CBT.</h2>
       <p class="sec-subtitle">Contoh antarmuka sistem ujian berbasis komputer yang telah dikembangkan dengan desain modern, intuitif, dan berwarna-warni.</p>
     </div>
     <div class="cbt-gallery">
@@ -1198,6 +1328,28 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 revealEls.forEach(el => revealObserver.observe(el));
 
+/* Hamburger Menu */
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+
+hamburger.addEventListener('click', () => {
+  const isActive = hamburger.classList.toggle('active');
+  mobileNav.classList.toggle('active');
+  hamburger.setAttribute('aria-expanded', isActive);
+  document.body.style.overflow = isActive ? 'hidden' : '';
+});
+
+function closeMobileNav() {
+  hamburger.classList.remove('active');
+  mobileNav.classList.remove('active');
+  hamburger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+/* Close mobile nav on resize to desktop */
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900) closeMobileNav();
+});
 
 </script>
 
