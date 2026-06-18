@@ -293,10 +293,11 @@ nav {
 }
 .about-hi {
   position: absolute; top: 55px; left: 10px; z-index: 2;
-  font-family: var(--font-head); font-size: 2rem; font-weight: 800;
+  font-family: var(--font-head); font-size: 1.6rem; font-weight: 800;
   color: var(--accent-dark); transform: rotate(-8deg);
-  text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
-  background: rgba(255,255,255,0.9); padding: 4px 12px;
+  text-shadow: 2px 2px 4px rgba(255,255,255,0.9), -1px -1px 2px rgba(255,255,255,0.9);
+  line-height: 1.3;
+  max-width: 280px;
 }
 .about-content h3 { font-size: 1.3rem; font-weight: 700; color: var(--text-heading); margin-bottom: 8px; }
 .about-content .role { color: var(--accent-dark); font-weight: 600; font-size: 1.05rem; margin-bottom: 20px; display: block; }
@@ -479,17 +480,29 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 
 
 
-/* Feature Cards - CBT: white/yellow alternating */
-.features-grid .feature-card:nth-child(odd) {
+/* V Project Features: black/white alternating */
+#vproject .features-grid .feature-card:nth-child(odd) {
+  background: #1a1a1a; border-color: #333;
+}
+#vproject .features-grid .feature-card:nth-child(odd) h3 { color: #fff; }
+#vproject .features-grid .feature-card:nth-child(odd) p { color: rgba(255,255,255,0.65); }
+#vproject .features-grid .feature-card:nth-child(even) {
   background: #fff; border-color: var(--border);
 }
-.features-grid .feature-card:nth-child(odd) h3 { color: var(--text-heading); }
-.features-grid .feature-card:nth-child(odd) p { color: var(--muted); }
-.features-grid .feature-card:nth-child(even) {
+#vproject .features-grid .feature-card:nth-child(even) h3 { color: var(--text-heading); }
+#vproject .features-grid .feature-card:nth-child(even) p { color: var(--muted); }
+
+/* CBT Features: white/yellow alternating */
+#fitur-cbt .features-grid .feature-card:nth-child(odd) {
+  background: #fff; border-color: var(--border);
+}
+#fitur-cbt .features-grid .feature-card:nth-child(odd) h3 { color: var(--text-heading); }
+#fitur-cbt .features-grid .feature-card:nth-child(odd) p { color: var(--muted); }
+#fitur-cbt .features-grid .feature-card:nth-child(even) {
   background: var(--accent); border-color: var(--accent-dark);
 }
-.features-grid .feature-card:nth-child(even) h3 { color: #1a1a1a; }
-.features-grid .feature-card:nth-child(even) p { color: rgba(26,26,26,0.75); }
+#fitur-cbt .features-grid .feature-card:nth-child(even) h3 { color: #1a1a1a; }
+#fitur-cbt .features-grid .feature-card:nth-child(even) p { color: rgba(26,26,26,0.75); }
 
 /* Skill Boxes */
 .skills-right .skill-box:nth-child(odd) {
