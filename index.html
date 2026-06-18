@@ -61,52 +61,138 @@ nav {
 .nav-links a:hover { color: var(--text-heading); }
 
 /* ── HERO ───────────────────── */
-.hero { min-height: auto; display: flex; align-items: center; padding-top: 80px; padding-bottom: 40px; position: relative; overflow: hidden; }
-.hero-grid { display: grid; grid-template-columns: 1fr; gap: 0; align-items: center; text-align: center; }
+.hero {
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  padding-top: 120px;
+  padding-bottom: 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  align-items: center;
+  text-align: center;
+}
 
 .hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 14px; color: var(--muted); margin-bottom: 20px; font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 24px;
+  font-weight: 500;
   justify-content: center;
 }
-.hero-eyebrow span { width: 8px; height: 8px; background: #10B981; border-radius: 0; display: inline-block; }
+.hero-eyebrow span {
+  width: 8px;
+  height: 8px;
+  background: #10B981;
+  border-radius: 0;
+  display: inline-block;
+}
 
 .hero-title {
-  font-family: var(--font-head); font-size: clamp(2.8rem, 5vw, 4.2rem);
-  font-weight: 800; line-height: 1.1; letter-spacing: -0.03em;
-  color: var(--text-heading); margin-bottom: 12px;
+  font-family: var(--font-head);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text-heading);
+  margin-bottom: 16px;
 }
 .hero-title .accent-text { color: var(--accent-dark); }
 
 .hero-subtitle {
-  font-family: var(--font-head); font-size: 1.5rem; font-weight: 600;
-  color: var(--accent-dark); margin-bottom: 24px;
+  font-family: var(--font-head);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 600;
+  color: var(--accent-dark);
+  margin-bottom: 24px;
 }
 
-.hero-desc { font-size: 1.05rem; color: var(--muted); margin-bottom: 32px; max-width: 480px; line-height: 1.7; margin-left: auto; margin-right: auto; }
+.hero-desc {
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  color: var(--muted);
+  margin-bottom: 32px;
+  max-width: 560px;
+  line-height: 1.7;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 0;
+}
 .btn-primary {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 28px; background: var(--accent); color: #1A1A1A;
-  border-radius: 0; font-size: 15px; font-weight: 600;
-  text-decoration: none; transition: 0.3s; border: none; cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: #1A1A1A;
+  border-radius: 0;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
   box-shadow: 0 4px 16px rgba(245, 197, 24, 0.3);
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245, 197, 24, 0.4); }
 
 .btn-secondary {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 28px; background: var(--text-heading); color: #FFF;
-  border-radius: 0; font-size: 15px; font-weight: 600;
-  text-decoration: none; transition: 0.3s; border: none; cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--text-heading);
+  color: #FFF;
+  border-radius: 0;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
 }
 .btn-secondary:hover { transform: translateY(-2px); opacity: 0.9; }
 
-.hero-contact-info { margin-top: 32px; display: flex; gap: 32px; flex-wrap: wrap; justify-content: center; }
-.hero-contact-item { font-size: 13px; color: var(--muted); }
-.hero-contact-item strong { display: block; color: var(--text-heading); font-size: 13px; font-weight: 600; margin-bottom: 2px; }
-.hero-contact-item a { color: var(--muted); text-decoration: none; transition: 0.2s; }
+.hero-contact-info {
+  margin-top: 32px;
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.hero-contact-item {
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+.hero-contact-item strong {
+  display: block;
+  color: var(--text-heading);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.hero-contact-item a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: 0.2s;
+}
 .hero-contact-item a:hover { color: var(--accent-dark); }
 
 /* Hero Image with Blob */
@@ -140,7 +226,7 @@ nav {
 .deco-ring { position: absolute; width: 120px; height: 120px; border: 2px solid var(--accent); border-radius: 0; opacity: 0.2; bottom: 20%; right: 5%; }
 
 /* ── QUICK CARDS ───────────────────────── */
-.quick-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: -30px; position: relative; z-index: 10; }
+.quick-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; margin-bottom: 40px; position: relative; z-index: 10; }
 .quick-card {
   background: var(--bg-card); border: 1px solid var(--border); border-radius: 0;
   padding: 28px; display: flex; align-items: center; gap: 16px;
@@ -359,13 +445,13 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 /* ── RESPONSIVE ─────────────────── */
 @media (max-width: 900px) {
   .hero-grid, .about-grid, .skills-layout { grid-template-columns: 1fr; }
-  .hero { padding-top: 80px; text-align: center; }
+  .hero { padding-top: 90px; padding-bottom: 50px; text-align: center; }
   .hero-desc { margin-left: auto; margin-right: auto; }
   .hero-btns { justify-content: center; }
   .hero-contact-info { justify-content: center; }
   .hero-image-wrap { order: -1; margin-bottom: 40px; }
   .hero-img { max-width: 280px; }
-  .quick-cards { grid-template-columns: 1fr; margin-top: 20px; }
+  .quick-cards { grid-template-columns: 1fr; margin-top: 30px; margin-bottom: 30px; }
   .tech-grid { grid-template-columns: repeat(2, 1fr); }
   .cert-grid, .portfolio-grid, .features-grid, .cbt-gallery, .contact-grid { grid-template-columns: 1fr; }
   .skills-right { grid-template-columns: 1fr 1fr; }
@@ -489,35 +575,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   </div>
 </section>
 
-<!-- Quick Cards -->
-<div class="wrap">
-  <div class="quick-cards">
-    <div class="quick-card">
-      <div class="quick-card-icon yellow">🖥️</div>
-      <div class="quick-card-text">
-        <div class="quick-card-title">IT Support</div>
-        <div class="quick-card-desc">Diagnosis & konfigurasi sistem</div>
-      </div>
-      <div class="quick-card-arrow">→</div>
-    </div>
-    <div class="quick-card">
-      <div class="quick-card-icon blue">💻</div>
-      <div class="quick-card-text">
-        <div class="quick-card-title">Web Development</div>
-        <div class="quick-card-desc">Fullstack & responsive UI</div>
-      </div>
-      <div class="quick-card-arrow">→</div>
-    </div>
-    <div class="quick-card">
-      <div class="quick-card-icon green">🤖</div>
-      <div class="quick-card-text">
-        <div class="quick-card-title">AI Config</div>
-        <div class="quick-card-desc">Prompt engineering & otomasi</div>
-      </div>
-      <div class="quick-card-arrow">→</div>
-    </div>
-  </div>
-</div>
+
 
 <!-- About Section -->
 <section id="about">
@@ -551,6 +609,36 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
     </div>
   </div>
 </section>
+
+<!-- Quick Cards -->
+<div class="wrap">
+  <div class="quick-cards">
+    <div class="quick-card">
+      <div class="quick-card-icon yellow">🖥️</div>
+      <div class="quick-card-text">
+        <div class="quick-card-title">IT Support</div>
+        <div class="quick-card-desc">Diagnosis & konfigurasi sistem</div>
+      </div>
+      <div class="quick-card-arrow">→</div>
+    </div>
+    <div class="quick-card">
+      <div class="quick-card-icon blue">💻</div>
+      <div class="quick-card-text">
+        <div class="quick-card-title">Web Development</div>
+        <div class="quick-card-desc">Fullstack & responsive UI</div>
+      </div>
+      <div class="quick-card-arrow">→</div>
+    </div>
+    <div class="quick-card">
+      <div class="quick-card-icon green">🤖</div>
+      <div class="quick-card-text">
+        <div class="quick-card-title">AI Config</div>
+        <div class="quick-card-desc">Prompt engineering & otomasi</div>
+      </div>
+      <div class="quick-card-arrow">→</div>
+    </div>
+  </div>
+</div>
 
 <!-- Marquee -->
 <div class="marquee-container">
