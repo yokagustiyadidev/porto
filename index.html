@@ -40,7 +40,7 @@ body {
 /* ── CUSTOM SCROLLBAR ────────────────────── */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg-soft); }
-::-webkit-scrollbar-thumb { background: #D1D1D1; border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: #D1D1D1; border-radius: 0; }
 ::-webkit-scrollbar-thumb:hover { background: #AAAAAA; }
 
 /* ── LAYOUT ─────────────────────────────────────── */
@@ -55,7 +55,7 @@ nav {
 }
 .nav-inner { display: flex; justify-content: space-between; align-items: center; height: 64px; }
 .nav-logo { font-family: var(--font-head); font-weight: 700; font-size: 1.2rem; color: var(--text-heading); display: flex; align-items: center; gap: 8px; }
-.nav-logo .dot-brand { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; display: inline-block; }
+.nav-logo .dot-brand { width: 10px; height: 10px; background: var(--accent); border-radius: 0; display: inline-block; }
 .nav-links { display: flex; gap: 32px; }
 .nav-links a { font-size: 14px; color: var(--muted); font-weight: 500; transition: 0.2s; text-decoration: none; }
 .nav-links a:hover { color: var(--text-heading); }
@@ -68,7 +68,7 @@ nav {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 14px; color: var(--muted); margin-bottom: 20px; font-weight: 500;
 }
-.hero-eyebrow span { width: 8px; height: 8px; background: #10B981; border-radius: 50%; display: inline-block; }
+.hero-eyebrow span { width: 8px; height: 8px; background: #10B981; border-radius: 0; display: inline-block; }
 
 .hero-title {
   font-family: var(--font-head); font-size: clamp(2.8rem, 5vw, 4.2rem);
@@ -88,7 +88,7 @@ nav {
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 14px 28px; background: var(--accent); color: #1A1A1A;
-  border-radius: 50px; font-size: 15px; font-weight: 600;
+  border-radius: 0; font-size: 15px; font-weight: 600;
   text-decoration: none; transition: 0.3s; border: none; cursor: pointer;
   box-shadow: 0 4px 16px rgba(245, 197, 24, 0.3);
 }
@@ -97,7 +97,7 @@ nav {
 .btn-secondary {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 14px 28px; background: var(--text-heading); color: #FFF;
-  border-radius: 50px; font-size: 15px; font-weight: 600;
+  border-radius: 0; font-size: 15px; font-weight: 600;
   text-decoration: none; transition: 0.3s; border: none; cursor: pointer;
 }
 .btn-secondary:hover { transform: translateY(-2px); opacity: 0.9; }
@@ -116,16 +116,15 @@ nav {
 .hero-blob {
   position: absolute; width: 105%; height: 105%; z-index: 0;
   background: var(--accent);
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  border-radius: 0;
   animation: blobMorph 8s ease-in-out infinite;
   opacity: 1;
   /* Soft edge so it blends like water */
   filter: blur(0px);
 }
-@keyframes blobMorph {
-  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+@keyframes blobMorph { 0% { border-radius: 0; } 50% { border-radius: 0; } 100% { border-radius: 0; } }
+  50% { border-radius: 0; }
+  100% { border-radius: 0; }
 }
 .hero-img {
   position: relative; z-index: 1; width: 100%; max-width: 420px;
@@ -134,20 +133,20 @@ nav {
 }
 
 /* Decorative elements */
-.deco-dot { position: absolute; border-radius: 50%; background: var(--accent); opacity: 0.15; }
+.deco-dot { position: absolute; border-radius: 0; background: var(--accent); opacity: 0.15; }
 .deco-dot-1 { width: 80px; height: 80px; top: 10%; left: 5%; }
 .deco-dot-2 { width: 40px; height: 40px; bottom: 15%; left: 10%; background: var(--accent-dark); opacity: 0.1; }
-.deco-ring { position: absolute; width: 120px; height: 120px; border: 2px solid var(--accent); border-radius: 50%; opacity: 0.2; bottom: 20%; right: 5%; }
+.deco-ring { position: absolute; width: 120px; height: 120px; border: 2px solid var(--accent); border-radius: 0; opacity: 0.2; bottom: 20%; right: 5%; }
 
 /* ── QUICK CARDS ───────────────────────── */
 .quick-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: -60px; position: relative; z-index: 10; }
 .quick-card {
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 0;
   padding: 28px; display: flex; align-items: center; gap: 16px;
   box-shadow: var(--shadow); transition: 0.3s; cursor: pointer; text-decoration: none;
 }
 .quick-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--accent); }
-.quick-card-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+.quick-card-icon { width: 48px; height: 48px; border-radius: 0; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
 .quick-card-icon.yellow { background: var(--accent-light); }
 .quick-card-icon.blue { background: #EFF6FF; }
 .quick-card-icon.green { background: #ECFDF5; }
@@ -169,7 +168,7 @@ nav {
 .about-image-wrap { position: relative; }
 .about-blob {
   position: absolute; width: 100%; height: 100%; z-index: 0;
-  background: var(--accent); border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  background: var(--accent); border-radius: 0;
   animation: blobMorph 10s ease-in-out infinite reverse;
   opacity: 1;
 }
@@ -198,7 +197,7 @@ nav {
 /* ── TECH GRID ────────────────────────── */
 .tech-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .tech-card {
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 0;
   padding: 28px 20px; text-align: center; transition: all 0.3s ease;
   display: flex; flex-direction: column; align-items: center; gap: 12px;
 }
@@ -207,7 +206,7 @@ nav {
 }
 .tech-icon-wrap {
   width: 56px; height: 56px; display: flex; align-items: center; justify-content: center;
-  border-radius: 16px; margin-bottom: 4px;
+  border-radius: 0; margin-bottom: 4px;
 }
 .tech-icon-wrap svg { width: 32px; height: 32px; }
 .tech-name { font-size: 15px; font-weight: 700; color: var(--text-heading); }
@@ -216,18 +215,18 @@ nav {
 /* ── CERTIFICATES ────────────────────────── */
 .cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .cert-card {
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 0;
   padding: 12px; transition: 0.3s; box-shadow: var(--shadow);
 }
 .cert-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
-.cert-img-wrap { border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
+.cert-img-wrap { border-radius: 0; overflow: hidden; margin-bottom: 16px; }
 .cert-img-wrap img { width: 100%; height: auto; display: block; object-fit: contain; }
 .cert-card h3 { font-size: 1rem; font-weight: 700; color: var(--text-heading); padding: 0 8px 8px; }
 
 /* ── PORTFOLIO ────────────────────────── */
 .portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 .portfolio-card {
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 0;
   overflow: hidden; transition: 0.3s; box-shadow: var(--shadow); cursor: pointer;
 }
 .portfolio-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
@@ -239,7 +238,7 @@ nav {
 .portfolio-body p { color: var(--muted); font-size: 15px; line-height: 1.6; margin-bottom: 20px; }
 .portfolio-tags { display: flex; gap: 8px; flex-wrap: wrap; }
 .portfolio-tag {
-  font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 50px;
+  font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 0;
 }
 .portfolio-tag.primary { background: var(--accent); color: #1A1A1A; }
 .portfolio-tag.secondary { background: var(--text-heading); color: #FFF; }
@@ -248,12 +247,12 @@ nav {
 /* ── FEATURES GRID ────────────────────────── */
 .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .feature-card {
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 0;
   padding: 32px; transition: 0.3s; box-shadow: var(--shadow);
 }
 .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--accent); }
 .feature-icon {
-  width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px; border-radius: 0; display: flex; align-items: center; justify-content: center;
   font-size: 24px; margin-bottom: 20px;
 }
 .feature-icon.yellow { background: var(--accent-light); }
@@ -267,7 +266,7 @@ nav {
 
 /* ── CBT GALLERY ────────────────────────── */
 .cbt-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.cbt-gallery-item { border-radius: 20px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow); transition: 0.3s; }
+.cbt-gallery-item { border-radius: 0; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow); transition: 0.3s; }
 .cbt-gallery-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
 .cbt-gallery-item img { width: 100%; height: auto; display: block; }
 
@@ -279,28 +278,28 @@ nav {
 .skill-bar-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
 .skill-bar-label { font-size: 14px; font-weight: 600; color: var(--text-heading); text-transform: uppercase; letter-spacing: 0.05em; }
 .skill-bar-percent { font-size: 14px; font-weight: 700; color: var(--accent-dark); }
-.skill-bar-track { height: 8px; background: var(--border); border-radius: 10px; overflow: hidden; }
-.skill-bar-fill { height: 100%; background: var(--accent); border-radius: 10px; transition: width 1.5s ease; }
+.skill-bar-track { height: 8px; background: var(--border); border-radius: 0; overflow: hidden; }
+.skill-bar-fill { height: 100%; background: var(--accent); border-radius: 0; transition: width 1.5s ease; }
 
 .skills-right { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .skill-box {
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 0;
   padding: 28px; text-align: center; transition: 0.3s; box-shadow: var(--shadow);
 }
 .skill-box:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
-.skill-box-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--text-heading); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 20px; color: #FFF; }
+.skill-box-icon { width: 48px; height: 48px; border-radius: 0; background: var(--text-heading); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 20px; color: #FFF; }
 .skill-box h4 { font-size: 15px; font-weight: 700; color: var(--text-heading); margin-bottom: 4px; }
 .skill-box p { font-size: 12px; color: var(--muted); }
 
 /* ── CONTACT ────────────────────────── */
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .contact-card {
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 0;
   padding: 32px; display: flex; align-items: center; gap: 20px;
   box-shadow: var(--shadow); transition: 0.3s;
 }
 .contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--accent); }
-.contact-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+.contact-icon { width: 56px; height: 56px; border-radius: 0; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
 .contact-info h3 { font-size: 16px; font-weight: 700; color: var(--text-heading); margin-bottom: 4px; }
 .contact-info a { color: var(--accent-dark); font-size: 1.1rem; font-weight: 700; text-decoration: none; transition: 0.2s; }
 .contact-info a:hover { color: var(--text-heading); }
@@ -321,7 +320,7 @@ nav {
 /* ── FLOATING WA ─────────────────── */
 .float-wa {
   position: fixed; bottom: 28px; right: 28px; z-index: 500;
-  width: 56px; height: 56px; background: #25D366; border-radius: 50%;
+  width: 56px; height: 56px; background: #25D366; border-radius: 0;
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 4px 24px rgba(37, 211, 102, 0.45);
   cursor: pointer; transition: transform 0.25s, box-shadow 0.25s;
@@ -363,6 +362,66 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 @media (max-width: 480px) {
   .tech-grid, .skills-right { grid-template-columns: 1fr; }
 }
+
+/* ── ALTERNATING CARD COLORS ─────────────────── */
+/* Odd cards = Dark, Even cards = Light */
+
+
+
+
+/* Feature Cards */
+.features-grid .feature-card:nth-child(odd) {
+  background: #1a1a1a; border-color: #333;
+}
+.features-grid .feature-card:nth-child(odd) h3 { color: #fff; }
+.features-grid .feature-card:nth-child(odd) p { color: rgba(255,255,255,0.65); }
+.features-grid .feature-card:nth-child(even) {
+  background: #fff; border-color: var(--border);
+}
+.features-grid .feature-card:nth-child(even) h3 { color: var(--text-heading); }
+.features-grid .feature-card:nth-child(even) p { color: var(--muted); }
+
+/* Skill Boxes */
+.skills-right .skill-box:nth-child(odd) {
+  background: #1a1a1a; border-color: #333;
+}
+.skills-right .skill-box:nth-child(odd) h4 { color: #fff; }
+.skills-right .skill-box:nth-child(odd) p { color: rgba(255,255,255,0.65); }
+.skills-right .skill-box:nth-child(even) {
+  background: #fff; border-color: var(--border);
+}
+.skills-right .skill-box:nth-child(even) h4 { color: var(--text-heading); }
+.skills-right .skill-box:nth-child(even) p { color: var(--muted); }
+
+/* Contact Cards */
+.contact-grid .contact-card:nth-child(odd) {
+  background: #1a1a1a; border-color: #333;
+}
+.contact-grid .contact-card:nth-child(odd) .contact-info h3 { color: #fff; }
+.contact-grid .contact-card:nth-child(odd) .contact-info p { color: rgba(255,255,255,0.65); }
+.contact-grid .contact-card:nth-child(odd) .contact-icon {
+  background: var(--accent); color: #1a1a1a;
+}
+.contact-grid .contact-card:nth-child(even) {
+  background: #fff; border-color: var(--border);
+}
+.contact-grid .contact-card:nth-child(even) .contact-info h3 { color: var(--text-heading); }
+.contact-grid .contact-card:nth-child(even) .contact-info p { color: var(--muted); }
+
+/* Quick Cards */
+.quick-cards .quick-card:nth-child(odd) {
+  background: #1a1a1a; border-color: #333;
+}
+.quick-cards .quick-card:nth-child(odd) .quick-card-title { color: #fff; }
+.quick-cards .quick-card:nth-child(odd) .quick-card-desc { color: rgba(255,255,255,0.65); }
+.quick-cards .quick-card:nth-child(odd) .quick-card-arrow { color: var(--accent); }
+.quick-cards .quick-card:nth-child(even) {
+  background: #fff; border-color: var(--border);
+}
+.quick-cards .quick-card:nth-child(even) .quick-card-title { color: var(--text-heading); }
+.quick-cards .quick-card:nth-child(even) .quick-card-desc { color: var(--muted); }
+
+
 </style>
 </head>
 <body>
@@ -393,7 +452,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   <div class="wrap hero-grid">
     <div class="hero-content">
       <div class="hero-eyebrow"><span></span> Status: Online</div>
-      <h1 class="hero-title">Hi! I'm <span class="accent-text">Yoka Gustiyadi</span> -</h1>
+      <h1 class="hero-title">Halo! Saya <span class="accent-text">Yoka Gustiyadi</span> -</h1>
       <div class="hero-subtitle">Staff Administrasi & IT Support</div>
       <p class="hero-desc">Membangun arsitektur digital tingkat lanjut. Dari Sistem Ujian Terintegrasi (CBT) dengan keamanan mutakhir, hingga Otomatisasi Bisnis berbasis Artificial Intelligence yang elegan dan mulus.</p>
       <div class="hero-btns">
@@ -454,13 +513,13 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
     <div class="about-grid">
       <div class="about-image-wrap">
         <div class="about-blob"></div>
-        <div class="about-hi">Hi There!</div>
+        <div class="about-hi">Halo! Saya terbuka untuk kerja sama ya!</div>
         <img src="2213.png" alt="Yoka" class="about-img">
       </div>
       <div class="about-content">
         <h2 class="sec-title">Data Subjek.</h2>
         <span class="role">Staff Administrasi & IT Support — SDI Abu Seno</span>
-        <p>Berlatar belakang pendidikan teknis SMK, latar belakang teknis saya membentuk saya menjadi pengembang yang praktis, cepat beradaptasi, dan selalu mengutamakan performa sistem. Saya berdedikasi untuk mentransformasi alur kerja manual menjadi ekosistem digital yang otonom dan efisien.</p>
+        <p>Halo! Saya terbuka untuk kerja sama. Saya Yoka Gustiyadi, Staff Administrasi & IT Support di SDI Abu Seno. Berlatar belakang teknis SMK, saya menguasai IT Support & Jaringan, Web Development (Tailwind CSS, Vanilla JS), serta AI Config & Otomasi (OpenAI, Gemini, Groq).</p>
         <div class="about-links">
           <a href="CV_Yoka-Gustiyadi.pdf" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
