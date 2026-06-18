@@ -653,6 +653,49 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 .quick-cards .quick-card:nth-child(3) .quick-card-desc { color: var(--muted); }
 
 
+
+/* ── SERVICES GRID (Yang Bisa Saya Lakukan) ─────────────────── */
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.service-card {
+  border: 1px solid var(--border); border-radius: 0;
+  padding: 32px 28px; transition: 0.3s; box-shadow: var(--shadow);
+  cursor: default; text-align: left; display: flex; flex-direction: column; gap: 14px;
+}
+.service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+.service-card .service-num {
+  font-family: var(--font-head); font-size: 2.6rem; font-weight: 800; line-height: 1;
+  opacity: 0.25; margin-bottom: 4px;
+}
+.service-card h3 { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; line-height: 1.35; }
+.service-card p { font-size: 14px; line-height: 1.7; }
+
+/* Black card */
+.service-card.black { background: #1a1a1a; border-color: #333; }
+.service-card.black .service-num { color: var(--accent); opacity: 0.4; }
+.service-card.black h3 { color: #fff; }
+.service-card.black p { color: rgba(255,255,255,0.65); }
+
+/* Yellow card */
+.service-card.yellow { background: var(--accent); border-color: var(--accent-dark); }
+.service-card.yellow .service-num { color: #1a1a1a; opacity: 0.25; }
+.service-card.yellow h3 { color: #1a1a1a; }
+.service-card.yellow p { color: rgba(26,26,26,0.75); }
+
+/* White card */
+.service-card.white { background: #fff; border-color: var(--border); }
+.service-card.white .service-num { color: var(--accent-dark); opacity: 0.35; }
+.service-card.white h3 { color: var(--text-heading); }
+.service-card.white p { color: var(--muted); }
+
+@media (max-width: 900px) {
+  .services-grid { grid-template-columns: 1fr; gap: 16px; }
+  .service-card { padding: 24px; }
+  .service-card .service-num { font-size: 2rem; }
+}
+@media (max-width: 480px) {
+  .service-card { padding: 20px; }
+  .service-card h3 { font-size: 1.05rem; }
+}
 </style>
 </head>
 <body>
@@ -879,6 +922,62 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   </div>
 </section>
 
+<!-- Services Section -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-header center">
+      <h2 class="sec-title">Yang Bisa Saya Lakukan.</h2>
+      <p class="sec-subtitle">Layanan digital yang saya sediakan untuk memenuhi kebutuhan teknologi Anda:</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card black reveal">
+        <div class="service-num">01</div>
+        <h3>Membuat Web & Dashboard</h3>
+        <p>Website profesional dan dashboard administrasi dengan desain modern, responsif, dan performa tinggi untuk kebutuhan bisnis maupun personal.</p>
+      </div>
+      <div class="service-card yellow reveal">
+        <div class="service-num">02</div>
+        <h3>Membuat Sistem Digital CBT & Dashboard untuk Sekolah</h3>
+        <p>Platform ujian komputer berbasis web lengkap dengan AI, pengacakan soal, anti-cheat, data siswa, dan rekap nilai terintegrasi.</p>
+      </div>
+      <div class="service-card white reveal">
+        <div class="service-num">03</div>
+        <h3>WhatsApp Customer Service 24 Jam AI Assistance</h3>
+        <p>Bot WhatsApp pintar yang beroperasi 24/7 dengan AI persona, state management, dan eskalasi otomatis ke admin manusia.</p>
+      </div>
+      <div class="service-card black reveal">
+        <div class="service-num">04</div>
+        <h3>Membuat Portofolio Online</h3>
+        <p>Portofolio digital elegan untuk menampilkan karya, pengalaman, dan keahlian dengan tampilan premium yang meninggalkan kesan profesional.</p>
+      </div>
+      <div class="service-card yellow reveal">
+        <div class="service-num">05</div>
+        <h3>Membuat Undangan Nikah Online</h3>
+        <p>Undangan pernikahan digital interaktif dengan desain estetis, countdown timer, galeri foto, RSVP, dan integrasi Google Maps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CBT Gallery Section -->
+<section id="cbt-gallery" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="sec-header center">
+      <h2 class="sec-title">Contoh Tampilan Sistem CBT.</h2>
+      <p class="sec-subtitle">Contoh antarmuka sistem ujian berbasis komputer yang telah dikembangkan dengan desain modern, intuitif, dan berwarna-warni.</p>
+    </div>
+    <div class="cbt-gallery">
+      <div class="cbt-gallery-item reveal">
+        <img src="47777.png" alt="CBT Login Page">
+      </div>
+      <div class="cbt-gallery-item reveal">
+        <img src="47781.png" alt="CBT Exam Interface">
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- Portfolio Section -->
 <section id="work">
   <div class="wrap">
@@ -901,31 +1000,13 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
       <div class="portfolio-card reveal" onclick="window.open('https://drive.google.com/drive/folders/1K34zxs3n6lYajXO1cHwfABLwAKdx38zK', '_blank')">
         <div class="portfolio-img-wrap"><img src="50.png" alt="Sistem CBT"></div>
         <div class="portfolio-body">
-          <h3>Sistem CBT Terintegrasi</h3>
-          <p>Platform ujian digital end-to-end. Ditenagai AI pembuat soal, sistem pengacakan pintar, dan anti-cheat real-time.</p>
+          <h3>Sistem CBT Terintegrasi — SDI Abu Seno</h3>
+          <p>Platform ujian digital end-to-end untuk SDI Abu Seno. Ditenagai AI pembuat soal, sistem pengacakan pintar, anti-cheat real-time, data siswa, dan rekap nilai terintegrasi AI.</p>
           <div class="portfolio-tags">
             <span class="portfolio-tag secondary">Lihat Drive ↗</span>
             <span class="portfolio-tag ghost">RBAC</span>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CBT Gallery Section -->
-<section id="cbt-gallery" style="padding-top: 0;">
-  <div class="wrap">
-    <div class="sec-header center">
-      <h2 class="sec-title">Tampilan Sistem CBT.</h2>
-      <p class="sec-subtitle">Contoh antarmuka sistem ujian berbasis komputer yang telah dikembangkan dengan desain modern, intuitif, dan berwarna-warni.</p>
-    </div>
-    <div class="cbt-gallery">
-      <div class="cbt-gallery-item reveal">
-        <img src="47777.png" alt="CBT Login Page">
-      </div>
-      <div class="cbt-gallery-item reveal">
-        <img src="47781.png" alt="CBT Exam Interface">
       </div>
     </div>
   </div>
