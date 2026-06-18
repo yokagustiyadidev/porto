@@ -294,7 +294,7 @@ nav {
 .about-hi {
   position: absolute; top: 55px; left: 10px; z-index: 2;
   font-family: var(--font-head); font-size: 1.6rem; font-weight: 800;
-  color: var(--accent-dark); transform: rotate(-8deg);
+  color: var(--text-heading); transform: rotate(-8deg);
   text-shadow: 2px 2px 4px rgba(255,255,255,0.9), -1px -1px 2px rgba(255,255,255,0.9);
   line-height: 1.3;
   max-width: 280px;
@@ -492,17 +492,17 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 #vproject .features-grid .feature-card:nth-child(even) h3 { color: var(--text-heading); }
 #vproject .features-grid .feature-card:nth-child(even) p { color: var(--muted); }
 
-/* CBT Features: white/yellow alternating */
+/* CBT Features: yellow/white alternating */
 #fitur-cbt .features-grid .feature-card:nth-child(odd) {
-  background: #fff; border-color: var(--border);
-}
-#fitur-cbt .features-grid .feature-card:nth-child(odd) h3 { color: var(--text-heading); }
-#fitur-cbt .features-grid .feature-card:nth-child(odd) p { color: var(--muted); }
-#fitur-cbt .features-grid .feature-card:nth-child(even) {
   background: var(--accent); border-color: var(--accent-dark);
 }
-#fitur-cbt .features-grid .feature-card:nth-child(even) h3 { color: #1a1a1a; }
-#fitur-cbt .features-grid .feature-card:nth-child(even) p { color: rgba(26,26,26,0.75); }
+#fitur-cbt .features-grid .feature-card:nth-child(odd) h3 { color: #1a1a1a; }
+#fitur-cbt .features-grid .feature-card:nth-child(odd) p { color: rgba(26,26,26,0.75); }
+#fitur-cbt .features-grid .feature-card:nth-child(even) {
+  background: #fff; border-color: var(--border);
+}
+#fitur-cbt .features-grid .feature-card:nth-child(even) h3 { color: var(--text-heading); }
+#fitur-cbt .features-grid .feature-card:nth-child(even) p { color: var(--muted); }
 
 /* Skill Boxes */
 .skills-right .skill-box:nth-child(odd) {
@@ -531,18 +531,24 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 .contact-grid .contact-card:nth-child(even) .contact-info h3 { color: var(--text-heading); }
 .contact-grid .contact-card:nth-child(even) .contact-info p { color: var(--muted); }
 
-/* Quick Cards */
-.quick-cards .quick-card:nth-child(odd) {
+/* Quick Cards - Specific colors: IT=black, Web=yellow, AI=white */
+.quick-cards .quick-card:nth-child(1) {
   background: #1a1a1a; border-color: #333;
 }
-.quick-cards .quick-card:nth-child(odd) .quick-card-title { color: #fff; }
-.quick-cards .quick-card:nth-child(odd) .quick-card-desc { color: rgba(255,255,255,0.65); }
-.quick-cards .quick-card:nth-child(odd) .quick-card-arrow { color: var(--accent); }
-.quick-cards .quick-card:nth-child(even) {
+.quick-cards .quick-card:nth-child(1) .quick-card-title { color: #fff; }
+.quick-cards .quick-card:nth-child(1) .quick-card-desc { color: rgba(255,255,255,0.65); }
+.quick-cards .quick-card:nth-child(1) .quick-card-arrow { color: var(--accent); }
+.quick-cards .quick-card:nth-child(2) {
+  background: var(--accent); border-color: var(--accent-dark);
+}
+.quick-cards .quick-card:nth-child(2) .quick-card-title { color: #1a1a1a; }
+.quick-cards .quick-card:nth-child(2) .quick-card-desc { color: rgba(26,26,26,0.7); }
+.quick-cards .quick-card:nth-child(2) .quick-card-arrow { color: #1a1a1a; }
+.quick-cards .quick-card:nth-child(3) {
   background: #fff; border-color: var(--border);
 }
-.quick-cards .quick-card:nth-child(even) .quick-card-title { color: var(--text-heading); }
-.quick-cards .quick-card:nth-child(even) .quick-card-desc { color: var(--muted); }
+.quick-cards .quick-card:nth-child(3) .quick-card-title { color: var(--text-heading); }
+.quick-cards .quick-card:nth-child(3) .quick-card-desc { color: var(--muted); }
 
 
 </style>
@@ -575,7 +581,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   <div class="wrap hero-grid">
     <div class="hero-content">
       <div class="hero-eyebrow"><span></span> Status: Online</div>
-      <h1 class="hero-title">Hi! I'm <span class="accent-text">Yoka Gustiyadi</span> -</h1>
+      <h1 class="hero-title">Hi! Saya <span class="accent-text">Yoka Gustiyadi</span> -</h1>
       <div class="hero-subtitle">Staff Administrasi & IT Support</div>
       <p class="hero-desc">Membangun arsitektur digital tingkat lanjut. Dari Sistem Ujian Terintegrasi (CBT) dengan keamanan mutakhir, hingga Otomatisasi Bisnis berbasis Artificial Intelligence yang elegan dan mulus.</p>
       <div class="hero-btns">
