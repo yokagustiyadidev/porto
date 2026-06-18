@@ -454,24 +454,106 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 
 /* ── RESPONSIVE ─────────────────── */
 @media (max-width: 900px) {
-  .hero-grid, .about-grid, .skills-layout { grid-template-columns: 1fr; }
-  .hero { padding-top: 90px; padding-bottom: 50px; text-align: center; }
-  .hero-desc { margin-left: auto; margin-right: auto; }
-  .hero-btns { justify-content: center; }
-  .hero-contact-info { justify-content: center; }
-  .hero-image-wrap { order: -1; margin-bottom: 40px; }
-  .hero-img { max-width: 280px; }
-  .quick-cards { grid-template-columns: 1fr; margin-top: 30px; margin-bottom: 30px; }
-  .tech-grid { grid-template-columns: repeat(2, 1fr); }
-  .cert-grid, .portfolio-grid, .features-grid, .cbt-gallery, .contact-grid { grid-template-columns: 1fr; }
-  .skills-right { grid-template-columns: 1fr 1fr; }
-  .about-img { width: 70%; margin: 0 auto; display: block; }
-  .about-hi { left: 10%; }
+  .wrap { padding: 0 20px; }
+  section { padding: 50px 0; }
+
+  /* Hero Mobile */
+  .hero-grid { grid-template-columns: 1fr; gap: 0; }
+  .hero { padding-top: 100px; padding-bottom: 40px; text-align: center; }
+  .hero-title { font-size: 2.2rem; line-height: 1.2; margin-bottom: 12px; }
+  .hero-subtitle { font-size: 1.1rem; margin-bottom: 20px; }
+  .hero-desc { font-size: 0.95rem; max-width: 100%; padding: 0 10px; margin-bottom: 24px; }
+  .hero-btns { flex-direction: column; gap: 12px; align-items: center; }
+  .hero-btns .btn-primary, .hero-btns .btn-secondary { width: 100%; max-width: 280px; justify-content: center; }
+  .hero-contact-info { flex-direction: column; gap: 16px; margin-top: 24px; }
+
+  /* About Mobile */
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-image-wrap { max-width: 320px; margin: 0 auto; padding-top: 40px; }
+  .about-img { width: 100%; }
+  .about-hi { font-size: 1.2rem; top: 35px; left: 5px; max-width: 220px; }
+  .about-content { text-align: center; }
+  .about-content .role { font-size: 1rem; }
+  .about-links { justify-content: center; }
+  .about-meta { justify-content: center; gap: 20px; }
+  .about-meta-item { text-align: center; }
+
+  /* Quick Cards Mobile */
+  .quick-cards { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; margin-bottom: 24px; }
+  .quick-card { padding: 20px; }
+
+  /* Tech Grid Mobile */
+  .tech-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .tech-card { padding: 20px 12px; }
+  .tech-icon-wrap { width: 44px; height: 44px; }
+  .tech-icon-wrap svg { width: 24px; height: 24px; }
+  .tech-name { font-size: 13px; }
+  .tech-desc { font-size: 11px; }
+
+  /* Portfolio Mobile */
+  .portfolio-grid { grid-template-columns: 1fr; gap: 24px; }
+  .portfolio-img-wrap { height: 200px; }
+  .portfolio-body { padding: 20px; }
+  .portfolio-body h3 { font-size: 1.2rem; }
+  .portfolio-body p { font-size: 14px; }
+
+  /* Features Mobile */
+  .features-grid { grid-template-columns: 1fr; gap: 16px; }
+  .feature-card { padding: 24px; }
+  .feature-icon { width: 44px; height: 44px; font-size: 20px; margin-bottom: 16px; }
+  .feature-card h3 { font-size: 1.05rem; }
+  .feature-card p { font-size: 13px; }
+
+  /* CBT Gallery Mobile */
+  .cbt-gallery { grid-template-columns: 1fr; gap: 16px; }
+
+  /* Skills Mobile */
+  .skills-layout { grid-template-columns: 1fr; gap: 40px; }
+  .skills-right { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .skill-box { padding: 20px; }
+  .skill-box-icon { width: 40px; height: 40px; font-size: 18px; }
+  .skill-box h4 { font-size: 13px; }
+  .skill-box p { font-size: 11px; }
+
+  /* Contact Mobile */
+  .contact-grid { grid-template-columns: 1fr; gap: 16px; }
+  .contact-card { padding: 24px; flex-direction: column; text-align: center; gap: 16px; }
+  .contact-icon { width: 48px; height: 48px; font-size: 22px; }
+  .contact-info a { font-size: 1rem; }
+
+  /* Nav Mobile */
   .nav-links { display: none; }
-  section { padding: 40px 0; }
+  .nav-inner { height: 56px; }
+  .nav-logo { font-size: 1.1rem; }
+
+  /* Section headers */
+  .sec-title { font-size: 1.8rem; margin-bottom: 12px; }
+  .sec-subtitle { font-size: 0.95rem; margin-bottom: 32px; }
+
+  /* Marquee */
+  .marquee-container { padding: 14px 0; }
+  .marquee-content { gap: 32px; font-size: 12px; }
+  .marquee-item::after { margin-left: 32px; }
+
+  /* Footer */
+  footer { padding: 32px 0; font-size: 13px; }
+
+  /* Float WA */
+  .float-wa { width: 48px; height: 48px; bottom: 20px; right: 20px; }
+  .float-wa svg { width: 24px; height: 24px; }
 }
+
 @media (max-width: 480px) {
-  .tech-grid, .skills-right { grid-template-columns: 1fr; }
+  .wrap { padding: 0 16px; }
+  .hero-title { font-size: 1.9rem; }
+  .hero-subtitle { font-size: 1rem; }
+  .hero-desc { font-size: 0.9rem; }
+  .tech-grid { grid-template-columns: 1fr; }
+  .skills-right { grid-template-columns: 1fr; }
+  .about-hi { font-size: 1rem; top: 30px; max-width: 180px; }
+  .quick-cards { gap: 12px; }
+  .quick-card { padding: 16px; }
+  .sec-title { font-size: 1.6rem; }
 }
 
 /* ── ALTERNATING CARD COLORS ─────────────────── */
@@ -581,8 +663,8 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   <div class="wrap hero-grid">
     <div class="hero-content">
       <div class="hero-eyebrow"><span></span> Status: Online</div>
-      <h1 class="hero-title">Hi! I'm <span class="accent-text">Yoka Gustiyadi</span> -</h1>
-      <div class="hero-subtitle">Staff Administrasi & IT Support</div>
+      <h1 class="hero-title">Hi! Saya <span class="accent-text">Yoka Gustiyadi</span> -</h1>
+      <div class="hero-subtitle">Saya terbuka untuk kerja sama.</div>
       <p class="hero-desc">Membangun arsitektur digital tingkat lanjut. Dari Sistem Ujian Terintegrasi (CBT) dengan keamanan mutakhir, hingga Otomatisasi Bisnis berbasis Artificial Intelligence yang elegan dan mulus.</p>
       <div class="hero-btns">
         <a href="#work" class="btn-primary">Lihat Karya</a>
@@ -611,13 +693,13 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
     <div class="about-grid">
       <div class="about-image-wrap">
         <div class="about-blob"></div>
-        <div class="about-hi">Halo! Saya terbuka untuk kerja sama ya!</div>
+        <div class="about-hi">Hi There!</div>
         <img src="2213.png" alt="Yoka" class="about-img">
       </div>
       <div class="about-content">
         <h2 class="sec-title">Tentang Saya.</h2>
-        <span class="role">Staff Administrasi & IT Support — SDI Abu Seno</span>
-        <p>Berlatar belakang pendidikan teknis SMK, latar belakang teknis saya membentuk saya menjadi pengembang yang praktis, cepat beradaptasi, dan selalu mengutamakan performa sistem. Saya berdedikasi untuk mentransformasi alur kerja manual menjadi ekosistem digital yang otonom dan efisien.</p>
+        <span class="role">Staff Administrasi, Tata Usaha & IT Support — SDI Abu Seno</span>
+        <p>Berlatar belakang pendidikan teknis SMK, latar belakang teknis membentuk saya menjadi pengembang yang praktis, cepat beradaptasi, dan selalu mengutamakan performa sistem. Saya berdedikasi untuk mentransformasi alur kerja manual menjadi ekosistem digital yang otonom dan efisien.</p>
         <div class="about-links">
           <a href="CV_Yoka-Gustiyadi.pdf" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
