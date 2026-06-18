@@ -479,17 +479,17 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 
 
 
-/* Feature Cards */
+/* Feature Cards - CBT: white/yellow alternating */
 .features-grid .feature-card:nth-child(odd) {
-  background: #1a1a1a; border-color: #333;
-}
-.features-grid .feature-card:nth-child(odd) h3 { color: #fff; }
-.features-grid .feature-card:nth-child(odd) p { color: rgba(255,255,255,0.65); }
-.features-grid .feature-card:nth-child(even) {
   background: #fff; border-color: var(--border);
 }
-.features-grid .feature-card:nth-child(even) h3 { color: var(--text-heading); }
-.features-grid .feature-card:nth-child(even) p { color: var(--muted); }
+.features-grid .feature-card:nth-child(odd) h3 { color: var(--text-heading); }
+.features-grid .feature-card:nth-child(odd) p { color: var(--muted); }
+.features-grid .feature-card:nth-child(even) {
+  background: var(--accent); border-color: var(--accent-dark);
+}
+.features-grid .feature-card:nth-child(even) h3 { color: #1a1a1a; }
+.features-grid .feature-card:nth-child(even) p { color: rgba(26,26,26,0.75); }
 
 /* Skill Boxes */
 .skills-right .skill-box:nth-child(odd) {
@@ -592,7 +592,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
     <div class="about-grid">
       <div class="about-image-wrap">
         <div class="about-blob"></div>
-        <div class="about-hi">Hi There!</div>
+        <div class="about-hi">Halo! Saya terbuka untuk kerja sama ya!</div>
         <img src="2213.png" alt="Yoka" class="about-img">
       </div>
       <div class="about-content">
