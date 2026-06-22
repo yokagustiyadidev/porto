@@ -238,11 +238,8 @@ nav {
   max-width: 420px;
   margin: 0 auto;
   overflow: hidden;
-  /* No card background, no border, no shadow */
 }
-.hero-blob {
-  display: none;
-}
+.hero-blob { display: none; }
 .hero-img {
   position: relative;
   z-index: 1;
@@ -250,7 +247,6 @@ nav {
   max-width: 420px;
   object-fit: contain;
   display: block;
-  /* No border-radius, no box-shadow, no background — PNG blends directly with blob */
 }
 
 /* Decorative elements */
@@ -309,7 +305,6 @@ nav {
 .about-img {
   position: relative; z-index: 1; width: 90%;
   object-fit: contain; display: block;
-  /* No border-radius, no box-shadow — PNG blends with blob */
 }
 .about-hi {
   position: absolute; top: 90px; left: 10px; z-index: 2;
@@ -373,11 +368,7 @@ nav {
 .cert-img-wrap img { width: 100%; height: auto; display: block; object-fit: contain; }
 .cert-card h3 { font-size: 1rem; font-weight: 700; color: var(--text-heading); padding: 0 8px 4px; }
 .cert-card .cert-desc { font-size: 13px; color: var(--muted); padding: 0 8px 8px; }
-
-/* Slider arrows */
-.cert-arrow {
-  display: none;
-}
+.cert-arrow { display: none; }
 
 /* ── PORTFOLIO ────────────────────────── */
 .portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
@@ -430,8 +421,6 @@ nav {
 .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
 .skills-left .sec-title { margin-bottom: 12px; }
 .skills-left .sec-subtitle { margin-bottom: 32px; }
-
-
 .skills-right { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .skill-box {
   background: var(--bg-card); border: 1px solid var(--border); border-radius: 0;
@@ -468,6 +457,46 @@ nav {
 .marquee-item { display: flex; align-items: center; gap: 12px; }
 .marquee-item::after { content: '•'; margin-left: 48px; color: var(--accent); }
 
+/* ── STATS SECTION ─────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.stat-item {
+  padding: 52px 32px;
+  text-align: center;
+}
+.stat-number {
+  font-family: var(--font-head);
+  font-size: clamp(3rem, 5vw, 4.8rem);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.stat-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.stat-desc {
+  font-size: 12px;
+  line-height: 1.5;
+}
+.stat-item.s-black { background: #1a1a1a; }
+.stat-item.s-black .stat-number { color: var(--accent); }
+.stat-item.s-black .stat-label  { color: #fff; }
+.stat-item.s-black .stat-desc   { color: rgba(255,255,255,0.45); }
+.stat-item.s-yellow { background: var(--accent); }
+.stat-item.s-yellow .stat-number { color: #1a1a1a; }
+.stat-item.s-yellow .stat-label  { color: #1a1a1a; }
+.stat-item.s-yellow .stat-desc   { color: rgba(26,26,26,0.6); }
+.stat-item.s-white { background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.stat-item.s-white .stat-number { color: var(--text-heading); }
+.stat-item.s-white .stat-label  { color: var(--text-heading); }
+.stat-item.s-white .stat-desc   { color: var(--muted); }
+
 /* ── FLOATING WA ─────────────────── */
 .float-wa {
   position: fixed; bottom: 28px; right: 28px; z-index: 500;
@@ -497,7 +526,6 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   .wrap { padding: 0 20px; }
   section { padding: 50px 0; }
 
-  /* Hero Mobile */
   .hero-grid { grid-template-columns: 1fr; gap: 0; }
   .hero { padding-top: 100px; padding-bottom: 40px; text-align: center; }
   .hero-title { font-size: 2.2rem; line-height: 1.2; margin-bottom: 12px; }
@@ -507,7 +535,6 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   .hero-btns .btn-primary, .hero-btns .btn-secondary { width: 100%; max-width: 280px; justify-content: center; }
   .hero-contact-info { flex-direction: column; gap: 16px; margin-top: 24px; }
 
-  /* About Mobile */
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .about-image-wrap { max-width: 320px; margin: 0 auto; padding-top: 40px; }
   .about-img { width: 100%; }
@@ -518,11 +545,9 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   .about-meta { justify-content: center; gap: 20px; }
   .about-meta-item { text-align: center; }
 
-  /* Quick Cards Mobile */
   .quick-cards { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; margin-bottom: 24px; }
   .quick-card { padding: 20px; }
 
-  /* Tech Grid Mobile */
   .tech-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .tech-card { padding: 20px 12px; }
   .tech-icon-wrap { width: 44px; height: 44px; }
@@ -530,24 +555,20 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   .tech-name { font-size: 13px; }
   .tech-desc { font-size: 11px; }
 
-  /* Portfolio Mobile */
   .portfolio-grid { grid-template-columns: 1fr; gap: 24px; }
   .portfolio-img-wrap { height: 200px; }
   .portfolio-body { padding: 20px; }
   .portfolio-body h3 { font-size: 1.2rem; }
   .portfolio-body p { font-size: 14px; }
 
-  /* Features Mobile */
   .features-grid { grid-template-columns: 1fr; gap: 16px; }
   .feature-card { padding: 24px; }
   .feature-icon { width: 44px; height: 44px; font-size: 20px; margin-bottom: 16px; }
   .feature-card h3 { font-size: 1.05rem; }
   .feature-card p { font-size: 13px; }
 
-  /* CBT Gallery Mobile */
   .cbt-gallery { grid-template-columns: 1fr; gap: 16px; }
 
-  /* Skills Mobile */
   .skills-layout { grid-template-columns: 1fr; gap: 40px; }
   .skills-right { grid-template-columns: 1fr 1fr; gap: 12px; }
   .skill-box { padding: 20px; }
@@ -555,32 +576,31 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   .skill-box h4 { font-size: 13px; }
   .skill-box p { font-size: 11px; }
 
-  /* Contact Mobile */
   .contact-grid { grid-template-columns: 1fr; gap: 16px; }
   .contact-card { padding: 24px; flex-direction: column; text-align: center; gap: 16px; }
   .contact-icon { width: 48px; height: 48px; font-size: 22px; }
   .contact-info a { font-size: 1rem; }
 
-  /* Nav Mobile */
   .nav-links { display: none; }
   .nav-inner { height: 56px; }
   .nav-logo { font-size: 1.1rem; }
 
-  /* Section headers */
   .sec-title { font-size: 1.8rem; margin-bottom: 12px; }
   .sec-subtitle { font-size: 0.95rem; margin-bottom: 32px; }
 
-  /* Marquee */
   .marquee-container { padding: 14px 0; }
   .marquee-content { gap: 32px; font-size: 12px; }
   .marquee-item::after { margin-left: 32px; }
 
-  /* Footer */
   footer { padding: 32px 0; font-size: 13px; }
 
-  /* Float WA */
   .float-wa { width: 48px; height: 48px; bottom: 20px; right: 20px; }
   .float-wa svg { width: 24px; height: 24px; }
+
+  /* Stats Mobile */
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-item { padding: 36px 20px; }
+  .stat-item.s-white { border: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 }
 
 @media (max-width: 480px) {
@@ -594,15 +614,11 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   .quick-cards { gap: 12px; }
   .quick-card { padding: 16px; }
   .sec-title { font-size: 1.6rem; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .stat-item { padding: 28px 16px; }
 }
 
 /* ── ALTERNATING CARD COLORS ─────────────────── */
-/* Odd cards = Dark, Even cards = Light */
-
-
-
-
-/* V Project Features: black/white alternating */
 #vproject .features-grid .feature-card:nth-child(odd) {
   background: #1a1a1a; border-color: #333;
 }
@@ -614,7 +630,6 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 #vproject .features-grid .feature-card:nth-child(even) h3 { color: var(--text-heading); }
 #vproject .features-grid .feature-card:nth-child(even) p { color: var(--muted); }
 
-/* CBT Features: yellow/white alternating */
 #fitur-cbt .features-grid .feature-card:nth-child(odd) {
   background: var(--accent); border-color: var(--accent-dark);
 }
@@ -626,7 +641,6 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 #fitur-cbt .features-grid .feature-card:nth-child(even) h3 { color: var(--text-heading); }
 #fitur-cbt .features-grid .feature-card:nth-child(even) p { color: var(--muted); }
 
-/* Skill Boxes */
 .skills-right .skill-box:nth-child(odd) {
   background: #1a1a1a; border-color: #333;
 }
@@ -638,7 +652,6 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 .skills-right .skill-box:nth-child(even) h4 { color: var(--text-heading); }
 .skills-right .skill-box:nth-child(even) p { color: var(--muted); }
 
-/* Contact Cards */
 .contact-grid .contact-card:nth-child(odd) {
   background: #1a1a1a; border-color: #333;
 }
@@ -653,7 +666,6 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 .contact-grid .contact-card:nth-child(even) .contact-info h3 { color: var(--text-heading); }
 .contact-grid .contact-card:nth-child(even) .contact-info p { color: var(--muted); }
 
-/* Quick Cards - Specific colors: IT=black, Web=yellow, AI=white */
 .quick-cards .quick-card:nth-child(1) {
   background: #1a1a1a; border-color: #333;
 }
@@ -672,9 +684,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 .quick-cards .quick-card:nth-child(3) .quick-card-title { color: var(--text-heading); }
 .quick-cards .quick-card:nth-child(3) .quick-card-desc { color: var(--muted); }
 
-
-
-/* ── SERVICES GRID (Yang Bisa Saya Lakukan) ─────────────────── */
+/* ── SERVICES GRID ─────────────────── */
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .service-card {
   border: 1px solid var(--border); border-radius: 0;
@@ -689,19 +699,16 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 .service-card h3 { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; line-height: 1.35; }
 .service-card p { font-size: 14px; line-height: 1.7; }
 
-/* Black card */
 .service-card.black { background: #1a1a1a; border-color: #333; }
 .service-card.black .service-num { color: var(--accent); opacity: 0.4; }
 .service-card.black h3 { color: #fff; }
 .service-card.black p { color: rgba(255,255,255,0.65); }
 
-/* Yellow card */
 .service-card.yellow { background: var(--accent); border-color: var(--accent-dark); }
 .service-card.yellow .service-num { color: #1a1a1a; opacity: 0.25; }
 .service-card.yellow h3 { color: #1a1a1a; }
 .service-card.yellow p { color: rgba(26,26,26,0.75); }
 
-/* White card */
 .service-card.white { background: #fff; border-color: var(--border); }
 .service-card.white .service-num { color: var(--accent-dark); opacity: 0.35; }
 .service-card.white h3 { color: var(--text-heading); }
@@ -743,7 +750,6 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 .hamburger.active span:nth-child(2) { opacity: 0; }
 .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Mobile nav overlay */
 .mobile-nav {
   display: none;
   position: fixed;
@@ -874,11 +880,8 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
         </div>
       </div>
     </div>
-    <!-- Hero photo removed - text only -->
   </div>
 </section>
-
-
 
 <!-- About Section -->
 <section id="about">
@@ -958,6 +961,32 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
     <div class="marquee-item">Prompt Engineering</div>
     <div class="marquee-item">AI Integration</div>
     <div class="marquee-item">RBAC Security</div>
+  </div>
+</div>
+
+<!-- ✅ STATS SECTION (BARU) -->
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat-item s-black">
+      <div class="stat-number" data-target="2" data-suffix="+">0</div>
+      <div class="stat-label">Tahun Pengalaman</div>
+      <div class="stat-desc">Di bidang tech & administrasi digital</div>
+    </div>
+    <div class="stat-item s-yellow">
+      <div class="stat-number" data-target="5" data-suffix="">0</div>
+      <div class="stat-label">Layanan Digital</div>
+      <div class="stat-desc">Siap dibangun untuk kebutuhan Anda</div>
+    </div>
+    <div class="stat-item s-white">
+      <div class="stat-number">24/7</div>
+      <div class="stat-label">Bot Aktif</div>
+      <div class="stat-desc">WhatsApp AI beroperasi tanpa henti</div>
+    </div>
+    <div class="stat-item s-black">
+      <div class="stat-number" data-target="3" data-suffix="">0</div>
+      <div class="stat-label">Sertifikasi Resmi</div>
+      <div class="stat-desc">Diterbitkan langsung oleh Anthropic</div>
+    </div>
   </div>
 </div>
 
@@ -1120,7 +1149,6 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   </div>
 </section>
 
-
 <!-- Portfolio Section -->
 <section id="work">
   <div class="wrap">
@@ -1202,7 +1230,6 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   <div class="wrap">
     <div class="sec-header center">
       <h2 class="sec-title">Fitur CBT Lengkap.</h2>
-      
     </div>
     <div class="features-grid">
       <div class="feature-card reveal">
@@ -1239,7 +1266,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   </div>
 </section>
 
-<!-- Skills Section with Progress Bars -->
+<!-- Skills Section -->
 <section id="skills">
   <div class="wrap">
     <div class="skills-layout">
@@ -1362,6 +1389,31 @@ window.addEventListener('resize', () => {
   if (window.innerWidth > 900) closeMobileNav();
 });
 
+/* ✅ Stats Counter Animation */
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.querySelectorAll('[data-target]').forEach(counter => {
+      const target = parseInt(counter.dataset.target);
+      const suffix = counter.dataset.suffix ?? '';
+      let current = 0;
+      const step = target / 30;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          clearInterval(timer);
+          counter.textContent = target + suffix;
+        } else {
+          counter.textContent = Math.floor(current) + suffix;
+        }
+      }, 40);
+    });
+    statsObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.6 });
+
+const statsEl = document.getElementById('stats');
+if (statsEl) statsObserver.observe(statsEl);
 </script>
 
 </body>
