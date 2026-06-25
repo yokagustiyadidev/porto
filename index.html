@@ -521,6 +521,65 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+/* ── TESTIMONIALS ─────────────────── */
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.testimonial-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 0;
+  padding: 36px 32px; transition: 0.3s; box-shadow: var(--shadow);
+  position: relative; overflow: hidden;
+}
+.testimonial-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: var(--accent); }
+.testimonial-card:nth-child(1) { background: #1a1a1a; border-color: #333; }
+.testimonial-card:nth-child(1) .testimonial-text { color: rgba(255,255,255,0.75); }
+.testimonial-card:nth-child(1) .testimonial-quote { color: var(--accent); opacity: 0.6; }
+.testimonial-card:nth-child(1) .testimonial-info strong { color: #fff; }
+.testimonial-card:nth-child(1) .testimonial-info span { color: rgba(255,255,255,0.5); }
+.testimonial-card:nth-child(1) .testimonial-avatar { background: var(--accent); color: #1a1a1a; }
+
+.testimonial-card:nth-child(2) { background: var(--accent); border-color: var(--accent-dark); }
+.testimonial-card:nth-child(2) .testimonial-text { color: rgba(26,26,26,0.8); }
+.testimonial-card:nth-child(2) .testimonial-quote { color: #1a1a1a; opacity: 0.25; }
+.testimonial-card:nth-child(2) .testimonial-info strong { color: #1a1a1a; }
+.testimonial-card:nth-child(2) .testimonial-info span { color: rgba(26,26,26,0.6); }
+.testimonial-card:nth-child(2) .testimonial-avatar { background: #1a1a1a; color: #fff; }
+
+.testimonial-card:nth-child(3) { background: #fff; border-color: var(--border); }
+.testimonial-card:nth-child(3) .testimonial-text { color: var(--muted); }
+.testimonial-card:nth-child(3) .testimonial-quote { color: var(--accent-dark); opacity: 0.35; }
+.testimonial-card:nth-child(3) .testimonial-info strong { color: var(--text-heading); }
+.testimonial-card:nth-child(3) .testimonial-info span { color: var(--muted); }
+.testimonial-card:nth-child(3) .testimonial-avatar { background: var(--accent-light); color: var(--text-heading); }
+
+.testimonial-quote {
+  font-family: var(--font-head); font-size: 5rem; font-weight: 800;
+  line-height: 1; position: absolute; top: 12px; left: 20px;
+}
+.testimonial-text {
+  font-size: 14px; line-height: 1.8; margin-bottom: 28px;
+  position: relative; z-index: 1; padding-top: 20px;
+}
+.testimonial-author {
+  display: flex; align-items: center; gap: 14px;
+}
+.testimonial-avatar {
+  width: 44px; height: 44px; border-radius: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-head); font-size: 18px; font-weight: 700;
+  flex-shrink: 0;
+}
+.testimonial-info strong {
+  display: block; font-size: 15px; font-weight: 700; margin-bottom: 2px;
+}
+.testimonial-info span {
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .testimonials-grid { grid-template-columns: 1fr; gap: 16px; }
+  .testimonial-card { padding: 28px 24px; }
+  .testimonial-quote { font-size: 4rem; top: 8px; left: 16px; }
+}
+
 /* ── RESPONSIVE ─────────────────── */
 @media (max-width: 900px) {
   .wrap { padding: 0 20px; }
@@ -816,6 +875,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   .mobile-nav { display: flex; }
 }
 </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -1267,6 +1327,51 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 </section>
 
 <!-- Skills Section -->
+<!-- Testimonials Section -->
+<section id="testimoni">
+  <div class="wrap">
+    <div class="sec-header center">
+      <h2 class="sec-title">Testimoni.</h2>
+      <p class="sec-subtitle">Apa kata para pengguna Sistem CBT di SDI Abu Seno:</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Sistem CBT ini sangat membantu proses ujian di sekolah kami. Pengacakan soal dan fitur anti-cheat membuat ujian menjadi lebih adil dan terjamin keamanannya. Rekap nilai otomatis juga sangat memudahkan guru dalam evaluasi.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">A</div>
+          <div class="testimonial-info">
+            <strong>Pak Arsy</strong>
+            <span>Guru SDI Abu Seno</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Fitur AI Question Generator sangat menghemat waktu saya dalam menyusun soal. Cukup tentukan topik, soal langsung siap digunakan. Pojok Belajar dengan video terintegrasi juga menjadi nilai tambah yang luar biasa untuk siswa.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">T</div>
+          <div class="testimonial-info">
+            <strong>Pak Teten</strong>
+            <span>Guru SDI Abu Seno</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Antarmuka yang bersih dan intuitif membuat siswa mudah beradaptasi. Auto-save memastikan tidak ada jawaban yang hilang. Sistem ini benar-benar meningkatkan efisiensi dan kualitas proses ujian di sekolah kami.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div class="testimonial-info">
+            <strong>Pak Mukhtar</strong>
+            <span>Guru SDI Abu Seno</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="skills">
   <div class="wrap">
     <div class="skills-layout">
