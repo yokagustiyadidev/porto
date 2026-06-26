@@ -49,6 +49,121 @@
   --font-body: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+html.dark {
+  --bg: #0F0F10;
+  --bg-soft: #18181A;
+  --surface: #1A1A1C;
+  --text: #F0F0F0;
+  --text-muted: #A1A1AA;
+  --text-light: #71717A;
+  --accent: #DE7356;
+  --accent-hover: #E88A70;
+  --accent-soft: #3D241E;
+  --border: #27272A;
+  --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-hover: 0 4px 12px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.3);
+}
+
+html, body, .work-card, .service-card, .feature-card, .testimonial-card, .skill-item, .cert-card, .contact-card, .about-img, .cbt-gallery-item, .float-wa, .mobile-nav-close, .nav-logo, .nav-links a, .hero-cta, .work-link, .about-links a, .contact-info a {
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: var(--accent);
+  z-index: 9999;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* Dark mode toggle button */
+.theme-toggle {
+  width: 36px; height: 36px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.25s ease;
+  padding: 0;
+}
+.theme-toggle:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
+.theme-toggle svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle .sun-icon { display: block; }
+.theme-toggle .moon-icon { display: none; }
+html.dark .theme-toggle .sun-icon { display: none; }
+html.dark .theme-toggle .moon-icon { display: block; }
+
+/* Mobile theme toggle */
+.mobile-theme-toggle {
+  position: absolute; top: 20px; left: 24px;
+  width: 44px; height: 44px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  color: var(--text); transition: all 0.2s;
+}
+.mobile-theme-toggle:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
+.mobile-theme-toggle svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.mobile-theme-toggle .sun-icon { display: block; }
+.mobile-theme-toggle .moon-icon { display: none; }
+html.dark .mobile-theme-toggle .sun-icon { display: none; }
+html.dark .mobile-theme-toggle .moon-icon { display: block; }
+
+/* Ensure mobile nav bg follows theme */
+.mobile-nav { background: rgba(248, 249, 250, 0.97); }
+html.dark .mobile-nav { background: rgba(15, 15, 16, 0.97); }
+
+/* Marquee bg follows theme */
+.marquee-container { background: var(--bg-soft); }
+
+/* Hero blobs dark mode adjustment */
+html.dark .hero-blob:nth-child(1) { opacity: 0.18; }
+html.dark .hero-blob:nth-child(2) { opacity: 0.10; }
+html.dark .hero-blob:nth-child(3) { opacity: 0.08; }
+html.dark .hero-blob:nth-child(4) { opacity: 0.10; }
+
+/* Noise darker in dark mode */
+html.dark .hero-noise { opacity: 0.04; }
+
+/* Nav background in dark mode */
+html.dark nav { background: rgba(15, 15, 16, 0.82); }
+
+/* Work tag accent in dark mode */
+html.dark .work-tag.accent { background: var(--accent-soft); color: var(--accent-hover); }
+
+/* About links border in dark mode */
+html.dark .about-links a { border-bottom-color: var(--border); }
+html.dark .about-links a:hover { border-color: var(--accent); }
+
+/* Stat item border in dark mode */
+html.dark .stat-item { border-right-color: var(--border); border-bottom-color: var(--border); }
+
+/* Footer in dark mode */
+html.dark footer { background: var(--bg); border-top-color: var(--border); }
+
+/* Float WA shadow in dark mode */
+html.dark .float-wa { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.15); }
+html.dark .float-wa:hover { box-shadow: 0 6px 24px rgba(37, 211, 102, 0.25); }
+
+/* Dark mode CTA button fixes */
+html.dark .nav-links a.nav-cta { background: var(--accent); color: #fff; }
+html.dark .nav-links a.nav-cta:hover { background: var(--accent-hover); }
+html.dark .mobile-nav a.nav-cta-mobile { background: var(--accent); color: #fff; }
+html.dark .mobile-nav a.nav-cta-mobile:hover { background: var(--accent-hover); }
+html.dark .hero-cta { background: var(--accent); color: #fff; }
+html.dark .hero-cta:hover { background: var(--accent-hover); }
+html.dark .theme-toggle { background: var(--surface); border-color: var(--border); color: var(--text); }
+html.dark .theme-toggle:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
+html.dark .mobile-theme-toggle { background: var(--surface); border-color: var(--border); color: var(--text); }
+html.dark .mobile-theme-toggle:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
+
+/* Ensure icon visibility in dark mode */
+html.dark .icon-outline { stroke: var(--text); }
+
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -472,7 +587,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 .icon-outline {
   width: 24px;
   height: 24px;
-  stroke: #000;
+  stroke: var(--text);
   stroke-width: 1.5;
   fill: none;
   stroke-linecap: round;
@@ -556,6 +671,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 <base target="_blank">
 </head>
 <body>
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- Floating WhatsApp -->
 <a href="https://wa.me/62882016594700" target="_blank" class="float-wa" aria-label="Chat via WhatsApp">
@@ -570,6 +686,10 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
       <a href="#about">Ikhtisar</a>
       <a href="#work">Proyek</a>
       <a href="#services">Layanan</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
       <a href="#kontak" class="nav-cta">Hubungi</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -580,6 +700,10 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 
 <!-- Mobile Navigation -->
 <div class="mobile-nav" id="mobileNav">
+  <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle dark mode">
+    <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
   <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Tutup menu">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
   </button>
@@ -1066,6 +1190,45 @@ const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 10) navbar.classList.add('scrolled');
   else navbar.classList.remove('scrolled');
+});
+
+/* Dark Mode Toggle */
+const themeToggle = document.getElementById('themeToggle');
+const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+const htmlEl = document.documentElement;
+
+function setTheme(theme) {
+  if (theme === 'dark') {
+    htmlEl.classList.add('dark');
+  } else {
+    htmlEl.classList.remove('dark');
+  }
+  localStorage.setItem('theme', theme);
+}
+
+function toggleTheme() {
+  const isDark = htmlEl.classList.contains('dark');
+  setTheme(isDark ? 'light' : 'dark');
+}
+
+// Initialize theme
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  setTheme(savedTheme);
+} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  setTheme('dark');
+}
+
+if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+
+/* Scroll Progress Bar */
+const scrollProgress = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
+  if (scrollProgress) scrollProgress.style.width = scrollPercent + '%';
 });
 
 /* Stats Counter Animation */
