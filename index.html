@@ -667,6 +667,144 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 }
 .hero-inner { position: relative; z-index: 2; }
 
+
+/* ── PROBLEM SOLUTION RESULT ──────────────────────────── */
+.psr-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+.psr-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  transition: all 0.35s ease;
+  box-shadow: var(--shadow);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.psr-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent-soft);
+}
+.psr-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.psr-icon .icon-outline { width: 20px; height: 20px; }
+.psr-step {
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: block;
+}
+.psr-card h3 {
+  font-family: var(--font-head);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.psr-card p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin: 0;
+}
+.psr-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  opacity: 0.5;
+}
+
+@media (max-width: 900px) {
+  .psr-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .psr-arrow {
+    display: none;
+  }
+  .psr-card { padding: 28px 24px; }
+  .psr-card h3 { font-size: 20px; }
+}
+
+
+/* ── EXPERIENCE ─────────────────────────────────────────── */
+.exp-list { display: flex; flex-direction: column; }
+.exp-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 28px 0;
+  transition: all 0.3s ease;
+}
+.exp-main { flex: 1; min-width: 0; }
+.exp-company {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--accent);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.exp-role {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 8px;
+}
+.exp-desc {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 520px;
+}
+.exp-year {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  padding-top: 4px;
+}
+.exp-divider {
+  height: 1px;
+  background: var(--border);
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .exp-item {
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px 0;
+  }
+  .exp-year { padding-top: 0; }
+  .exp-company { font-size: 18px; font-weight: 700; font-style: italic; color: var(--accent); }
+}
+
 </style>
 <base target="_blank">
 </head>
@@ -726,7 +864,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
     <div class="hero-inner">
       <span class="hero-eyebrow">Available for Collaboration</span>
       <h1 class="hero-title">Yoka <em>Gustiyadi</em></h1>
-      <p class="hero-role">Staff Administrasi, Tata Usaha & IT Support</p>
+      <p class="hero-role">Staff Administrasi & IT Support</p>
       <p class="hero-desc">Membangun arsitektur digital yang mengubah alur kerja manual menjadi ekosistem otonom — dari sistem ujian terintegrasi AI hingga otomasi bisnis berbasis WhatsApp.</p>
       <a href="#work" class="hero-cta">Lihat Proyek Terpilih</a>
     </div>
@@ -741,7 +879,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
         <img src="2213.png" alt="Yoka Gustiyadi" class="about-img">
       </div>
       <div class="about-content">
-        <span class="role">SDI Abu Seno — Bandung</span>
+        <!-- role label removed -->
         <h2 class="sec-title">Mengubah alur kerja manual menjadi <em>ekosistem digital</em>.</h2>
         <p>Berlatar belakang pendidikan teknis SMK, saya berkembang menjadi pengembang yang praktis dan cepat beradaptasi. Fokus utama saya adalah mentransformasi proses administrasi dan ujian konvensional menjadi sistem digital yang aman, efisien, dan berkelanjutan.</p>
         <div class="about-links">
@@ -765,6 +903,102 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 </section>
 
 <!-- Stats Row -->
+
+<!-- Problem → Solution → Result Section -->
+<section id="case-study" style="padding: 100px 0; background: var(--bg-soft);">
+  <div class="wrap">
+    <div class="sec-header center">
+      <span class="sec-label">Studi Kasus</span>
+      <h2 class="sec-title">Dari <em>Masalah</em> ke <em>Solusi</em></h2>
+      <p class="sec-subtitle">Transformasi proses ujian di SDI Abu Seno — dari manual menuju otomasi penuh.</p>
+    </div>
+    <div class="psr-grid">
+      <div class="psr-card reveal">
+        <div class="psr-icon">
+          <svg class="icon-outline" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <span class="psr-step">01</span>
+        <h3>Masalah</h3>
+        <p>Guru menginput soal dan rekap nilai secara manual. Ujian dilakukan di Google Forms tanpa pengacakan soal, tanpa anti-cheat, dan tanpa auto-save — memakan waktu berjam-jam untuk persiapan dan penilaian.</p>
+      </div>
+      <div class="psr-arrow">
+        <svg class="icon-outline" viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--text-light);"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="psr-card reveal">
+        <div class="psr-icon">
+          <svg class="icon-outline" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="psr-step">02</span>
+        <h3>Solusi</h3>
+        <p>Saya membangun sistem CBT terintegrasi dengan AI Question Generator, RBAC 4-level, anti-cheat real-time, pengacakan soal & jawaban, auto-save per klik, rekap nilai otomatis, dan dashboard admin terpusat.</p>
+      </div>
+      <div class="psr-arrow">
+        <svg class="icon-outline" viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--text-light);"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="psr-card reveal">
+        <div class="psr-icon">
+          <svg class="icon-outline" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <span class="psr-step">03</span>
+        <h3>Hasil</h3>
+        <p>Sistem digunakan di SDI Abu Seno sejak awal 2026. Waktu persiapan ujian hingga penilaian berkurang secara signifikan. Guru fokus mengajar, siswa ujian dengan nyaman, dan data tersimpan rapi otomatis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Experience Section -->
+<section id="pengalaman" style="padding: 100px 0;">
+  <div class="wrap">
+    <div class="sec-header" style="margin-bottom: 56px;">
+      <span class="sec-label">Karier</span>
+      <h2 class="sec-title">Pengalaman <em>Bekerja</em></h2>
+    </div>
+    <div class="exp-list">
+      <div class="exp-item reveal">
+        <div class="exp-main">
+          <h3 class="exp-company">SDI Abu Seno</h3>
+          <span class="exp-role">Staff Administrasi</span>
+        </div>
+        <span class="exp-year">2024 — Sekarang</span>
+      </div>
+      <div class="exp-divider"></div>
+      <div class="exp-item reveal">
+        <div class="exp-main">
+          <h3 class="exp-company">Pedagang dan Freelance</h3>
+          <span class="exp-role">Pekerjaan Paruh Waktu</span>
+        </div>
+        <span class="exp-year">2021 — 2024</span>
+      </div>
+      <div class="exp-divider"></div>
+      <div class="exp-item reveal">
+        <div class="exp-main">
+          <h3 class="exp-company">PT Sakura Java Indonesia</h3>
+          <span class="exp-role">Operator Produksi</span>
+        </div>
+        <span class="exp-year">Cikarang, 2018 — 2020</span>
+      </div>
+      <div class="exp-divider"></div>
+      <div class="exp-item reveal">
+        <div class="exp-main">
+          <h3 class="exp-company">Kobutri Jabar</h3>
+          <span class="exp-role">Administrasi</span>
+        </div>
+        <span class="exp-year">2017</span>
+      </div>
+      <div class="exp-divider"></div>
+      <div class="exp-item reveal">
+        <div class="exp-main">
+          <h3 class="exp-company">Auto Brother Salon Car</h3>
+          <span class="exp-role">Poles Mobil</span>
+        </div>
+        <span class="exp-year">2016 — 2017</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="wrap" style="margin-bottom: 40px;">
   <div class="stats-row">
     <div class="stat-item">
