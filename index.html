@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta name="description" content="Portofolio Yoka Gustiyadi — Staff Administrasi, Tata Usaha & IT Support. Spesialis CBT Terintegrasi AI, WhatsApp Customer Service 24/7, dan Web Development."/>
+<meta name="description" content="Portfolio Yoka Gustiyadi — Admin Staff, General Affairs & IT Support. Specialist in AI-Integrated CBT, WhatsApp Customer Service 24/7, and Web Development."/>
 <meta name="author" content="Yoka Gustiyadi"/>
 <meta name="theme-color" content="#F8F9FA"/>
 
-<meta property="og:title" content="Yoka Gustiyadi — Portofolio"/>
-<meta property="og:description" content="Staff Administrasi, Tata Usaha & IT Support. Spesialis CBT Terintegrasi AI, WhatsApp Customer Service 24/7, dan Web Development."/>
+<meta property="og:title" content="Yoka Gustiyadi — Portfolio"/>
+<meta property="og:description" content="Admin Staff, General Affairs & IT Support. Specialist in AI-Integrated CBT, WhatsApp Customer Service 24/7, and Web Development."/>
 <meta property="og:image" content="https://yokagustiyadi.vercel.app/og-image.jpg"/>
 <meta property="og:url" content="https://yokagustiyadi.vercel.app"/>
 <meta property="og:type" content="website"/>
 <meta property="og:locale" content="id_ID"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Yoka Gustiyadi — Portofolio"/>
-<meta name="twitter:description" content="Staff Administrasi, Tata Usaha & IT Support. Spesialis CBT Terintegrasi AI, WhatsApp Customer Service 24/7, dan Web Development."/>
+<meta name="twitter:title" content="Yoka Gustiyadi — Portfolio"/>
+<meta name="twitter:description" content="Admin Staff, General Affairs & IT Support. Specialist in AI-Integrated CBT, WhatsApp Customer Service 24/7, and Web Development."/>
 <meta name="twitter:image" content="https://yokagustiyadi.vercel.app/og-image.jpg"/>
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F8F9FA' rx='16'/><text y='.9em' font-size='56' x='50%' text-anchor='middle' dominant-baseline='middle' fill='%23DE7356' font-family='Georgia'>Y</text></svg>">
@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
-<title>Yoka Gustiyadi — Portofolio</title>
+<title>Yoka Gustiyadi — Portfolio</title>
 
 <style>
 /* ── TOKENS ─────────────────────────────────────────────── */
@@ -66,6 +66,72 @@ html.dark {
 
 html, body, .work-card, .service-card, .feature-card, .testimonial-card, .skill-item, .cert-card, .contact-card, .about-img, .cbt-gallery-item, .float-wa, .mobile-nav-close, .nav-logo, .nav-links a, .hero-cta, .work-link, .about-links a, .contact-info a {
   transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Language Switcher */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.lang-switcher:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
+.lang-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.lang-btn.active {
+  background: var(--text);
+  color: #fff;
+}
+html.dark .lang-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+.lang-btn:hover:not(.active) { color: var(--text); }
+
+/* Mobile language switcher */
+.mobile-lang-switcher {
+  position: absolute; top: 20px; left: 80px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+}
+.mobile-lang-btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.mobile-lang-btn.active {
+  background: var(--text);
+  color: #fff;
+}
+html.dark .mobile-lang-btn.active {
+  background: var(--accent);
+  color: #fff;
 }
 
 /* Scroll Progress Bar */
@@ -194,7 +260,7 @@ nav.scrolled { box-shadow: 0 1px 3px rgba(32,33,35,0.04); }
   color: var(--text); text-decoration: none; letter-spacing: -0.01em;
   font-style: italic;
 }
-.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links { display: flex; gap: 24px; align-items: center; }
 .nav-links a {
   font-size: 14px; color: var(--text-muted); font-weight: 500;
   text-decoration: none; transition: color 0.2s ease; letter-spacing: -0.01em;
@@ -902,6 +968,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 
 </style>
 <base target="_blank">
+<base target="_blank">
 </head>
 <body>
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -916,14 +983,18 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   <div class="wrap nav-inner">
     <a href="#" class="nav-logo">Yoka Gustiyadi</a>
     <div class="nav-links">
-      <a href="#about">Ikhtisar</a>
-      <a href="#work">Proyek</a>
-      <a href="#services">Layanan</a>
+      <a href="#about" data-key="nav_about">Ikhtisar</a>
+      <a href="#work" data-key="nav_work">Proyek</a>
+      <a href="#services" data-key="nav_services">Layanan</a>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="id" onclick="switchLang('id')">ID</button>
+        <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
+      </div>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
         <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-      <a href="#kontak" class="nav-cta">Hubungi</a>
+      <a href="#kontak" class="nav-cta" data-key="nav_contact">Hubungi</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -937,13 +1008,17 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
     <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
     <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
   </button>
+  <div class="mobile-lang-switcher">
+    <button class="mobile-lang-btn active" data-lang="id" onclick="switchLang('id')">ID</button>
+    <button class="mobile-lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
+  </div>
   <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Tutup menu">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
   </button>
-  <a href="#about" onclick="closeMobileNav()">Ikhtisar</a>
-  <a href="#work" onclick="closeMobileNav()">Proyek</a>
-  <a href="#services" onclick="closeMobileNav()">Layanan</a>
-  <a href="#kontak" class="nav-cta-mobile" onclick="closeMobileNav()">Hubungi</a>
+  <a href="#about" onclick="closeMobileNav()" data-key="nav_about">Ikhtisar</a>
+  <a href="#work" onclick="closeMobileNav()" data-key="nav_work">Proyek</a>
+  <a href="#services" onclick="closeMobileNav()" data-key="nav_services">Layanan</a>
+  <a href="#kontak" class="nav-cta-mobile" onclick="closeMobileNav()" data-key="nav_contact">Hubungi</a>
 </div>
 
 <!-- Hero Section -->
@@ -957,12 +1032,12 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   </div>
   <div class="wrap">
     <div class="hero-inner">
-      <span class="hero-eyebrow">Available for Collaboration</span>
+      <span class="hero-eyebrow" data-key="hero_eyebrow">Available for Collaboration</span>
       <h1 class="hero-title">Yoka <em>Gustiyadi</em></h1>
-      <p class="hero-role">Staff Administrasi & IT Support</p>
-      <p class="hero-desc">Membangun arsitektur digital yang mengubah alur kerja manual menjadi ekosistem otonom — dari sistem ujian terintegrasi AI hingga otomasi bisnis berbasis WhatsApp.</p>
+      <p class="hero-role" data-key="hero_role">Staff Administrasi & IT Support</p>
+      <p class="hero-desc" data-key="hero_desc">Membangun arsitektur digital yang mengubah alur kerja manual menjadi ekosistem otonom — dari sistem ujian terintegrasi AI hingga otomasi bisnis berbasis WhatsApp.</p>
       <div class="hero-actions">
-        <a href="#work" class="hero-cta">Lihat Proyek</a>
+        <a href="#work" class="hero-cta" data-key="hero_cta">Lihat Proyek</a>
         <div class="hero-socials">
           <a href="https://wa.me/62882016594700" target="_blank" aria-label="WhatsApp">
             <svg class="icon-outline" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l2.9-5.6A8.38 8.38 0 0 1 5 11.5a8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
@@ -990,13 +1065,12 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
         <img src="profiles.png" alt="Yoka Gustiyadi" class="about-img">
       </div>
       <div class="about-content">
-        <!-- role label removed -->
-        <h2 class="sec-title">Mengubah alur kerja manual menjadi <em>ekosistem digital</em>.</h2>
-        <p>Berlatar belakang pendidikan teknis SMK, saya berkembang menjadi pengembang yang praktis dan cepat beradaptasi. Fokus utama saya adalah mentransformasi proses administrasi dan ujian konvensional menjadi sistem digital yang aman, efisien, dan berkelanjutan.</p>
+        <h2 class="sec-title" data-key="about_title">Mengubah alur kerja manual menjadi <em>ekosistem digital</em>.</h2>
+        <p data-key="about_desc">Berlatar belakang pendidikan teknis SMK, saya berkembang menjadi pengembang yang praktis dan cepat beradaptasi. Fokus utama saya adalah mentransformasi proses administrasi dan ujian konvensional menjadi sistem digital yang aman, efisien, dan berkelanjutan.</p>
         <div class="about-links">
           <a href="CV_YOKAGUSTIYADI2026.pdf" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Lihat CV
+            <span data-key="about_resume">Lihat CV</span>
           </a>
           <a href="https://www.linkedin.com/in/yoka-gustiyadi" target="_blank">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -1004,24 +1078,22 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
           </a>
         </div>
         <div class="about-meta">
-          <div class="about-meta-item"><strong>Lokasi</strong>Bandung, Indonesia</div>
-          <div class="about-meta-item"><strong>Fokus</strong>Teknis & AI Config</div>
-          <div class="about-meta-item"><strong>Kontak</strong>0882-0165-94700</div>
+          <div class="about-meta-item"><strong data-key="about_location_label">Lokasi</strong><span data-key="about_location">Bandung, Indonesia</span></div>
+          <div class="about-meta-item"><strong data-key="about_focus_label">Fokus</strong><span data-key="about_focus">Teknis & AI Config</span></div>
+          <div class="about-meta-item"><strong data-key="about_contact_label">Kontak</strong><span data-key="about_contact">0882-0165-94700</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Stats Row -->
-
-<!-- Problem → Solution → Result Section -->
+<!-- Case Study Section -->
 <section id="case-study" style="padding: 100px 0; background: var(--bg-soft);">
   <div class="wrap">
     <div class="sec-header center">
-      <span class="sec-label">Studi Kasus</span>
-      <h2 class="sec-title">Dari <em>Masalah</em> ke <em>Solusi</em></h2>
-      <p class="sec-subtitle">Transformasi proses ujian di SDI Abu Seno — dari manual menuju otomasi penuh.</p>
+      <span class="sec-label" data-key="case_label">Studi Kasus</span>
+      <h2 class="sec-title" data-key="case_title">Dari <em>Masalah</em> ke <em>Solusi</em></h2>
+      <p class="sec-subtitle" data-key="case_subtitle">Transformasi proses ujian di SDI Abu Seno — dari manual menuju otomasi penuh.</p>
     </div>
     <div class="psr-grid">
       <div class="psr-card reveal">
@@ -1029,8 +1101,8 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
           <svg class="icon-outline" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
         </div>
         <span class="psr-step">01</span>
-        <h3>Masalah</h3>
-        <p>Guru menginput soal dan rekap nilai secara manual. Ujian dilakukan di Google Forms tanpa pengacakan soal, tanpa anti-cheat, dan tanpa auto-save — memakan waktu berjam-jam untuk persiapan dan penilaian.</p>
+        <h3 data-key="case_problem">Masalah</h3>
+        <p data-key="case_problem_desc">Guru menginput soal dan rekap nilai secara manual. Ujian dilakukan di Google Forms tanpa pengacakan soal, tanpa anti-cheat, dan tanpa auto-save — memakan waktu berjam-jam untuk persiapan dan penilaian.</p>
       </div>
       <div class="psr-arrow">
         <svg class="icon-outline" viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--text-light);"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
@@ -1040,8 +1112,8 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
           <svg class="icon-outline" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
         <span class="psr-step">02</span>
-        <h3>Solusi</h3>
-        <p>Saya membangun sistem CBT terintegrasi dengan AI Question Generator, RBAC 4-level, anti-cheat real-time, pengacakan soal & jawaban, auto-save per klik, rekap nilai otomatis, dan dashboard admin terpusat.</p>
+        <h3 data-key="case_solution">Solusi</h3>
+        <p data-key="case_solution_desc">Saya membangun sistem CBT terintegrasi dengan AI Question Generator, RBAC 4-level, anti-cheat real-time, pengacakan soal & jawaban, auto-save per klik, rekap nilai otomatis, dan dashboard admin terpusat.</p>
       </div>
       <div class="psr-arrow">
         <svg class="icon-outline" viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--text-light);"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
@@ -1051,34 +1123,33 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
           <svg class="icon-outline" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
         <span class="psr-step">03</span>
-        <h3>Hasil</h3>
-        <p>Sistem digunakan di SDI Abu Seno sejak awal 2026. Waktu persiapan ujian hingga penilaian berkurang secara signifikan. Guru fokus mengajar, siswa ujian dengan nyaman, dan data tersimpan rapi otomatis.</p>
+        <h3 data-key="case_result">Hasil</h3>
+        <p data-key="case_result_desc">Sistem digunakan di SDI Abu Seno sejak awal 2026. Waktu persiapan ujian hingga penilaian berkurang secara signifikan. Guru fokus mengajar, siswa ujian dengan nyaman, dan data tersimpan rapi otomatis.</p>
       </div>
     </div>
   </div>
 </section>
 
-
 <!-- Experience Section -->
 <section id="pengalaman" style="padding: 100px 0;">
   <div class="wrap">
     <div class="sec-header" style="margin-bottom: 56px;">
-      <span class="sec-label">Karier</span>
-      <h2 class="sec-title">Pengalaman <em>Bekerja</em></h2>
+      <span class="sec-label" data-key="exp_label">Karier</span>
+      <h2 class="sec-title" data-key="exp_title">Pengalaman <em>Bekerja</em></h2>
     </div>
     <div class="exp-list">
       <div class="exp-item reveal">
         <div class="exp-main">
           <h3 class="exp-company">SDI Abu Seno</h3>
-          <span class="exp-role">Staff Administrasi</span>
+          <span class="exp-role" data-key="exp_role_admin">Staff Administrasi</span>
         </div>
-        <span class="exp-year">2024 — Sekarang</span>
+        <span class="exp-year" data-key="exp_year_1">2024 — Sekarang</span>
       </div>
       <div class="exp-divider"></div>
       <div class="exp-item reveal">
         <div class="exp-main">
           <h3 class="exp-company">Pedagang dan Freelance</h3>
-          <span class="exp-role">Pekerjaan Paruh Waktu</span>
+          <span class="exp-role" data-key="exp_role_freelance">Pekerjaan Paruh Waktu</span>
         </div>
         <span class="exp-year">2021 — 2024</span>
       </div>
@@ -1086,7 +1157,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
       <div class="exp-item reveal">
         <div class="exp-main">
           <h3 class="exp-company">PT Sakura Java Indonesia</h3>
-          <span class="exp-role">Operator Produksi</span>
+          <span class="exp-role" data-key="exp_role_operator">Operator Produksi</span>
         </div>
         <span class="exp-year">Cikarang, 2018 — 2020</span>
       </div>
@@ -1094,7 +1165,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
       <div class="exp-item reveal">
         <div class="exp-main">
           <h3 class="exp-company">Kobutri Jabar</h3>
-          <span class="exp-role">Administrasi</span>
+          <span class="exp-role" data-key="exp_role_admin2">Administrasi</span>
         </div>
         <span class="exp-year">2017</span>
       </div>
@@ -1102,7 +1173,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
       <div class="exp-item reveal">
         <div class="exp-main">
           <h3 class="exp-company">Auto Brother Salon Car</h3>
-          <span class="exp-role">Poles Mobil</span>
+          <span class="exp-role" data-key="exp_role_polish">Poles Mobil</span>
         </div>
         <span class="exp-year">2016 — 2017</span>
       </div>
@@ -1110,27 +1181,28 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   </div>
 </section>
 
+<!-- Stats Row -->
 <div class="wrap" style="margin-bottom: 40px;">
   <div class="stats-row">
     <div class="stat-item">
       <div class="stat-number" data-target="2" data-suffix="+">0</div>
-      <div class="stat-label">Tahun Pengalaman</div>
-      <div class="stat-desc">Tech & administrasi digital</div>
+      <div class="stat-label" data-key="stat_years">Tahun Pengalaman</div>
+      <div class="stat-desc" data-key="stat_years_desc">Tech & administrasi digital</div>
     </div>
     <div class="stat-item">
       <div class="stat-number" data-target="5" data-suffix="">0</div>
-      <div class="stat-label">Layanan Digital</div>
-      <div class="stat-desc">Siap dibangun untuk Anda</div>
+      <div class="stat-label" data-key="stat_services">Layanan Digital</div>
+      <div class="stat-desc" data-key="stat_services_desc">Siap dibangun untuk Anda</div>
     </div>
     <div class="stat-item">
       <div class="stat-number">24/7</div>
-      <div class="stat-label">Bot Aktif</div>
-      <div class="stat-desc">WhatsApp AI tanpa henti</div>
+      <div class="stat-label" data-key="stat_bot">Bot Aktif</div>
+      <div class="stat-desc" data-key="stat_bot_desc">WhatsApp AI tanpa henti</div>
     </div>
     <div class="stat-item">
       <div class="stat-number" data-target="3" data-suffix="">0</div>
-      <div class="stat-label">Sertifikasi</div>
-      <div class="stat-desc">Diterbitkan Anthropic</div>
+      <div class="stat-label" data-key="stat_certs">Sertifikasi</div>
+      <div class="stat-desc" data-key="stat_certs_desc">Diterbitkan Anthropic</div>
     </div>
   </div>
 </div>
@@ -1157,9 +1229,9 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 <section id="work">
   <div class="wrap">
     <div class="sec-header center">
-      <span class="sec-label">Portofolio</span>
-      <h2 class="sec-title">Proyek <em>Terpilih</em></h2>
-      <p class="sec-subtitle">Karya nyata yang telah dibangun, digunakan, dan terus dikembangkan untuk memecahkan masalah operasional.</p>
+      <span class="sec-label" data-key="work_label">Portofolio</span>
+      <h2 class="sec-title" data-key="work_title">Proyek <em>Terpilih</em></h2>
+      <p class="sec-subtitle" data-key="work_subtitle">Karya nyata yang telah dibangun, digunakan, dan terus dikembangkan untuk memecahkan masalah operasional.</p>
     </div>
     <div class="work-grid">
       <div class="work-card reveal" onclick="window.open('https://v-project-steel.vercel.app', '_blank')">
@@ -1171,8 +1243,8 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
             <span class="work-tag">Dashboard</span>
           </div>
           <h3>V Project</h3>
-          <p>Sistem manajemen servis dengan AI Assistant via WhatsApp 24/7. Mengotomasi pencatatan keluhan, status perbaikan, dan generate invoice tanpa intervensi manual.</p>
-          <span class="work-link">Kunjungi website</span>
+          <p data-key="work_vproject_desc">Sistem manajemen servis dengan AI Assistant via WhatsApp 24/7. Mengotomasi pencatatan keluhan, status perbaikan, dan generate invoice tanpa intervensi manual.</p>
+          <span class="work-link" data-key="work_visit">Kunjungi website</span>
         </div>
       </div>
       <div class="work-card reveal" onclick="window.open('https://drive.google.com/drive/folders/1K34zxs3n6lYajXO1cHwfABLwAKdx38zK', '_blank')">
@@ -1183,9 +1255,9 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
             <span class="work-tag">RBAC</span>
             <span class="work-tag">AI Question</span>
           </div>
-          <h3>Sistem CBT Terintegrasi</h3>
-          <p>Platform ujian digital end-to-end untuk SDI Abu Seno. Ditenagai AI pembuat soal, pengacakan pintar, anti-cheat real-time, dan rekap nilai terintegrasi.</p>
-          <span class="work-link">Lihat dokumentasi</span>
+          <h3 data-key="work_cbt_title">Sistem CBT Terintegrasi</h3>
+          <p data-key="work_cbt_desc">Platform ujian digital end-to-end untuk SDI Abu Seno. Ditenagai AI pembuat soal, pengacakan pintar, anti-cheat real-time, dan rekap nilai terintegrasi.</p>
+          <span class="work-link" data-key="work_docs">Lihat dokumentasi</span>
         </div>
       </div>
     </div>
@@ -1196,35 +1268,35 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 <section id="services" style="background: var(--bg-soft);">
   <div class="wrap">
     <div class="sec-header center">
-      <span class="sec-label">Layanan</span>
-      <h2 class="sec-title">Yang Bisa Saya <em>Lakukan</em></h2>
-      <p class="sec-subtitle">Solusi digital yang saya sediakan untuk memenuhi kebutuhan teknologi organisasi maupun personal.</p>
+      <span class="sec-label" data-key="services_label">Layanan</span>
+      <h2 class="sec-title" data-key="services_title">Yang Bisa Saya <em>Lakukan</em></h2>
+      <p class="sec-subtitle" data-key="services_subtitle">Solusi digital yang saya sediakan untuk memenuhi kebutuhan teknologi organisasi maupun personal.</p>
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-icon"><svg class="icon-outline" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
-        <h3>Web & Dashboard</h3>
-        <p>Website profesional dan dashboard administrasi dengan desain modern, responsif, dan performa tinggi untuk kebutuhan bisnis maupun personal.</p>
+        <h3 data-key="svc_web">Web & Dashboard</h3>
+        <p data-key="svc_web_desc">Website profesional dan dashboard administrasi dengan desain modern, responsif, dan performa tinggi untuk kebutuhan bisnis maupun personal.</p>
       </div>
       <div class="service-card reveal">
         <div class="service-icon"><svg class="icon-outline" viewBox="0 0 24 24"><path d="M22 10l-10-6-10 6 10 6 10-6z"/><path d="M6 12v5a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-5"/></svg></div>
-        <h3>Sistem CBT Sekolah</h3>
-        <p>Platform ujian komputer berbasis web lengkap dengan AI, pengacakan soal, anti-cheat, data siswa, dan rekap nilai terintegrasi.</p>
+        <h3 data-key="svc_cbt">Sistem CBT Sekolah</h3>
+        <p data-key="svc_cbt_desc">Platform ujian komputer berbasis web lengkap dengan AI, pengacakan soal, anti-cheat, data siswa, dan rekap nilai terintegrasi.</p>
       </div>
       <div class="service-card reveal">
         <div class="service-icon"><svg class="icon-outline" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 11V7a4 4 0 0 1 4-4h0"/><circle cx="8" cy="15" r="1" fill="#000" stroke="none"/><circle cx="16" cy="15" r="1" fill="#000" stroke="none"/><path d="M9 19h6"/></svg></div>
-        <h3>WhatsApp AI 24/7</h3>
-        <p>Bot WhatsApp pintar dengan AI persona, state management, dan eskalasi otomatis ke admin manusia saat dibutuhkan.</p>
+        <h3 data-key="svc_wa">WhatsApp AI 24/7</h3>
+        <p data-key="svc_wa_desc">Bot WhatsApp pintar dengan AI persona, state management, dan eskalasi otomatis ke admin manusia saat dibutuhkan.</p>
       </div>
       <div class="service-card reveal">
         <div class="service-icon"><svg class="icon-outline" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-        <h3>Portofolio Online</h3>
-        <p>Portofolio digital elegan untuk menampilkan karya, pengalaman, dan keahlian dengan tampilan premium yang meyakinkan.</p>
+        <h3 data-key="svc_portfolio">Portofolio Online</h3>
+        <p data-key="svc_portfolio_desc">Portofolio digital elegan untuk menampilkan karya, pengalaman, dan keahlian dengan tampilan premium yang meyakinkan.</p>
       </div>
       <div class="service-card reveal">
         <div class="service-icon"><svg class="icon-outline" viewBox="0 0 24 24"><path d="M22 6l-10 7L2 6"/><path d="M2 6v12h20V6"/><path d="M12 13l-2-2a2 2 0 0 1 2-2 2 2 0 0 1 2 2l-2 2z"/></svg></div>
-        <h3>Undangan Digital</h3>
-        <p>Undangan pernikahan digital interaktif dengan desain estetis, countdown timer, galeri foto, RSVP, dan integrasi peta.</p>
+        <h3 data-key="svc_invite">Undangan Digital</h3>
+        <p data-key="svc_invite_desc">Undangan pernikahan digital interaktif dengan desain estetis, countdown timer, galeri foto, RSVP, dan integrasi peta.</p>
       </div>
     </div>
   </div>
@@ -1234,10 +1306,10 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 <section id="demo-cbt">
   <div class="wrap">
     <div class="sec-header center">
-      <span class="sec-label">Live Demo</span>
-      <h2 class="sec-title">Sistem <em>CBT</em></h2>
-      <p class="sec-subtitle">Jelajahi antarmuka ujian berbasis komputer secara langsung melalui demo interaktif.</p>
-      <a href="https://cbt-demo-yokagustiyadi.vercel.app" target="_blank" class="hero-cta" style="display: inline-flex; margin-top: 24px;">Buka Demo CBT ↗</a>
+      <span class="sec-label" data-key="demo_label">Live Demo</span>
+      <h2 class="sec-title" data-key="demo_title">Sistem <em>CBT</em></h2>
+      <p class="sec-subtitle" data-key="demo_subtitle">Jelajahi antarmuka ujian berbasis komputer secara langsung melalui demo interaktif.</p>
+      <a href="https://cbt-demo-yokagustiyadi.vercel.app" target="_blank" class="hero-cta" style="display: inline-flex; margin-top: 24px;" data-key="demo_cta">Buka Demo CBT ↗</a>
     </div>
     <div class="cbt-gallery" style="margin-top: 56px;">
       <div class="cbt-gallery-item reveal">
@@ -1254,40 +1326,40 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 <section id="vproject" style="background: var(--bg-soft);">
   <div class="wrap">
     <div class="sec-header center">
-      <span class="sec-label">Fitur</span>
-      <h2 class="sec-title">V Project — <em>Ekosistem Bisnis</em></h2>
-      <p class="sec-subtitle">Solusi terintegrasi untuk manajemen servis dan otomasi pelanggan.</p>
+      <span class="sec-label" data-key="vproject_label">Fitur</span>
+      <h2 class="sec-title" data-key="vproject_title">V Project — <em>Ekosistem Bisnis</em></h2>
+      <p class="sec-subtitle" data-key="vproject_subtitle">Solusi terintegrasi untuk manajemen servis dan otomasi pelanggan.</p>
     </div>
     <div class="features-grid">
       <div class="feature-card reveal">
         <div class="feature-icon"><svg class="icon-outline" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l2.9-5.6A8.38 8.38 0 0 1 5 11.5a8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
-        <h3>Customer Service Otomatis</h3>
-        <p>Layanan pelanggan 24/7 via WhatsApp. Pertanyaan umum, status servis, dan pencatatan keluhan ditangani AI secara real-time.</p>
+        <h3 data-key="vproject_cs">Customer Service Otomatis</h3>
+        <p data-key="vproject_cs_desc">Layanan pelanggan 24/7 via WhatsApp. Pertanyaan umum, status servis, dan pencatatan keluhan ditangani AI secara real-time.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-icon"><svg class="icon-outline" viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v0a2.5 2.5 0 0 1 2.5-2.5"/><path d="M12 4.5c-2.5 0-4.5 2-4.5 4.5v0c0 2.5 2 4.5 4.5 4.5"/><path d="M12 4.5c2.5 0 4.5 2 4.5 4.5v0c0 2.5-2 4.5-4.5 4.5"/><path d="M7.5 9c-1.5 0-2.5 1-2.5 2.5S6 14 7.5 14"/><path d="M16.5 9c1.5 0 2.5 1 2.5 2.5S18 14 16.5 14"/><path d="M7.5 14c-1 2 0 4 2 5"/><path d="M16.5 14c1 2 0 4-2 5"/><path d="M12 14v6"/></svg></div>
-        <h3>AI Persona & State</h3>
-        <p>Bot memiliki persona dan alur percakapan terstruktur. State management memastikan respons kontekstual dan konsisten.</p>
+        <h3 data-key="vproject_ai">AI Persona & State</h3>
+        <p data-key="vproject_ai_desc">Bot memiliki persona dan alur percakapan terstruktur. State management memastikan respons kontekstual dan konsisten.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-icon"><svg class="icon-outline" viewBox="0 0 24 24"><path d="M4 4h16v16l-4-2-4 2-4-2-4 2V4z"/><path d="M8 10h8"/><path d="M8 14h5"/></svg></div>
-        <h3>Invoice Otonom</h3>
-        <p>Invoice dihasilkan otomatis setelah servis selesai berdasarkan data pekerjaan yang tercatat — tanpa input manual.</p>
+        <h3 data-key="vproject_invoice">Invoice Otonom</h3>
+        <p data-key="vproject_invoice_desc">Invoice dihasilkan otomatis setelah servis selesai berdasarkan data pekerjaan yang tercatat — tanpa input manual.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-icon"><svg class="icon-outline" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 12h6"/><path d="M9 16h6"/></svg></div>
-        <h3>Lead Logging</h3>
-        <p>Setiap calon pelanggan via WhatsApp tercatat otomatis ke spreadsheet — nama, nomor, kebutuhan, dan waktu kontak.</p>
+        <h3 data-key="vproject_lead">Lead Logging</h3>
+        <p data-key="vproject_lead_desc">Setiap calon pelanggan via WhatsApp tercatat otomatis ke spreadsheet — nama, nomor, kebutuhan, dan waktu kontak.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-icon"><svg class="icon-outline" viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></div>
-        <h3>Web Dashboard</h3>
-        <p>Antarmuka terpusat untuk memantau status perbaikan, riwayat pelanggan, dan performa bisnis. Bersih dan responsif.</p>
+        <h3 data-key="vproject_dashboard">Web Dashboard</h3>
+        <p data-key="vproject_dashboard_desc">Antarmuka terpusat untuk memantau status perbaikan, riwayat pelanggan, dan performa bisnis. Bersih dan responsif.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-icon"><svg class="icon-outline" viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
-        <h3>Eskalasi Cerdas</h3>
-        <p>Ketika AI mendeteksi pertanyaan di luar kemampuannya, percakapan otomatis dieskalasi ke admin dengan transisi mulus.</p>
+        <h3 data-key="vproject_escalation">Eskalasi Cerdas</h3>
+        <p data-key="vproject_escalation_desc">Ketika AI mendeteksi pertanyaan di luar kemampuannya, percakapan otomatis dieskalasi ke admin dengan transisi mulus.</p>
       </div>
     </div>
   </div>
@@ -1297,40 +1369,40 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 <section id="fitur-cbt">
   <div class="wrap">
     <div class="sec-header center">
-      <span class="sec-label">Fitur</span>
-      <h2 class="sec-title">CBT <em>Lengkap</em></h2>
-      <p class="sec-subtitle">Platform ujian digital yang dirancang untuk keandalan, keamanan, dan kemudahan pengguna.</p>
+      <span class="sec-label" data-key="cbt_label">Fitur</span>
+      <h2 class="sec-title" data-key="cbt_title">CBT <em>Lengkap</em></h2>
+      <p class="sec-subtitle" data-key="cbt_subtitle">Platform ujian digital yang dirancang untuk keandalan, keamanan, dan kemudahan pengguna.</p>
     </div>
     <div class="features-grid">
       <div class="feature-card reveal">
         <div class="feature-icon"><svg class="icon-outline" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 11V7a4 4 0 0 1 4-4h0"/><circle cx="8" cy="15" r="1" fill="#000" stroke="none"/><circle cx="16" cy="15" r="1" fill="#000" stroke="none"/><path d="M9 19h6"/></svg></div>
-        <h3>AI Question Generator</h3>
-        <p>Guru tentukan topik dan jumlah soal — AI langsung menghasilkan bank soal pilihan ganda siap pakai.</p>
+        <h3 data-key="cbt_ai">AI Question Generator</h3>
+        <p data-key="cbt_ai_desc">Guru tentukan topik dan jumlah soal — AI langsung menghasilkan bank soal pilihan ganda siap pakai.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-icon"><svg class="icon-outline" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
-        <h3>Import Massal</h3>
-        <p>Upload hingga 40 soal via Excel. Mendukung Unicode penuh — Arab, Sunda, Mandarin — tanpa encoding error.</p>
+        <h3 data-key="cbt_import">Import Massal</h3>
+        <p data-key="cbt_import_desc">Upload hingga 40 soal via Excel. Mendukung Unicode penuh — Arab, Sunda, Mandarin — tanpa encoding error.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-icon"><svg class="icon-outline" viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></div>
-        <h3>Pengacakan Cerdas</h3>
-        <p>Urutan soal dan pilihan jawaban diacak per siswa, namun sistem tetap mengetahui kunci jawaban yang benar.</p>
+        <h3 data-key="cbt_shuffle">Pengacakan Cerdas</h3>
+        <p data-key="cbt_shuffle_desc">Urutan soal dan pilihan jawaban diacak per siswa, namun sistem tetap mengetahui kunci jawaban yang benar.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-icon"><svg class="icon-outline" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg></div>
-        <h3>Auto-Save & Navigasi</h3>
-        <p>Jawaban tersimpan otomatis. Tampilan satu soal per halaman dengan daftar navigasi untuk review ulang.</p>
+        <h3 data-key="cbt_autosave">Auto-Save & Navigasi</h3>
+        <p data-key="cbt_autosave_desc">Jawaban tersimpan otomatis. Tampilan satu soal per halaman dengan daftar navigasi untuk review ulang.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-icon"><svg class="icon-outline" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
-        <h3>Pojok Belajar</h3>
-        <p>Materi pelajaran dengan video YouTube terintegrasi. Siswa menonton langsung di dalam platform.</p>
+        <h3 data-key="cbt_learning">Pojok Belajar</h3>
+        <p data-key="cbt_learning_desc">Materi pelajaran dengan video YouTube terintegrasi. Siswa menonton langsung di dalam platform.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-icon"><svg class="icon-outline" viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></div>
-        <h3>Rekap Nilai Otomatis</h3>
-        <p>Nilai dikalkulasi mutlak dan otomatis. Rekap per ujian dan profil nilai seluruh mata pelajaran.</p>
+        <h3 data-key="cbt_rekap">Rekap Nilai Otomatis</h3>
+        <p data-key="cbt_rekap_desc">Nilai dikalkulasi mutlak dan otomatis. Rekap per ujian dan profil nilai seluruh mata pelajaran.</p>
       </div>
     </div>
   </div>
@@ -1340,41 +1412,41 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 <section id="testimoni" style="background: var(--bg-soft);">
   <div class="wrap">
     <div class="sec-header center">
-      <span class="sec-label">Testimoni</span>
-      <h2 class="sec-title">Apa Kata <em>Pengguna</em></h2>
-      <p class="sec-subtitle">Pengalaman para pengajar SDI Abu Seno dalam menggunakan Sistem CBT.</p>
+      <span class="sec-label" data-key="testi_label">Testimoni</span>
+      <h2 class="sec-title" data-key="testi_title">Apa Kata <em>Pengguna</em></h2>
+      <p class="sec-subtitle" data-key="testi_subtitle">Pengalaman para pengajar SDI Abu Seno dalam menggunakan Sistem CBT.</p>
     </div>
     <div class="testimonials-grid">
       <div class="testimonial-card reveal">
         <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">Sistem CBT ini sangat membantu proses ujian di sekolah kami. Pengacakan soal dan fitur anti-cheat membuat ujian lebih adil dan terjamin keamanannya.</p>
+        <p class="testimonial-text" data-key="testi_1">Sistem CBT ini sangat membantu proses ujian di sekolah kami. Pengacakan soal dan fitur anti-cheat membuat ujian lebih adil dan terjamin keamanannya.</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">A</div>
           <div class="testimonial-info">
             <strong>Pak Arsy</strong>
-            <span>Guru SDI Abu Seno</span>
+            <span data-key="testi_role_1">Guru SDI Abu Seno</span>
           </div>
         </div>
       </div>
       <div class="testimonial-card reveal">
         <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">AI Question Generator sangat menghemat waktu saya dalam menyusun soal. Cukup tentukan topik, soal langsung siap digunakan. Pojok Belajar juga sangat membantu siswa.</p>
+        <p class="testimonial-text" data-key="testi_2">AI Question Generator sangat menghemat waktu saya dalam menyusun soal. Cukup tentukan topik, soal langsung siap digunakan. Pojok Belajar juga sangat membantu siswa.</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">T</div>
           <div class="testimonial-info">
             <strong>Pak Teten</strong>
-            <span>Guru SDI Abu Seno</span>
+            <span data-key="testi_role_2">Guru SDI Abu Seno</span>
           </div>
         </div>
       </div>
       <div class="testimonial-card reveal">
         <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">Antarmuka yang bersih dan intuitif membuat siswa mudah beradaptasi. Auto-save memastikan tidak ada jawaban yang hilang. Efisiensi ujian meningkat secara signifikan.</p>
+        <p class="testimonial-text" data-key="testi_3">Antarmuka yang bersih dan intuitif membuat siswa mudah beradaptasi. Auto-save memastikan tidak ada jawaban yang hilang. Efisiensi ujian meningkat secara signifikan.</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">M</div>
           <div class="testimonial-info">
             <strong>Pak Mukhtar</strong>
-            <span>Guru SDI Abu Seno</span>
+            <span data-key="testi_role_3">Guru SDI Abu Seno</span>
           </div>
         </div>
       </div>
@@ -1386,9 +1458,9 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 <section id="sertifikat">
   <div class="wrap">
     <div class="sec-header center">
-      <span class="sec-label">Sertifikasi</span>
-      <h2 class="sec-title">Pengakuan <em>Resmi</em></h2>
-      <p class="sec-subtitle">Kompetensi yang tervalidasi melalui program pembelajaran berkelanjutan.</p>
+      <span class="sec-label" data-key="cert_label">Sertifikasi</span>
+      <h2 class="sec-title" data-key="cert_title">Pengakuan <em>Resmi</em></h2>
+      <p class="sec-subtitle" data-key="cert_subtitle">Kompetensi yang tervalidasi melalui program pembelajaran berkelanjutan.</p>
     </div>
     <div class="cert-slider-wrap">
       <div class="cert-slider" id="certSlider">
@@ -1417,41 +1489,41 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   <div class="wrap">
     <div class="skills-layout">
       <div class="skills-left">
-        <span class="sec-label">Keahlian</span>
-        <h2 class="sec-title">Skill & <em>Teknologi</em></h2>
-        <p class="sec-subtitle">Kompetensi teknis untuk solusi digital end-to-end.</p>
-        <p>Saya menguasai Frontend Development dengan Tailwind CSS dan Vanilla JS, AI & Prompt Engineering untuk integrasi OpenAI/Gemini/Groq, Sistem Keamanan RBAC 4-level, Node.js & Otomasi untuk bot WhatsApp, serta IT Support & Jaringan untuk diagnosis infrastruktur.</p>
+        <span class="sec-label" data-key="skills_label">Keahlian</span>
+        <h2 class="sec-title" data-key="skills_title">Skill & <em>Teknologi</em></h2>
+        <p class="sec-subtitle" data-key="skills_subtitle">Kompetensi teknis untuk solusi digital end-to-end.</p>
+        <p data-key="skills_desc">Saya menguasai Frontend Development dengan Tailwind CSS dan Vanilla JS, AI & Prompt Engineering untuk integrasi OpenAI/Gemini/Groq, Sistem Keamanan RBAC 4-level, Node.js & Otomasi untuk bot WhatsApp, serta IT Support & Jaringan untuk diagnosis infrastruktur.</p>
       </div>
       <div class="skills-right">
         <div class="skill-item reveal">
           <div class="skill-icon"><svg class="icon-outline" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg></div>
-          <h4>Frontend</h4>
-          <p>Tailwind CSS, Vanilla JS</p>
+          <h4 data-key="skill_frontend">Frontend</h4>
+          <p data-key="skill_frontend_desc">Tailwind CSS, Vanilla JS</p>
         </div>
         <div class="skill-item reveal">
           <div class="skill-icon"><svg class="icon-outline" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 11V7a4 4 0 0 1 4-4h0"/><circle cx="8" cy="15" r="1" fill="#000" stroke="none"/><circle cx="16" cy="15" r="1" fill="#000" stroke="none"/><path d="M9 19h6"/></svg></div>
-          <h4>AI & Prompt</h4>
-          <p>OpenAI, Gemini, Groq</p>
+          <h4 data-key="skill_ai">AI & Prompt</h4>
+          <p data-key="skill_ai_desc">OpenAI, Gemini, Groq</p>
         </div>
         <div class="skill-item reveal">
           <div class="skill-icon"><svg class="icon-outline" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="2" fill="#000" stroke="none"/><path d="M12 13v3"/></svg></div>
-          <h4>Keamanan</h4>
-          <p>RBAC 4 level, anti-cheat</p>
+          <h4 data-key="skill_security">Keamanan</h4>
+          <p data-key="skill_security_desc">RBAC 4 level, anti-cheat</p>
         </div>
         <div class="skill-item reveal">
           <div class="skill-icon"><svg class="icon-outline" viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></div>
-          <h4>Microsoft</h4>
-          <p>Excel, XLSX automation</p>
+          <h4 data-key="skill_ms">Microsoft</h4>
+          <p data-key="skill_ms_desc">Excel, XLSX automation</p>
         </div>
         <div class="skill-item reveal">
           <div class="skill-icon"><svg class="icon-outline" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-          <h4>Node.js</h4>
-          <p>Baileys, bot WhatsApp</p>
+          <h4 data-key="skill_node">Node.js</h4>
+          <p data-key="skill_node_desc">Baileys, bot WhatsApp</p>
         </div>
         <div class="skill-item reveal">
           <div class="skill-icon"><svg class="icon-outline" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
-          <h4>IT Support</h4>
-          <p>LAN, remote, diagnosis</p>
+          <h4 data-key="skill_it">IT Support</h4>
+          <p data-key="skill_it_desc">LAN, remote, diagnosis</p>
         </div>
       </div>
     </div>
@@ -1462,9 +1534,9 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 <section id="kontak">
   <div class="wrap">
     <div class="sec-header center">
-      <span class="sec-label">Kontak</span>
-      <h2 class="sec-title">Mari <em>Berdiskusi</em></h2>
-      <p class="sec-subtitle">Tersedia untuk proyek, kolaborasi, dan konsultasi teknis.</p>
+      <span class="sec-label" data-key="contact_label">Kontak</span>
+      <h2 class="sec-title" data-key="contact_title">Mari <em>Berdiskusi</em></h2>
+      <p class="sec-subtitle" data-key="contact_subtitle">Tersedia untuk proyek, kolaborasi, dan konsultasi teknis.</p>
     </div>
     <div class="contact-grid">
       <div class="contact-card reveal">
@@ -1472,7 +1544,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
         <div class="contact-info">
           <h3>WhatsApp</h3>
           <a href="https://wa.me/62882016594700" target="_blank">0882-0165-94700</a>
-          <p>Respons cepat untuk diskusi proyek.</p>
+          <p data-key="contact_wa_desc">Respons cepat untuk diskusi proyek.</p>
         </div>
       </div>
       <div class="contact-card reveal">
@@ -1480,7 +1552,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
         <div class="contact-info">
           <h3>Email</h3>
           <a href="mailto:yokagustiyadi.dev@gmail.com">yokagustiyadi.dev@gmail.com</a>
-          <p>Untuk penawaran dan detail formal.</p>
+          <p data-key="contact_email_desc">Untuk penawaran dan detail formal.</p>
         </div>
       </div>
     </div>
@@ -1489,10 +1561,314 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 
 <!-- Footer -->
 <footer>
-  <p>Dirancang oleh Yoka Gustiyadi &middot; 2026</p>
+  <p data-key="footer">Dirancang oleh Yoka Gustiyadi · 2026</p>
 </footer>
 
 <script>
+// ── TRANSLATIONS ───────────────────────────────────────────
+const translations = {
+  id: {
+    nav_about: "Ikhtisar",
+    nav_work: "Proyek",
+    nav_services: "Layanan",
+    nav_contact: "Hubungi",
+    hero_eyebrow: "Available for Collaboration",
+    hero_role: "Staff Administrasi & IT Support",
+    hero_desc: "Membangun arsitektur digital yang mengubah alur kerja manual menjadi ekosistem otonom — dari sistem ujian terintegrasi AI hingga otomasi bisnis berbasis WhatsApp.",
+    hero_cta: "Lihat Proyek",
+    about_title: "Mengubah alur kerja manual menjadi <em>ekosistem digital</em>.",
+    about_desc: "Berlatar belakang pendidikan teknis SMK, saya berkembang menjadi pengembang yang praktis dan cepat beradaptasi. Fokus utama saya adalah mentransformasi proses administrasi dan ujian konvensional menjadi sistem digital yang aman, efisien, dan berkelanjutan.",
+    about_resume: "Unduh Resume",
+    about_location_label: "Lokasi",
+    about_location: "Bandung, Indonesia",
+    about_focus_label: "Fokus",
+    about_focus: "Teknis & AI Config",
+    about_contact_label: "Kontak",
+    about_contact: "0882-0165-94700",
+    case_label: "Studi Kasus",
+    case_title: "Dari <em>Masalah</em> ke <em>Solusi</em>",
+    case_subtitle: "Transformasi proses ujian di SDI Abu Seno — dari manual menuju otomasi penuh.",
+    case_problem: "Masalah",
+    case_problem_desc: "Guru menginput soal dan rekap nilai secara manual. Ujian dilakukan di Google Forms tanpa pengacakan soal, tanpa anti-cheat, dan tanpa auto-save — memakan waktu berjam-jam untuk persiapan dan penilaian.",
+    case_solution: "Solusi",
+    case_solution_desc: "Saya membangun sistem CBT terintegrasi dengan AI Question Generator, RBAC 4-level, anti-cheat real-time, pengacakan soal & jawaban, auto-save per klik, rekap nilai otomatis, dan dashboard admin terpusat.",
+    case_result: "Hasil",
+    case_result_desc: "Sistem digunakan di SDI Abu Seno sejak awal 2026. Waktu persiapan ujian hingga penilaian berkurang secara signifikan. Guru fokus mengajar, siswa ujian dengan nyaman, dan data tersimpan rapi otomatis.",
+    exp_label: "Karier",
+    exp_title: "Pengalaman <em>Bekerja</em>",
+    exp_role_admin: "Staff Administrasi",
+    exp_role_freelance: "Pekerjaan Paruh Waktu",
+    exp_role_operator: "Operator Produksi",
+    exp_role_admin2: "Administrasi",
+    exp_role_polish: "Poles Mobil",
+    exp_year_1: "2024 — Sekarang",
+    stat_years: "Tahun Pengalaman",
+    stat_years_desc: "Tech & administrasi digital",
+    stat_services: "Layanan Digital",
+    stat_services_desc: "Siap dibangun untuk Anda",
+    stat_bot: "Bot Aktif",
+    stat_bot_desc: "WhatsApp AI tanpa henti",
+    stat_certs: "Sertifikasi",
+    stat_certs_desc: "Diterbitkan Anthropic",
+    work_label: "Portofolio",
+    work_title: "Proyek <em>Terpilih</em>",
+    work_subtitle: "Karya nyata yang telah dibangun, digunakan, dan terus dikembangkan untuk memecahkan masalah operasional.",
+    work_vproject_desc: "Sistem manajemen servis dengan AI Assistant via WhatsApp 24/7. Mengotomasi pencatatan keluhan, status perbaikan, dan generate invoice tanpa intervensi manual.",
+    work_visit: "Kunjungi website",
+    work_cbt_title: "Sistem CBT Terintegrasi",
+    work_cbt_desc: "Platform ujian digital end-to-end untuk SDI Abu Seno. Ditenagai AI pembuat soal, pengacakan pintar, anti-cheat real-time, dan rekap nilai terintegrasi.",
+    work_docs: "Lihat dokumentasi",
+    services_label: "Layanan",
+    services_title: "Yang Bisa Saya <em>Lakukan</em>",
+    services_subtitle: "Solusi digital yang saya sediakan untuk memenuhi kebutuhan teknologi organisasi maupun personal.",
+    svc_web: "Web & Dashboard",
+    svc_web_desc: "Website profesional dan dashboard administrasi dengan desain modern, responsif, dan performa tinggi untuk kebutuhan bisnis maupun personal.",
+    svc_cbt: "Sistem CBT Sekolah",
+    svc_cbt_desc: "Platform ujian komputer berbasis web lengkap dengan AI, pengacakan soal, anti-cheat, data siswa, dan rekap nilai terintegrasi.",
+    svc_wa: "WhatsApp AI 24/7",
+    svc_wa_desc: "Bot WhatsApp pintar dengan AI persona, state management, dan eskalasi otomatis ke admin manusia saat dibutuhkan.",
+    svc_portfolio: "Portofolio Online",
+    svc_portfolio_desc: "Portofolio digital elegan untuk menampilkan karya, pengalaman, dan keahlian dengan tampilan premium yang meyakinkan.",
+    svc_invite: "Undangan Digital",
+    svc_invite_desc: "Undangan pernikahan digital interaktif dengan desain estetis, countdown timer, galeri foto, RSVP, dan integrasi peta.",
+    demo_label: "Live Demo",
+    demo_title: "Sistem <em>CBT</em>",
+    demo_subtitle: "Jelajahi antarmuka ujian berbasis komputer secara langsung melalui demo interaktif.",
+    demo_cta: "Buka Demo CBT ↗",
+    vproject_label: "Fitur",
+    vproject_title: "V Project — <em>Ekosistem Bisnis</em>",
+    vproject_subtitle: "Solusi terintegrasi untuk manajemen servis dan otomasi pelanggan.",
+    vproject_cs: "Customer Service Otomatis",
+    vproject_cs_desc: "Layanan pelanggan 24/7 via WhatsApp. Pertanyaan umum, status servis, dan pencatatan keluhan ditangani AI secara real-time.",
+    vproject_ai: "AI Persona & State",
+    vproject_ai_desc: "Bot memiliki persona dan alur percakapan terstruktur. State management memastikan respons kontekstual dan konsisten.",
+    vproject_invoice: "Invoice Otonom",
+    vproject_invoice_desc: "Invoice dihasilkan otomatis setelah servis selesai berdasarkan data pekerjaan yang tercatat — tanpa input manual.",
+    vproject_lead: "Lead Logging",
+    vproject_lead_desc: "Setiap calon pelanggan via WhatsApp tercatat otomatis ke spreadsheet — nama, nomor, kebutuhan, dan waktu kontak.",
+    vproject_dashboard: "Web Dashboard",
+    vproject_dashboard_desc: "Antarmuka terpusat untuk memantau status perbaikan, riwayat pelanggan, dan performa bisnis. Bersih dan responsif.",
+    vproject_escalation: "Eskalasi Cerdas",
+    vproject_escalation_desc: "Ketika AI mendeteksi pertanyaan di luar kemampuannya, percakapan otomatis dieskalasi ke admin dengan transisi mulus.",
+    cbt_label: "Fitur",
+    cbt_title: "CBT <em>Lengkap</em>",
+    cbt_subtitle: "Platform ujian digital yang dirancang untuk keandalan, keamanan, dan kemudahan pengguna.",
+    cbt_ai: "AI Question Generator",
+    cbt_ai_desc: "Guru tentukan topik dan jumlah soal — AI langsung menghasilkan bank soal pilihan ganda siap pakai.",
+    cbt_import: "Import Massal",
+    cbt_import_desc: "Upload hingga 40 soal via Excel. Mendukung Unicode penuh — Arab, Sunda, Mandarin — tanpa encoding error.",
+    cbt_shuffle: "Pengacakan Cerdas",
+    cbt_shuffle_desc: "Urutan soal dan pilihan jawaban diacak per siswa, namun sistem tetap mengetahui kunci jawaban yang benar.",
+    cbt_autosave: "Auto-Save & Navigasi",
+    cbt_autosave_desc: "Jawaban tersimpan otomatis. Tampilan satu soal per halaman dengan daftar navigasi untuk review ulang.",
+    cbt_learning: "Pojok Belajar",
+    cbt_learning_desc: "Materi pelajaran dengan video YouTube terintegrasi. Siswa menonton langsung di dalam platform.",
+    cbt_rekap: "Rekap Nilai Otomatis",
+    cbt_rekap_desc: "Nilai dikalkulasi mutlak dan otomatis. Rekap per ujian dan profil nilai seluruh mata pelajaran.",
+    testi_label: "Testimoni",
+    testi_title: "Apa Kata <em>Pengguna</em>",
+    testi_subtitle: "Pengalaman para pengajar SDI Abu Seno dalam menggunakan Sistem CBT.",
+    testi_1: "Sistem CBT ini sangat membantu proses ujian di sekolah kami. Pengacakan soal dan fitur anti-cheat membuat ujian lebih adil dan terjamin keamanannya.",
+    testi_role_1: "Guru SDI Abu Seno",
+    testi_2: "AI Question Generator sangat menghemat waktu saya dalam menyusun soal. Cukup tentukan topik, soal langsung siap digunakan. Pojok Belajar juga sangat membantu siswa.",
+    testi_role_2: "Guru SDI Abu Seno",
+    testi_3: "Antarmuka yang bersih dan intuitif membuat siswa mudah beradaptasi. Auto-save memastikan tidak ada jawaban yang hilang. Efisiensi ujian meningkat secara signifikan.",
+    testi_role_3: "Guru SDI Abu Seno",
+    cert_label: "Sertifikasi",
+    cert_title: "Pengakuan <em>Resmi</em>",
+    cert_subtitle: "Kompetensi yang tervalidasi melalui program pembelajaran berkelanjutan.",
+    skills_label: "Keahlian",
+    skills_title: "Skill & <em>Teknologi</em>",
+    skills_subtitle: "Kompetensi teknis untuk solusi digital end-to-end.",
+    skills_desc: "Saya menguasai Frontend Development dengan Tailwind CSS dan Vanilla JS, AI & Prompt Engineering untuk integrasi OpenAI/Gemini/Groq, Sistem Keamanan RBAC 4-level, Node.js & Otomasi untuk bot WhatsApp, serta IT Support & Jaringan untuk diagnosis infrastruktur.",
+    skill_frontend: "Frontend",
+    skill_frontend_desc: "Tailwind CSS, Vanilla JS",
+    skill_ai: "AI & Prompt",
+    skill_ai_desc: "OpenAI, Gemini, Groq",
+    skill_security: "Keamanan",
+    skill_security_desc: "RBAC 4 level, anti-cheat",
+    skill_ms: "Microsoft",
+    skill_ms_desc: "Excel, XLSX automation",
+    skill_node: "Node.js",
+    skill_node_desc: "Baileys, bot WhatsApp",
+    skill_it: "IT Support",
+    skill_it_desc: "LAN, remote, diagnosis",
+    contact_label: "Kontak",
+    contact_title: "Mari <em>Berdiskusi</em>",
+    contact_subtitle: "Tersedia untuk proyek, kolaborasi, dan konsultasi teknis.",
+    contact_wa_desc: "Respons cepat untuk diskusi proyek.",
+    contact_email_desc: "Untuk penawaran dan detail formal.",
+    footer: "Dirancang oleh Yoka Gustiyadi · 2026"
+  },
+  en: {
+    nav_about: "Overview",
+    nav_work: "Projects",
+    nav_services: "Services",
+    nav_contact: "Contact",
+    hero_eyebrow: "Available for Collaboration",
+    hero_role: "Admin Staff & IT Support",
+    hero_desc: "Building digital architecture that transforms manual workflows into autonomous ecosystems — from AI-integrated exam systems to WhatsApp-based business automation.",
+    hero_cta: "View Projects",
+    about_title: "Transforming manual workflows into <em>digital ecosystems</em>.",
+    about_desc: "With a technical vocational education background, I have grown into a practical and adaptable developer. My main focus is transforming conventional administration and exam processes into secure, efficient, and sustainable digital systems.",
+    about_resume: "Download Resume",
+    about_location_label: "Location",
+    about_location: "Bandung, Indonesia",
+    about_focus_label: "Focus",
+    about_focus: "Technical & AI Config",
+    about_contact_label: "Contact",
+    about_contact: "0882-0165-94700",
+    case_label: "Case Study",
+    case_title: "From <em>Problem</em> to <em>Solution</em>",
+    case_subtitle: "Transformation of exam processes at SDI Abu Seno — from manual to full automation.",
+    case_problem: "Problem",
+    case_problem_desc: "Teachers manually input questions and grade records. Exams were conducted on Google Forms without question shuffling, without anti-cheat, and without auto-save — taking hours for preparation and grading.",
+    case_solution: "Solution",
+    case_solution_desc: "I built an integrated CBT system with AI Question Generator, 4-level RBAC, real-time anti-cheat, question & answer shuffling, per-click auto-save, automatic grade recap, and centralized admin dashboard.",
+    case_result: "Result",
+    case_result_desc: "The system has been used at SDI Abu Seno since early 2026. Exam preparation to grading time has been significantly reduced. Teachers focus on teaching, students take exams comfortably, and data is neatly stored automatically.",
+    exp_label: "Career",
+    exp_title: "Work <em>Experience</em>",
+    exp_role_admin: "Admin Staff",
+    exp_role_freelance: "Part-time Work",
+    exp_role_operator: "Production Operator",
+    exp_role_admin2: "Administration",
+    exp_role_polish: "Car Detailing",
+    exp_year_1: "2024 — Present",
+    stat_years: "Years Experience",
+    stat_years_desc: "Tech & digital administration",
+    stat_services: "Digital Services",
+    stat_services_desc: "Ready to build for you",
+    stat_bot: "Bot Active",
+    stat_bot_desc: "WhatsApp AI non-stop",
+    stat_certs: "Certifications",
+    stat_certs_desc: "Issued by Anthropic",
+    work_label: "Portfolio",
+    work_title: "Selected <em>Projects</em>",
+    work_subtitle: "Real works that have been built, used, and continuously developed to solve operational problems.",
+    work_vproject_desc: "Service management system with AI Assistant via WhatsApp 24/7. Automates complaint logging, repair status, and invoice generation without manual intervention.",
+    work_visit: "Visit website",
+    work_cbt_title: "Integrated CBT System",
+    work_cbt_desc: "End-to-end digital exam platform for SDI Abu Seno. Powered by AI question generation, smart shuffling, real-time anti-cheat, and integrated grade recap.",
+    work_docs: "View documentation",
+    services_label: "Services",
+    services_title: "What I Can <em>Do</em>",
+    services_subtitle: "Digital solutions I provide to meet organizational and personal technology needs.",
+    svc_web: "Web & Dashboard",
+    svc_web_desc: "Professional websites and admin dashboards with modern, responsive, and high-performance design for business and personal needs.",
+    svc_cbt: "School CBT System",
+    svc_cbt_desc: "Complete web-based computer exam platform with AI, question shuffling, anti-cheat, student data, and integrated grade recap.",
+    svc_wa: "WhatsApp AI 24/7",
+    svc_wa_desc: "Smart WhatsApp bot with AI persona, state management, and automatic escalation to human admin when needed.",
+    svc_portfolio: "Online Portfolio",
+    svc_portfolio_desc: "Elegant digital portfolio to showcase works, experience, and skills with a convincing premium look.",
+    svc_invite: "Digital Invitation",
+    svc_invite_desc: "Interactive digital wedding invitation with aesthetic design, countdown timer, photo gallery, RSVP, and map integration.",
+    demo_label: "Live Demo",
+    demo_title: "CBT <em>System</em>",
+    demo_subtitle: "Explore the computer-based exam interface directly through an interactive demo.",
+    demo_cta: "Open CBT Demo ↗",
+    vproject_label: "Features",
+    vproject_title: "V Project — <em>Business Ecosystem</em>",
+    vproject_subtitle: "Integrated solution for service management and customer automation.",
+    vproject_cs: "Automated Customer Service",
+    vproject_cs_desc: "24/7 customer service via WhatsApp. Common questions, service status, and complaint logging handled by AI in real-time.",
+    vproject_ai: "AI Persona & State",
+    vproject_ai_desc: "Bot has persona and structured conversation flow. State management ensures contextual and consistent responses.",
+    vproject_invoice: "Autonomous Invoice",
+    vproject_invoice_desc: "Invoice generated automatically after service completion based on recorded work data — without manual input.",
+    vproject_lead: "Lead Logging",
+    vproject_lead_desc: "Every potential customer via WhatsApp is automatically logged to spreadsheet — name, number, needs, and contact time.",
+    vproject_dashboard: "Web Dashboard",
+    vproject_dashboard_desc: "Centralized interface to monitor repair status, customer history, and business performance. Clean and responsive.",
+    vproject_escalation: "Smart Escalation",
+    vproject_escalation_desc: "When AI detects questions beyond its capability, conversation is automatically escalated to admin with smooth transition.",
+    cbt_label: "Features",
+    cbt_title: "Complete <em>CBT</em>",
+    cbt_subtitle: "Digital exam platform designed for reliability, security, and user-friendliness.",
+    cbt_ai: "AI Question Generator",
+    cbt_ai_desc: "Teachers specify topic and number of questions — AI immediately generates a ready-to-use multiple choice question bank.",
+    cbt_import: "Bulk Import",
+    cbt_import_desc: "Upload up to 40 questions via Excel. Supports full Unicode — Arabic, Sundanese, Mandarin — without encoding error.",
+    cbt_shuffle: "Smart Shuffling",
+    cbt_shuffle_desc: "Question and answer order shuffled per student, yet the system still knows the correct answer key.",
+    cbt_autosave: "Auto-Save & Navigation",
+    cbt_autosave_desc: "Answers saved automatically. One question per page display with navigation list for review.",
+    cbt_learning: "Learning Corner",
+    cbt_learning_desc: "Learning materials with integrated YouTube videos. Students watch directly within the platform.",
+    cbt_rekap: "Automatic Grade Recap",
+    cbt_rekap_desc: "Scores calculated absolutely and automatically. Recap per exam and subject grade profile.",
+    testi_label: "Testimonials",
+    testi_title: "What <em>Users</em> Say",
+    testi_subtitle: "Experiences of SDI Abu Seno teachers in using the CBT System.",
+    testi_1: "This CBT system greatly helps the exam process at our school. Question shuffling and anti-cheat features make exams fairer and more secure.",
+    testi_role_1: "Teacher at SDI Abu Seno",
+    testi_2: "AI Question Generator saves me a lot of time in composing questions. Just specify the topic, questions are ready to use. The Learning Corner is also very helpful for students.",
+    testi_role_2: "Teacher at SDI Abu Seno",
+    testi_3: "The clean and intuitive interface makes it easy for students to adapt. Auto-save ensures no answers are lost. Exam efficiency has increased significantly.",
+    testi_role_3: "Teacher at SDI Abu Seno",
+    cert_label: "Certifications",
+    cert_title: "Official <em>Recognition</em>",
+    cert_subtitle: "Competencies validated through continuous learning programs.",
+    skills_label: "Skills",
+    skills_title: "Skills & <em>Technologies</em>",
+    skills_subtitle: "Technical competencies for end-to-end digital solutions.",
+    skills_desc: "I master Frontend Development with Tailwind CSS and Vanilla JS, AI & Prompt Engineering for OpenAI/Gemini/Groq integration, RBAC 4-level Security System, Node.js & Automation for WhatsApp bots, as well as IT Support & Networking for infrastructure diagnosis.",
+    skill_frontend: "Frontend",
+    skill_frontend_desc: "Tailwind CSS, Vanilla JS",
+    skill_ai: "AI & Prompt",
+    skill_ai_desc: "OpenAI, Gemini, Groq",
+    skill_security: "Security",
+    skill_security_desc: "RBAC 4 level, anti-cheat",
+    skill_ms: "Microsoft",
+    skill_ms_desc: "Excel, XLSX automation",
+    skill_node: "Node.js",
+    skill_node_desc: "Baileys, WhatsApp bot",
+    skill_it: "IT Support",
+    skill_it_desc: "LAN, remote, diagnosis",
+    contact_label: "Contact",
+    contact_title: "Let's <em>Discuss</em>",
+    contact_subtitle: "Available for projects, collaborations, and technical consultations.",
+    contact_wa_desc: "Quick response for project discussions.",
+    contact_email_desc: "For proposals and formal details.",
+    footer: "Designed by Yoka Gustiyadi · 2026"
+  }
+};
+
+let currentLang = 'id';
+
+function switchLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+
+  // Update html lang attribute
+  document.documentElement.lang = lang;
+
+  // Update all elements with data-key
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.getAttribute('data-key');
+    if (translations[lang][key]) {
+      // Check if content contains HTML tags
+      if (translations[lang][key].includes('<')) {
+        el.innerHTML = translations[lang][key];
+      } else {
+        el.textContent = translations[lang][key];
+      }
+    }
+  });
+
+  // Update active state on buttons
+  document.querySelectorAll('.lang-btn, .mobile-lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+}
+
+// Initialize language
+const savedLang = localStorage.getItem('lang');
+if (savedLang && translations[savedLang]) {
+  switchLang(savedLang);
+}
+
 /* Scroll Reveal */
 const revealEls = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries) => {
