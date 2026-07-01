@@ -1,21 +1,4 @@
 <!DOCTYPE html>
-<!-- 
-  IMAGE PATH FIX FOR VERCEL/GITHUB PAGES:
-  ======================================
-  Your images are referenced as: profiless.png, 09.png, 50.png, etc.
-  Make sure these image files are in the SAME folder as this index.html file.
-
-  If deploying to Vercel:
-  - Place images in the public/ folder at project root
-  - Or keep them next to index.html
-
-  If deploying to GitHub Pages:
-  - Ensure file names match EXACTLY (case-sensitive!)
-  - profiless.png ≠ Profiless.png ≠ profiless.PNG
-
-  Check browser DevTools > Network tab to see which images return 404.
--->
-
 <html lang="id">
 <head>
 <meta charset="UTF-8"/>
@@ -290,8 +273,8 @@ html.dark .stat-item { border-right-color: var(--border); border-bottom-color: v
 html.dark footer { background: var(--bg); border-top-color: var(--border); }
 
 /* Float WA shadow in dark mode */
-html.dark .float-wa { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.15); }
-html.dark .float-wa:hover { box-shadow: 0 6px 24px rgba(37, 211, 102, 0.25); }
+html.dark .float-wa { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.2), 0 0 0 0 rgba(37, 211, 102, 0.3); }
+html.dark .float-wa:hover { box-shadow: 0 8px 30px rgba(37, 211, 102, 0.3), 0 0 0 10px rgba(37, 211, 102, 0.06); }
 
 /* Dark mode CTA button fixes */
 html.dark .nav-links a.nav-cta { background: var(--accent); color: #fff; }
@@ -732,14 +715,67 @@ html.dark .hero-socials a:hover {
 
 /* ── FLOATING WA ──────────────────────────────────────── */
 .float-wa {
-  position: fixed; bottom: 24px; right: 24px; z-index: 500;
-  width: 52px; height: 52px; background: #25D366; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.25); cursor: pointer;
-  transition: all 0.25s ease; text-decoration: none;
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 14px;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  border-radius: 50px;
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35), 0 0 0 0 rgba(37, 211, 102, 0.4);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
 }
-.float-wa:hover { transform: scale(1.08); box-shadow: 0 6px 24px rgba(37, 211, 102, 0.35); }
-.float-wa svg { width: 24px; height: 24px; fill: #fff; }
+.float-wa::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50px;
+  border: 2px solid #25D366;
+  opacity: 0;
+  animation: waPulse 2s ease-out infinite;
+  pointer-events: none;
+}
+.float-wa:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.45), 0 0 0 10px rgba(37, 211, 102, 0.08);
+  padding: 14px 20px 14px 18px;
+  gap: 10px;
+}
+.float-wa svg {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.float-wa:hover svg {
+  transform: scale(1.1) rotate(-5deg);
+}
+.float-wa-label {
+  max-width: 0;
+  opacity: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+.float-wa:hover .float-wa-label {
+  max-width: 100px;
+  opacity: 1;
+}
+@keyframes waPulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
 
 /* ── FOOTER ───────────────────────────────────────────── */
 footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); background: var(--bg); font-family: var(--font-body); }
@@ -819,11 +855,7 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   overflow: hidden;
   border-right: 2px solid var(--accent);
   white-space: nowrap;
-  animation: typing 2s steps(30, end), blink 0.75s step-end infinite;
-}
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+  animation: blink 0.75s step-end infinite;
 }
 @keyframes blink {
   from, to { border-color: transparent; }
@@ -886,19 +918,6 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   transition: stroke 0.2s;
 }
 .back-to-top:hover svg { stroke: #fff; }
-.back-to-top .progress-ring {
-  position: absolute;
-  inset: -3px;
-  transform: rotate(-90deg);
-}
-.back-to-top .progress-ring circle {
-  fill: none;
-  stroke-width: 2;
-  stroke: var(--accent);
-  stroke-dasharray: 157;
-  stroke-dashoffset: 157;
-  transition: stroke-dashoffset 0.1s linear;
-}
 
 
 /* ── TEXT REVEAL ANIMATION ───────────────────────────────── */
@@ -997,44 +1016,6 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 .modal-cta {
   display: inline-flex;
   gap: 8px;
-}
-
-/* ── TOAST NOTIFICATION ──────────────────────────────────── */
-.toast-container {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2000;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.toast {
-  background: var(--text);
-  color: var(--bg);
-  padding: 14px 24px;
-  border-radius: var(--radius);
-  font-size: 14px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transform: translateY(20px);
-  opacity: 0;
-  animation: toastIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-}
-.toast.success { background: #10B981; color: #fff; }
-.toast.error { background: #EF4444; color: #fff; }
-.toast.hide {
-  animation: toastOut 0.3s ease forwards;
-}
-@keyframes toastIn {
-  to { transform: translateY(0); opacity: 1; }
-}
-@keyframes toastOut {
-  to { transform: translateY(20px); opacity: 0; }
 }
 
 /* ── PRELOADER ───────────────────────────────────────────── */
@@ -1845,17 +1826,15 @@ img { opacity: 1 !important; visibility: visible !important; }
 <!-- Floating WhatsApp -->
 <a href="https://wa.me/62882016594700" target="_blank" class="float-wa" aria-label="Chat via WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  <span class="float-wa-label">Chat</span>
 </a>
 
 <!-- Back to Top Button -->
 <button class="back-to-top" id="backToTop" aria-label="Back to top">
-  <svg class="progress-ring" viewBox="0 0 52 52"><circle cx="26" cy="26" r="25"/></svg>
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
 
 
-<!-- Toast Container -->
-<div class="toast-container" id="toastContainer"></div>
 
 <!-- Project Modal 1 - V Project -->
 <div class="project-modal-overlay" id="modal-vproject">
@@ -2671,15 +2650,12 @@ window.addEventListener('DOMContentLoaded', function() {
 })();
 
 // ── TYPEWRITER EFFECT ──────────────────────────────────────
-(function initTypewriter() {
+function initTypewriter() {
   const el = document.getElementById('typewriterText');
   if (!el) return;
   const text = el.textContent;
+  if (!text) return;
   el.textContent = '';
-  el.style.display = 'inline-block';
-  el.style.overflow = 'hidden';
-  el.style.borderRight = '2px solid var(--accent)';
-  el.style.whiteSpace = 'nowrap';
 
   let idx = 0;
   function type() {
@@ -2690,7 +2666,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   }
   setTimeout(type, 500);
-})();
+}
 
 // ── SMOOTH SCROLL ──────────────────────────────────────────
 (function initSmoothScroll() {
@@ -3008,6 +2984,9 @@ if (savedLang && translations[savedLang]) {
   switchLang(savedLang);
 }
 
+// Run typewriter after translations are set
+initTypewriter();
+
 /* Scroll Reveal */
 const revealClasses = ['reveal', 'reveal-scale', 'reveal-left', 'reveal-right'];
 revealClasses.forEach(cls => {
@@ -3179,25 +3158,13 @@ document.querySelectorAll('.stats-row').forEach(el => statsObserver.observe(el))
 // ── BACK TO TOP ────────────────────────────────────────────
 (function initBackToTop() {
   const btn = document.getElementById('backToTop');
-  const progressCircle = btn?.querySelector('.progress-ring circle');
   if (!btn) return;
   
-  const circumference = 2 * Math.PI * 25;
-  
   window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = scrollTop / docHeight;
-    
-    if (scrollTop > 400) {
+    if (window.scrollY > 400) {
       btn.classList.add('visible');
     } else {
       btn.classList.remove('visible');
-    }
-    
-    if (progressCircle) {
-      const offset = circumference - (scrollPercent * circumference);
-      progressCircle.style.strokeDashoffset = offset;
     }
   });
   
@@ -3207,26 +3174,7 @@ document.querySelectorAll('.stats-row').forEach(el => statsObserver.observe(el))
 })();
 
 
-// ── TOAST NOTIFICATION ─────────────────────────────────────
-function showToast(message, type = 'success') {
-  const container = document.getElementById('toastContainer');
-  if (!container) return;
-  
-  const toast = document.createElement('div');
-  toast.className = `toast ${type}`;
-  toast.innerHTML = `
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      ${type === 'success' ? '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>' : '<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>'}
-    </svg>
-    <span>${message}</span>
-  `;
-  container.appendChild(toast);
-  
-  setTimeout(() => {
-    toast.classList.add('hide');
-    setTimeout(() => toast.remove(), 300);
-  }, 3000);
-}
+
 
 // ── PROJECT MODAL ──────────────────────────────────────────
 function openModal(modalId) {
@@ -3296,17 +3244,6 @@ function closeModal(modalId) {
   document.querySelectorAll('.text-reveal').forEach(el => observer.observe(el));
 })();
 
-// ── COPY TO CLIPBOARD WITH TOAST ───────────────────────────
-document.querySelectorAll('.contact-info a').forEach(link => {
-  link.addEventListener('click', (e) => {
-    const text = link.textContent;
-    if (text.includes('@') || text.includes('-')) {
-      navigator.clipboard.writeText(text).then(() => {
-        showToast('Disalin ke clipboard!', 'success');
-      });
-    }
-  });
-});
 
 // FINAL SAFETY: Force all images visible after everything loads
 window.addEventListener('load', function() {
