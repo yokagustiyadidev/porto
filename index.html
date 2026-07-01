@@ -1,4 +1,21 @@
 <!DOCTYPE html>
+<!-- 
+  IMAGE PATH FIX FOR VERCEL/GITHUB PAGES:
+  ======================================
+  Your images are referenced as: profiless.png, 09.png, 50.png, etc.
+  Make sure these image files are in the SAME folder as this index.html file.
+
+  If deploying to Vercel:
+  - Place images in the public/ folder at project root
+  - Or keep them next to index.html
+
+  If deploying to GitHub Pages:
+  - Ensure file names match EXACTLY (case-sensitive!)
+  - profiless.png ≠ Profiless.png ≠ profiless.PNG
+
+  Check browser DevTools > Network tab to see which images return 404.
+-->
+
 <html lang="id">
 <head>
 <meta charset="UTF-8"/>
@@ -139,10 +156,74 @@ html.dark .lang-btn.active {
   display: none;
   align-items: center;
   gap: 8px;
+  margin-left: auto;
+  margin-right: 12px;
 }
+.mobile-theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  padding: 0;
+}
+.mobile-theme-toggle:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent-soft);
+}
+.mobile-theme-toggle svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.mobile-lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+}
+.mobile-lang-switcher .lang-btn {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.mobile-lang-switcher .lang-btn.active {
+  background: var(--text);
+  color: #fff;
+}
+html.dark .mobile-lang-switcher .lang-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
 @media (max-width: 900px) {
   .mobile-controls {
     display: flex;
+  }
+  /* Hide desktop lang switcher and theme toggle in nav-links on mobile */
+  .nav-links .lang-switcher,
+  .nav-links .theme-toggle {
+    display: none;
   }
 }
 
@@ -1396,6 +1477,41 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   font-family: var(--font-desc);
 }
 
+/* Image visibility fix - prevent images from disappearing after animation */
+/* Images should NEVER be hidden by animations */
+img,
+.about-img,
+.work-img-wrap img,
+.cert-img-wrap img,
+.cbt-gallery-item img,
+.modal-image {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+/* Override reveal animation on image containers */
+.reveal img,
+.reveal-scale img,
+.reveal-left img,
+.reveal-right img {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+/* Work image wrap should not hide images */
+.work-img-wrap {
+  overflow: hidden;
+}
+.work-img-wrap img {
+  transition: transform 0.6s ease;
+}
+/* Cert image wrap */
+.cert-img-wrap {
+  overflow: hidden;
+}
+.cert-img-wrap img {
+  transition: transform 0.6s ease;
+}
+
 /* ── RESPONSIVE ───────────────────────────────────────── */
 @media (max-width: 900px) {
   .wrap { padding: 0 24px; }
@@ -1700,6 +1816,16 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   .exp-company { font-size: 18px; }
 }
 
+
+/* FINAL SAFETY: Images must always be visible */
+img { opacity: 1 !important; visibility: visible !important; }
+.reveal img, .reveal-scale img, .reveal-left img, .reveal-right img,
+.work-card img, .service-card img, .feature-card img, .testimonial-card img,
+.skill-item img, .cert-card img, .contact-card img, .cbt-gallery-item img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
 </style>
 <base target="_blank">
 <base target="_blank">
@@ -1798,6 +1924,17 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
       </button>
       <a href="#kontak" class="nav-cta" data-key="nav_contact">Hubungi</a>
     </div>
+    <!-- Mobile controls: theme + lang outside hamburger -->
+    <div class="mobile-controls">
+      <button class="theme-toggle mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <div class="lang-switcher mobile-lang-switcher">
+        <button class="lang-btn active" data-lang="id" onclick="switchLang('id')">ID</button>
+        <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
+      </div>
+    </div>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -1813,16 +1950,6 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   <a href="#work" onclick="closeMobileNav()" data-key="nav_work">Proyek</a>
   <a href="#services" onclick="closeMobileNav()" data-key="nav_services">Layanan</a>
   <a href="#kontak" class="nav-cta-mobile" onclick="closeMobileNav()" data-key="nav_contact">Hubungi</a>
-  <div style="display:flex;gap:12px;align-items:center;margin-top:20px;">
-    <button class="theme-toggle" id="mobileThemeToggle2" aria-label="Toggle dark mode" style="width:40px;height:40px;">
-      <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-      <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-    <div class="lang-switcher" style="padding:4px;">
-      <button class="lang-btn active" data-lang="id" onclick="switchLang('id')">ID</button>
-      <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
-    </div>
-  </div>
 </div>
 
 <!-- Hero Section -->
@@ -2444,6 +2571,23 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
 </footer>
 
 <script>
+
+// Image loading debug + fix
+window.addEventListener('error', function(e) {
+  if (e.target.tagName === 'IMG') {
+    console.error('Image failed to load:', e.target.src);
+    console.error('Expected path relative to:', window.location.href);
+  }
+}, true);
+
+// Force all images visible on DOM ready
+window.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('img').forEach(function(img) {
+    img.style.opacity = '1';
+    img.style.visibility = 'visible';
+  });
+});
+
 // ── CURSOR FOLLOWER ─────────────────────────────────────────
 (function initCursor() {
   const cursor = document.getElementById('cursorFollower');
@@ -2941,6 +3085,10 @@ if (savedTheme) {
 if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
 if (mobileThemeToggle2) mobileThemeToggle2.addEventListener('click', toggleTheme);
 
+// Mobile theme toggle in navbar
+const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+
 /* Scroll Progress Bar */
 const scrollProgress = document.getElementById('scrollProgress');
 window.addEventListener('scroll', () => {
@@ -3158,6 +3306,17 @@ document.querySelectorAll('.contact-info a').forEach(link => {
       });
     }
   });
+});
+
+// FINAL SAFETY: Force all images visible after everything loads
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    document.querySelectorAll('img').forEach(function(img) {
+      img.style.opacity = '1';
+      img.style.visibility = 'visible';
+      img.style.display = 'block';
+    });
+  }, 100);
 });
 </script>
 
