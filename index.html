@@ -1,4 +1,21 @@
 <!DOCTYPE html>
+<!-- 
+  IMAGE PATH FIX FOR VERCEL/GITHUB PAGES:
+  ======================================
+  Your images are referenced as: profiless.png, 09.png, 50.png, etc.
+  Make sure these image files are in the SAME folder as this index.html file.
+
+  If deploying to Vercel:
+  - Place images in the public/ folder at project root
+  - Or keep them next to index.html
+
+  If deploying to GitHub Pages:
+  - Ensure file names match EXACTLY (case-sensitive!)
+  - profiless.png ≠ Profiless.png ≠ profiless.PNG
+
+  Check browser DevTools > Network tab to see which images return 404.
+-->
+
 <html lang="id">
 <head>
 <meta charset="UTF-8"/>
@@ -1090,37 +1107,6 @@ footer { text-align: center; padding: 48px 0; border-top: 1px solid var(--border
   transform: translateX(-50%) translateY(-12px);
 }
 
-/* ── VIDEO PLAY BUTTON ───────────────────────────────────── */
-.video-thumbnail {
-  position: relative;
-  display: block;
-  cursor: pointer;
-}
-.video-play-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-.video-play-btn::before {
-  content: '';
-  border-style: solid;
-  border-width: 10px 0 10px 16px;
-  border-color: transparent transparent transparent #fff;
-  margin-left: 4px;
-}
-.video-thumbnail:hover .video-play-btn {
-  transform: translate(-50%, -50%) scale(1.1);
-  box-shadow: 0 0 0 12px rgba(222,115,86,0.2);
-}
 
 /* ── SVG BREATHING ANIMATION ─────────────────────────────── */
 .breathing {
@@ -2243,13 +2229,11 @@ img { opacity: 1 !important; visibility: visible !important; }
       <a href="https://cbt-demo-yokagustiyadi.vercel.app" target="_blank" class="hero-cta magnetic-btn ripple-btn" style="display: inline-flex; margin-top: 24px;" data-key="demo_cta">Buka Demo CBT ↗</a>
     </div>
     <div class="cbt-gallery" style="margin-top: 56px;">
-      <div class="cbt-gallery-item reveal video-thumbnail" onclick="window.open('https://cbt-demo-yokagustiyadi.vercel.app', '_blank')">
+      <div class="cbt-gallery-item reveal" onclick="window.open('https://cbt-demo-yokagustiyadi.vercel.app', '_blank')">
         <img src="47777.png" alt="CBT Login Page" class="img-zoom" loading="lazy">
-        <div class="video-play-btn breathing"></div>
       </div>
-      <div class="cbt-gallery-item reveal video-thumbnail" onclick="window.open('https://cbt-demo-yokagustiyadi.vercel.app', '_blank')">
+      <div class="cbt-gallery-item reveal" onclick="window.open('https://cbt-demo-yokagustiyadi.vercel.app', '_blank')">
         <img src="47781.png" alt="CBT Exam Interface" class="img-zoom" loading="lazy">
-        <div class="video-play-btn breathing"></div>
       </div>
     </div>
   </div>
