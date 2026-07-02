@@ -692,10 +692,20 @@
         // ── STACKING CARDS SCROLL EFFECT (Desktop only) ──
         if (!_isMobile && _stackSections.length) {
           const vh = window.innerHeight;
-          const SCALE_MIN = 0.90;
+          const SCALE_MIN = 0.92;
 
           // PHASE 1: BATCH READS
           const rectTops = _stackSections.map(s => s.getBoundingClientRect().top);
+
+          // Find which section is currently the "top" card (highest z that has reached its sticky point)
+          let topCardIndex = -1;
+          for (let i = _stackSections.length - 1; i >= 0; i--) {
+            const stickyTop = parseFloat(_stackSections[i].dataset.stickyTop || 0);
+            if (rectTops[i] <= stickyTop + 1) {
+              topCardIndex = i;
+              break;
+            }
+          }
 
           // PHASE 2: BATCH WRITES
           _stackSections.forEach((section, i) => {
@@ -712,23 +722,35 @@
                 let progress = 1 - ((nextRectTop - nextDefaultTop) / totalTravel);
                 progress = Math.max(0, Math.min(1, progress));
 
-                // Smooth easeOutCubic for natural feel
                 const eased = 1 - Math.pow(1 - progress, 3);
 
-                const scale = 1 - eased * (1 - SCALE_MIN);
-                const borderRadius = eased * 28;
-                const opacity = 1 - eased * 0.2;
+                // Only show the section directly behind the top card
+                // Hide all sections that are 2+ layers behind
+                if (i < topCardIndex - 1) {
+                  section.style.transform = `scale(${SCALE_MIN})`;
+                  section.style.opacity = "0";
+                  section.style.visibility = "hidden";
+                } else {
+                  section.style.visibility = "visible";
+                  const scale = 1 - eased * (1 - SCALE_MIN);
+                  const borderRadius = eased * 24;
+                  const opacity = 1 - eased * 0.15;
 
-                section.style.transform = `scale(${scale})`;
-                section.style.borderRadius = `${24 + borderRadius}px ${24 + borderRadius}px 0 0`;
-                section.style.opacity = opacity;
+                  section.style.transform = `scale(${scale})`;
+                  section.style.borderRadius = `${24 + borderRadius}px ${24 + borderRadius}px 0 0`;
+                  section.style.opacity = opacity;
+                }
               } else {
+                // Top-most (current) section
                 section.style.transform = "scale(1)";
                 section.style.opacity = "1";
+                section.style.visibility = "visible";
               }
             } else {
+              // Section hasn't reached sticky point yet
               section.style.transform = "scale(1)";
               section.style.opacity = "1";
+              section.style.visibility = "visible";
               section.style.borderRadius = "24px 24px 0 0";
             }
           });
