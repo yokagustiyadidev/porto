@@ -535,17 +535,19 @@
       initTypewriter();
 
       /* ── STACKING CARD SCROLL ANIMATION ──────────────────────── */
+      let _stackSections = [];
+      let _isMobile = false;
+
       (function initStackingCards() {
         const sections = document.querySelectorAll("section:not(#hero)");
         if (!sections.length) return;
 
-        // Wrap all non-hero sections in a container
         const container = document.createElement("div");
         container.className = "stack-cards";
         const firstSection = sections[0];
         firstSection.parentNode.insertBefore(container, firstSection);
+        
         sections.forEach((section, i) => {
-          // Mark bg-soft sections
           const bg = section.style.background || "";
           if (bg.includes("bg-soft")) {
             section.setAttribute("data-bg", "soft");
@@ -554,78 +556,40 @@
           section.classList.add("stack-card");
           section.style.zIndex = i + 1;
           container.appendChild(section);
+          _stackSections.push(section);
         });
 
-        // Also move footer inside
         const footer = document.querySelector("footer");
         if (footer) container.appendChild(footer);
 
-        const SCALE_MIN = 0.92;
-
         function updateStickyTops() {
+          _isMobile = window.innerWidth <= 768;
           const vh = window.innerHeight;
-          sections.forEach((section, i) => {
+          _stackSections.forEach((section, i) => {
             const h = section.offsetHeight;
             const defaultTop = i * 28;
             let stickyTop = defaultTop;
             
-            // If section is taller than available viewport minus tabs, 
-            // let it scroll normally until its bottom reaches the bottom of the screen.
             if (h > vh - defaultTop) {
               stickyTop = vh - h;
             }
             section.style.top = stickyTop + "px";
             section.dataset.stickyTop = stickyTop;
             section.dataset.defaultTop = defaultTop;
-          });
-        }
-
-        function onScroll() {
-          const vh = window.innerHeight;
-          sections.forEach((section, i) => {
-            const rect = section.getBoundingClientRect();
-            const stickyTop = parseFloat(section.dataset.stickyTop || 0);
-
-            // When the section reaches its sticky point
-            if (rect.top <= stickyTop + 1) {
-              const nextSection = sections[i + 1];
-              if (nextSection) {
-                const nextRect = nextSection.getBoundingClientRect();
-                const nextDefaultTop = parseFloat(nextSection.dataset.defaultTop || 0);
-                
-                // Progress is based on the next section moving from bottom of screen to its default tab position
-                const totalTravel = vh - nextDefaultTop;
-                let progress = 1 - ((nextRect.top - nextDefaultTop) / totalTravel);
-                progress = Math.max(0, Math.min(1, progress));
-
-                const scale = 1 - progress * (1 - SCALE_MIN);
-                const borderRadius = progress * 24;
-
-                section.style.transform = `scale(${scale})`;
-                section.style.borderRadius = `${24 + borderRadius}px ${24 + borderRadius}px 0 0`;
-                section.style.opacity = 1 - progress * 0.15;
-              } else {
-                // Last section
-                section.style.transform = "scale(1)";
-                section.style.opacity = "1";
-              }
-            } else {
-              // Section hasn't reached its sticky point yet
-              section.style.transform = "scale(1)";
+            
+            // Reset styles completely if on mobile
+            if (_isMobile) {
+              section.style.transform = "none";
               section.style.opacity = "1";
-              section.style.borderRadius = `24px 24px 0 0`;
+              section.style.borderRadius = "24px 24px 0 0";
             }
           });
         }
 
-        window.addEventListener("scroll", onScroll, { passive: true });
-        
-        // Use ResizeObserver to automatically update sticky tops if content height changes (e.g. images load, window resize)
         const ro = new ResizeObserver(() => {
           updateStickyTops();
-          onScroll();
         });
-        sections.forEach(s => ro.observe(s));
+        _stackSections.forEach(s => ro.observe(s));
       })();
 
       /* Scroll Reveal (cards & sub-elements — kept for compatibility) */
