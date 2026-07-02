@@ -1003,7 +1003,7 @@
                   ctx.beginPath();
                   ctx.moveTo(stars[i].x, stars[i].y);
                   ctx.lineTo(stars[j].x, stars[j].y);
-                  ctx.strokeStyle = `rgba(222,115,86,${opacity})`;
+                  ctx.strokeStyle = `rgba(194,39,39,${opacity})`;
                   ctx.lineWidth = 0.6;
                   ctx.stroke();
                 }
@@ -1019,7 +1019,7 @@
                 const glow = (1 - dist / 90) * 0.7;
                 ctx.beginPath();
                 ctx.arc(s.x, s.y, s.r * 2.5, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(222,115,86,${glow})`;
+                ctx.fillStyle = `rgba(194,39,39,${glow})`;
                 ctx.fill();
               }
             });
