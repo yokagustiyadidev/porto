@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Instrument_Serif, Merriweather } from "next/font/google";
+import { Geist, Instrument_Serif, Merriweather, VT323 } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -19,6 +19,12 @@ const merriweather = Merriweather({
   variable: "--font-merriweather",
   weight: ["300", "400", "700", "900"],
   style: ["normal", "italic"],
+  subsets: ["latin"],
+});
+
+const vt323 = VT323({
+  variable: "--font-vt323",
+  weight: ["400"],
   subsets: ["latin"],
 });
 
@@ -65,7 +71,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${geistSans.variable} ${instrumentSerif.variable} ${merriweather.variable}`}
+      className={`${geistSans.variable} ${instrumentSerif.variable} ${merriweather.variable} ${vt323.variable}`}
     >
       <body>
         {children}

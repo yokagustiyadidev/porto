@@ -3087,13 +3087,13 @@
       
       .terminal-welcome {
         border: none;
-        color: rgba(255, 255, 255, 0.8);
+        color: rgba(255, 255, 255, 0.85);
         padding: 0;
         align-self: flex-start;
-        font-family: var(--font-head);
-        font-style: italic;
-        font-size: 1.8rem;
-        letter-spacing: 0.05em;
+        font-family: var(--font-vt323), monospace;
+        font-style: normal;
+        font-size: 1.6rem;
+        letter-spacing: 0.15em;
         font-weight: normal;
         opacity: 0;
         animation: welcomeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
