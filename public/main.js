@@ -688,6 +688,51 @@
             p.style.transform = `translateY(${sy * (0.03 + i * 0.015)}px)`;
           });
         }
+
+        // ── STACKING CARDS SCROLL EFFECT (Desktop only) ──
+        if (!_isMobile && _stackSections.length) {
+          const vh = window.innerHeight;
+          const SCALE_MIN = 0.90;
+
+          // PHASE 1: BATCH READS
+          const rectTops = _stackSections.map(s => s.getBoundingClientRect().top);
+
+          // PHASE 2: BATCH WRITES
+          _stackSections.forEach((section, i) => {
+            const stickyTop = parseFloat(section.dataset.stickyTop || 0);
+            const rectTop = rectTops[i];
+
+            if (rectTop <= stickyTop + 1) {
+              const nextSection = _stackSections[i + 1];
+              if (nextSection) {
+                const nextRectTop = rectTops[i + 1];
+                const nextDefaultTop = parseFloat(nextSection.dataset.defaultTop || 0);
+
+                const totalTravel = vh - nextDefaultTop;
+                let progress = 1 - ((nextRectTop - nextDefaultTop) / totalTravel);
+                progress = Math.max(0, Math.min(1, progress));
+
+                // Smooth easeOutCubic for natural feel
+                const eased = 1 - Math.pow(1 - progress, 3);
+
+                const scale = 1 - eased * (1 - SCALE_MIN);
+                const borderRadius = eased * 28;
+                const opacity = 1 - eased * 0.2;
+
+                section.style.transform = `scale(${scale})`;
+                section.style.borderRadius = `${24 + borderRadius}px ${24 + borderRadius}px 0 0`;
+                section.style.opacity = opacity;
+              } else {
+                section.style.transform = "scale(1)";
+                section.style.opacity = "1";
+              }
+            } else {
+              section.style.transform = "scale(1)";
+              section.style.opacity = "1";
+              section.style.borderRadius = "24px 24px 0 0";
+            }
+          });
+        }
       }
 
       window.addEventListener("scroll", () => {

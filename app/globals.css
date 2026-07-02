@@ -454,16 +454,16 @@
         border-radius: 24px 24px 0 0;
         background: var(--bg);
         transform-origin: center top;
-        will-change: transform;
-        transition: box-shadow 0.3s ease;
+        will-change: transform, border-radius, opacity;
+        transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
         overflow: hidden;
-        box-shadow: 0 -4px 30px rgba(0,0,0,0.08);
+        box-shadow: 0 -12px 40px rgba(0,0,0,0.12);
       }
       .stack-card[data-bg="soft"] {
         background: var(--bg-soft);
       }
       html.dark .stack-card {
-        box-shadow: 0 -4px 30px rgba(0,0,0,0.25);
+        box-shadow: 0 -15px 50px rgba(0,0,0,0.5);
       }
 
       /* ── NAVIGATION ───────────────────────────────────────── */
