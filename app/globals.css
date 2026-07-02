@@ -3117,10 +3117,10 @@
            6px 6px 0px rgba(255, 255, 255, 0.3);
       }
       .blocky-text.orange {
-        -webkit-text-stroke: 2px #e58a67;
+        -webkit-text-stroke: 2px #c22727;
         text-shadow: 
-          -1px -1px 0 #e58a67, 1px -1px 0 #e58a67, -1px 1px 0 #e58a67, 1px 1px 0 #e58a67,
-           6px 6px 0px rgba(229, 138, 103, 0.4);
+          -1px -1px 0 #c22727, 1px -1px 0 #c22727, -1px 1px 0 #c22727, 1px 1px 0 #c22727,
+           6px 6px 0px rgba(194, 39, 39, 0.4);
       }
       
       .terminal-subtitle {
