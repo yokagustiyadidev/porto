@@ -1,4 +1,16 @@
 import parse from 'html-react-parser';
+import Image from 'next/image';
+
+const options = {
+  replace: (domNode: any) => {
+    if (domNode.type === 'tag' && domNode.name === 'img') {
+      const { src, alt, class: className } = domNode.attribs;
+      const imgSrc = src.startsWith('/') ? src : `/${src}`;
+      return <Image src={imgSrc} alt={alt || ''} className={className} width={1200} height={800} style={{ width: '100%', height: 'auto' }} />;
+    }
+  }
+};
+
 
 export default function About11() {
   const html = `<section id="about">
@@ -48,5 +60,5 @@ export default function About11() {
         </div>
       </div>
     </section>`;
-  return parse(html);
+  return parse(html, options);
 }

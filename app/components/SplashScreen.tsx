@@ -2,7 +2,7 @@ import parse from 'html-react-parser';
 
 export default function SplashScreen() {
   const html = `<div class="splash-screen" id="splashScreen">
-      <canvas id="splashCanvas"></canvas>
+      <canvas id="splashCanvas" aria-hidden="true"></canvas>
       
       <div class="terminal-window">
         <div class="terminal-header">
