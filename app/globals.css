@@ -3086,8 +3086,8 @@
       }
       
       .terminal-welcome {
-        border: 1px solid #e58a67;
-        color: #e58a67;
+        border: 1px solid #c22727;
+        color: #c22727;
         padding: 10px 16px;
         border-radius: 6px;
         align-self: flex-start;
@@ -3142,8 +3142,8 @@
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        background: #e58a67;
-        color: #111;
+        background: #c22727;
+        color: #fff;
         border: none;
         display: flex;
         align-items: center;
@@ -3151,14 +3151,14 @@
         cursor: pointer;
         transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         position: relative;
-        box-shadow: 0 0 0 0 rgba(229, 138, 103, 0.5);
+        box-shadow: 0 0 0 0 rgba(194, 39, 39, 0.5);
       }
       .splash-next-btn::before {
         content: "";
         position: absolute;
         inset: -8px;
         border-radius: 50%;
-        border: 1px solid rgba(229, 138, 103, 0.4);
+        border: 1px solid rgba(194, 39, 39, 0.4);
         animation: splashPulse 2s ease-out infinite;
       }
       .splash-next-btn:hover {
