@@ -734,7 +734,7 @@
                   section.style.visibility = "visible";
                   const scale = 1 - eased * (1 - SCALE_MIN);
                   const borderRadius = eased * 24;
-                  const opacity = 1 - eased * 0.15;
+                  const opacity = 1;
 
                   section.style.transform = `scale(${scale})`;
                   section.style.borderRadius = `${24 + borderRadius}px ${24 + borderRadius}px 0 0`;
