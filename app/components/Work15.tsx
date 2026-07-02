@@ -14,7 +14,7 @@ export default function Work15() {
           </p>
         </div>
         <div class="work-grid">
-          <div class="work-card reveal" onclick="openModal('modal-vproject')" data-tooltip="Click for details">
+          <div class="work-card reveal" data-onclick="openModal('modal-vproject')" data-tooltip="Click for details">
             <div class="card-accent-border"></div>
             <div class="card-shimmer"></div>
             <span class="card-index">01</span>
@@ -36,7 +36,7 @@ export default function Work15() {
               <span class="work-link" data-key="work_visit">Kunjungi website</span>
             </div>
           </div>
-          <div class="work-card reveal" onclick="openModal('modal-cbt')" data-tooltip="Click for details">
+          <div class="work-card reveal" data-onclick="openModal('modal-cbt')" data-tooltip="Click for details">
             <div class="card-accent-border"></div>
             <div class="card-shimmer"></div>
             <span class="card-index">02</span>

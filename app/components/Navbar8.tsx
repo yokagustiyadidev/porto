@@ -9,10 +9,10 @@ export default function Navbar8() {
           <a href="#work" data-key="nav_work">Proyek</a>
           <a href="#services" data-key="nav_services">Layanan</a>
           <div class="lang-switcher">
-            <button class="lang-btn active" data-lang="id" onclick="switchLang('id')">
+            <button class="lang-btn active" data-lang="id" data-onclick="switchLang('id')">
               ID
             </button>
-            <button class="lang-btn" data-lang="en" onclick="switchLang('en')">
+            <button class="lang-btn" data-lang="en" data-onclick="switchLang('en')">
               EN
             </button>
           </div>
@@ -39,10 +39,10 @@ export default function Navbar8() {
             </svg>
           </button>
           <div class="lang-switcher mobile-lang-switcher">
-            <button class="lang-btn active" data-lang="id" onclick="switchLang('id')">
+            <button class="lang-btn active" data-lang="id" data-onclick="switchLang('id')">
               ID
             </button>
-            <button class="lang-btn" data-lang="en" onclick="switchLang('en')">
+            <button class="lang-btn" data-lang="en" data-onclick="switchLang('en')">
               EN
             </button>
           </div>

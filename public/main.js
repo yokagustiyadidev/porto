@@ -1098,3 +1098,33 @@
         }
       })();
     
+      // -- BIND DATA-ONCLICK ---------------------------
+      (function bindDataOnclick() {
+        const attach = () => {
+          document.querySelectorAll('[data-onclick]').forEach(el => {
+            if (!el.dataset.clickBound) {
+              el.addEventListener('click', function() {
+                try {
+                  const code = this.getAttribute('data-onclick');
+                  if (code) {
+                    const func = new Function(code);
+                    func.call(this);
+                  }
+                } catch(e) { console.error('Error executing data-onclick', e); }
+              });
+              el.dataset.clickBound = 'true';
+            }
+          });
+        };
+        
+        if (document.readyState === 'complete') attach();
+        else window.addEventListener("load", attach);
+        
+        // Setup observer for dynamic elements
+        const observer = new MutationObserver(mutations => {
+          mutations.forEach(mut => {
+            if (mut.addedNodes.length) attach();
+          });
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+      })();

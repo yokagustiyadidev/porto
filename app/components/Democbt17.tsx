@@ -13,12 +13,12 @@ export default function Democbt17() {
           <a href="https://cbt-demo-yokagustiyadi.vercel.app" target="_blank" class="hero-cta magnetic-btn ripple-btn" style="display: inline-flex; margin-top: 24px" data-key="demo_cta">Buka Demo CBT ↗</a>
         </div>
         <div class="cbt-gallery" style="margin-top: 56px">
-          <div class="cbt-gallery-item reveal" onclick="
+          <div class="cbt-gallery-item reveal" data-onclick="
               window.open('https://cbt-demo-yokagustiyadi.vercel.app', '_blank')
             ">
             <img src="47777.png" alt="CBT Login Page" class="img-zoom" loading="lazy">
           </div>
-          <div class="cbt-gallery-item reveal" onclick="
+          <div class="cbt-gallery-item reveal" data-onclick="
               window.open('https://cbt-demo-yokagustiyadi.vercel.app', '_blank')
             ">
             <img src="47781.png" alt="CBT Exam Interface" class="img-zoom" loading="lazy">
