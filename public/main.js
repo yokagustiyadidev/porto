@@ -537,15 +537,16 @@
       /* ── STACKING CARD SCROLL ANIMATION ──────────────────────── */
       let _stackSections = [];
       let _isMobile = false;
+      let _containerEl = null;
 
       (function initStackingCards() {
         const sections = document.querySelectorAll("section:not(#hero)");
         if (!sections.length) return;
 
-        const container = document.createElement("div");
-        container.className = "stack-cards";
+        _containerEl = document.createElement("div");
+        _containerEl.className = "stack-cards";
         const firstSection = sections[0];
-        firstSection.parentNode.insertBefore(container, firstSection);
+        firstSection.parentNode.insertBefore(_containerEl, firstSection);
         
         sections.forEach((section, i) => {
           const bg = section.style.background || "";
@@ -555,16 +556,17 @@
           }
           section.classList.add("stack-card");
           section.style.zIndex = i + 1;
-          container.appendChild(section);
+          _containerEl.appendChild(section);
           _stackSections.push(section);
         });
 
         const footer = document.querySelector("footer");
-        if (footer) container.appendChild(footer);
+        if (footer) _containerEl.appendChild(footer);
 
         function updateStickyTops() {
           _isMobile = window.innerWidth <= 768;
           const vh = window.innerHeight;
+          let layoutTop = _containerEl.offsetTop;
           _stackSections.forEach((section, i) => {
             const h = section.offsetHeight;
             const defaultTop = i * 28;
@@ -576,6 +578,8 @@
             section.style.top = stickyTop + "px";
             section.dataset.stickyTop = stickyTop;
             section.dataset.defaultTop = defaultTop;
+            section.dataset.layoutTop = layoutTop;
+            layoutTop += h;
             
             // Reset styles completely if on mobile
             if (_isMobile) {
@@ -586,10 +590,18 @@
           });
         }
 
+        // Initial setup
+        updateStickyTops();
+
         const ro = new ResizeObserver(() => {
           updateStickyTops();
         });
         _stackSections.forEach(s => ro.observe(s));
+        
+        // Also update on window resize
+        window.addEventListener("resize", () => {
+          updateStickyTops();
+        }, { passive: true });
       })();
 
       /* Scroll Reveal (cards & sub-elements — kept for compatibility) */
@@ -693,69 +705,74 @@
         if (!_isMobile && _stackSections.length) {
           const vh = window.innerHeight;
           const SCALE_MIN = 0.92;
+          const EPSILON = 1;
 
           // PHASE 1: BATCH READS
-          const rectTops = _stackSections.map(s => s.getBoundingClientRect().top);
+          // Use layout positions instead of getBoundingClientRect().top here.
+          // getBoundingClientRect includes the transform we write below, which
+          // feeds back into the sticky calculation and makes sections shake.
+          const rectData = _stackSections.map(s => ({
+            top: parseFloat(s.dataset.layoutTop || 0) - sy,
+          }));
 
-          // Find which section is currently the "top" card (highest z that has reached its sticky point)
+          // Find which section is currently the "top" card
           let topCardIndex = -1;
           for (let i = _stackSections.length - 1; i >= 0; i--) {
             const stickyTop = parseFloat(_stackSections[i].dataset.stickyTop || 0);
-            if (rectTops[i] <= stickyTop + 1) {
+            if (rectData[i].top <= stickyTop + EPSILON) {
               topCardIndex = i;
               break;
             }
           }
 
-          // PHASE 2: BATCH WRITES
+          // PHASE 2: BATCH WRITES (semua style writes di satu tempat, terpisah dari reads)
           _stackSections.forEach((section, i) => {
             const stickyTop = parseFloat(section.dataset.stickyTop || 0);
-            const rectTop = rectTops[i];
+            const rectTop = rectData[i].top;
+            
+            const isStuck = rectTop <= stickyTop + EPSILON;
 
-            if (rectTop <= stickyTop + 1) {
+            if (isStuck) {
               const nextSection = _stackSections[i + 1];
               if (nextSection) {
-                const nextRectTop = rectTops[i + 1];
+                const nextRectTop = rectData[i + 1].top;
                 const nextDefaultTop = parseFloat(nextSection.dataset.defaultTop || 0);
 
                 const totalTravel = vh - nextDefaultTop;
+                
+                // CRITICAL FIX #2: Clamp progress ke [0, 1] untuk mencegah overshoot
                 let progress = 1 - ((nextRectTop - nextDefaultTop) / totalTravel);
                 progress = Math.max(0, Math.min(1, progress));
 
+                // Easing untuk smooth animation
                 const eased = 1 - Math.pow(1 - progress, 3);
 
-                // Only show the section directly behind the top card
-                // Hide all sections that are 5+ layers behind for performance
+                // Hide sections yang jauh di belakang untuk performa
                 if (i < topCardIndex - 4) {
                   section.style.transform = `scale(${SCALE_MIN})`;
                   section.style.opacity = "0";
                   section.style.visibility = "hidden";
                 } else {
                   section.style.visibility = "visible";
-                  const scale = 1 - eased * (1 - SCALE_MIN);
-                  const borderRadius = eased * 24;
-                  const opacity = 1;
                   
-                  // Optimized for 1366x768 resolution
-                  // Increased offset for better stacking visibility
-                  const offsetDown = eased * Math.max(38, vh * 0.055);
+                  // CRITICAL FIX #3: Pastikan scale dan offset tidak overshoot
+                  const scale = Math.max(SCALE_MIN, Math.min(1, 1 - eased * (1 - SCALE_MIN)));
+                  const maxOffset = Math.max(38, vh * 0.055);
+                  const offsetDown = Math.max(0, Math.min(maxOffset, eased * maxOffset));
 
-                  section.style.transform = `scale(${scale}) translateY(${offsetDown}px)`;
-                  section.style.borderRadius = `${24 + borderRadius}px ${24 + borderRadius}px 0 0`;
-                  section.style.opacity = opacity;
+                  section.style.transform = `translate3d(0, ${offsetDown}px, 0) scale(${scale})`;
+                  section.style.opacity = "1";
                 }
               } else {
-                // Top-most (current) section
-                section.style.transform = "scale(1) translateY(0)";
+                // Top-most (current) section - reset ke state awal
+                section.style.transform = "translate3d(0, 0, 0) scale(1)";
                 section.style.opacity = "1";
                 section.style.visibility = "visible";
               }
             } else {
-              // Section hasn't reached sticky point yet
-              section.style.transform = "scale(1)";
+              section.style.transform = "translate3d(0, 0, 0) scale(1)";
               section.style.opacity = "1";
               section.style.visibility = "visible";
-              section.style.borderRadius = "24px 24px 0 0";
             }
           });
         }
