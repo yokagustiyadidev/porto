@@ -21,8 +21,8 @@ import Fiturcbt19 from './components/Fiturcbt19';
 import Testimoni20 from './components/Testimoni20';
 import Sertifikat21 from './components/Sertifikat21';
 import Skills22 from './components/Skills22';
-import Kontak23 from './components/Kontak23';
 import Footer24 from './components/Footer24';
+import ThankYou25 from './components/ThankYou25';
 
 export default function Home() {
   return (
@@ -50,7 +50,7 @@ export default function Home() {
       <Testimoni20 />
       <Sertifikat21 />
       <Skills22 />
-      <Kontak23 />
+      <ThankYou25 />
       <Footer24 />
     </>
   );

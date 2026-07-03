@@ -1028,6 +1028,26 @@
 
         document.body.style.overflow = "hidden";
 
+        // Break the title into animated fragments so it can assemble smoothly.
+        splash.querySelectorAll(".blocky-text").forEach((word, wordIndex) => {
+          if (word.dataset.fragmented) return;
+          const text = word.textContent || "";
+          word.setAttribute("aria-label", text);
+          word.textContent = "";
+          text.split("").forEach((char, charIndex) => {
+            const span = document.createElement("span");
+            span.className = "splash-letter";
+            span.textContent = char;
+            span.style.setProperty("--letter-delay", `${0.55 + wordIndex * 0.18 + charIndex * 0.055}s`);
+            span.style.setProperty("--scatter-x", `${(charIndex - (text.length - 1) / 2) * 20}px`);
+            span.style.setProperty("--scatter-y", `${wordIndex === 0 ? -34 : 34}px`);
+            span.style.setProperty("--scatter-rotate", `${(charIndex % 2 === 0 ? -1 : 1) * (12 + charIndex * 3)}deg`);
+            word.appendChild(span);
+          });
+          word.dataset.fragmented = "true";
+        });
+        requestAnimationFrame(() => splash.classList.add("splash-ready"));
+
         // --- Constellation canvas ---
         if (canvas) {
           const ctx = canvas.getContext("2d");
