@@ -725,8 +725,8 @@
                 const eased = 1 - Math.pow(1 - progress, 3);
 
                 // Only show the section directly behind the top card
-                // Hide all sections that are 2+ layers behind
-                if (i < topCardIndex - 1) {
+                // Hide all sections that are 5+ layers behind for performance
+                if (i < topCardIndex - 4) {
                   section.style.transform = `scale(${SCALE_MIN})`;
                   section.style.opacity = "0";
                   section.style.visibility = "hidden";
@@ -735,14 +735,18 @@
                   const scale = 1 - eased * (1 - SCALE_MIN);
                   const borderRadius = eased * 24;
                   const opacity = 1;
+                  
+                  // Optimized for 1366x768 resolution
+                  // Increased offset for better stacking visibility
+                  const offsetDown = eased * Math.max(38, vh * 0.055);
 
-                  section.style.transform = `scale(${scale})`;
+                  section.style.transform = `scale(${scale}) translateY(${offsetDown}px)`;
                   section.style.borderRadius = `${24 + borderRadius}px ${24 + borderRadius}px 0 0`;
                   section.style.opacity = opacity;
                 }
               } else {
                 // Top-most (current) section
-                section.style.transform = "scale(1)";
+                section.style.transform = "scale(1) translateY(0)";
                 section.style.opacity = "1";
                 section.style.visibility = "visible";
               }
