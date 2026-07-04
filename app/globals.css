@@ -85,30 +85,29 @@
           0 8px 32px rgba(194, 39, 39, 0.12);
       }
 
-      html,
-      body,
+      html {
+        transition: background-color 0.3s ease;
+      }
+      
+      body {
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
       .work-card,
       .service-card,
       .feature-card,
       .testimonial-card,
       .skill-item,
       .cert-card,
-      .contact-card,
-      .about-img,
-      .cbt-gallery-item,
-      .float-wa,
-      .mobile-nav-close,
-      .nav-logo,
+      .contact-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        will-change: transform;
+      }
+      
       .nav-links a,
       .hero-cta,
-      .work-link,
-      .about-links a,
-      .contact-info a {
-        transition:
-          background-color 0.35s ease,
-          color 0.35s ease,
-          border-color 0.35s ease,
-          box-shadow 0.35s ease;
+      .about-links a {
+        transition: color 0.2s ease, transform 0.2s ease;
       }
 
       /* Language Switcher */

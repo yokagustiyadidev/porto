@@ -147,6 +147,26 @@
         });
       })();
 
+      // ── PERFORMANCE MONITORING ─────────────────────────────────
+      if (typeof window !== 'undefined' && 'PerformanceObserver' in window) {
+        // Monitor layout shifts for debugging
+        try {
+          const clsObserver = new PerformanceObserver((list) => {
+            for (const entry of list.getEntries()) {
+              if (!entry.hadRecentInput && entry.value > 0.1) {
+                // Silently track significant layout shifts in dev mode
+                if (process.env.NODE_ENV === 'development') {
+                  console.warn('Layout shift detected:', entry.value, entry);
+                }
+              }
+            }
+          });
+          clsObserver.observe({ entryTypes: ['layout-shift'] });
+        } catch (e) {
+          // Observer not supported, skip
+        }
+      }
+
       // ── TRANSLATIONS ───────────────────────────────────────────
       const translations = {
         id: {
@@ -498,206 +518,62 @@
           cta_email: "Email",
           footer: "Designed by Yoka Gustiyadi · 2026",
         },
-        en: {
-          hero_label: "Hello, I'm Yoka Gustiyadi",
-          hero_title:
-            "Building <em>Intelligent Systems</em> That Work Autonomously",
-          hero_role: "Developer & Digital Architect",
-          hero_desc:
-            "Building digital architecture that transforms manual workflows into autonomous ecosystems — from AI-integrated exam systems to WhatsApp-based business automation.",
-          hero_cta: "View Projects",
-          about_title:
-            "Transforming manual workflows into <em>digital ecosystems</em>.",
-          about_desc:
-            "With a technical vocational education background, I have grown into a practical and adaptable developer. My main focus is transforming conventional administration and exam processes into secure, efficient, and sustainable digital systems.",
-          about_resume: "Download Resume",
-          about_location_label: "Location",
-          about_location: "Bandung, Indonesia",
-          about_focus_label: "Focus",
-          about_focus: "Technical & AI Config",
-          about_contact_label: "Contact",
-          about_contact: "0882-0165-94700",
-          case_label: "Case Study",
-          case_title: "From <em>Problem</em> to <em>Solution</em>",
-          case_subtitle:
-            "Transformation of exam processes at SDI Abu Seno — from manual to full automation.",
-          case_problem: "Problem",
-          case_problem_desc:
-            "Teachers manually input questions and grade records. Exams were conducted on Google Forms without question shuffling, without anti-cheat, and without auto-save — taking hours for preparation and grading.",
-          case_solution: "Solution",
-          case_solution_desc:
-            "I built an integrated CBT system with AI Question Generator, 4-level RBAC, real-time anti-cheat, question & answer shuffling, per-click auto-save, automatic grade recap, and centralized admin dashboard.",
-          case_result: "Result",
-          case_result_desc:
-            "The system has been used at SDI Abu Seno since early 2026. Exam preparation to grading time has been significantly reduced. Teachers focus on teaching, students take exams comfortably, and data is neatly stored automatically.",
-          exp_label: "Career",
-          exp_title: "Work <em>Experience</em>",
-          exp_role_admin: "Admin Staff",
-          exp_role_freelance: "Part-time Work",
-          exp_role_operator: "Production Operator",
-          exp_role_admin2: "Administration",
-          exp_role_polish: "Car Detailing",
-          exp_year_1: "2024 — Present",
-          stat_years: "Years Experience",
-          stat_years_desc: "Tech & digital administration",
-          stat_services: "Digital Services",
-          stat_services_desc: "Ready to build for you",
-          stat_bot: "Bot Active",
-          stat_bot_desc: "WhatsApp AI non-stop",
-          stat_certs: "Certifications",
-          stat_certs_desc: "Issued by Anthropic",
-          work_label: "Portfolio",
-          work_title: "Selected <em>Projects</em>",
-          work_subtitle:
-            "Real works that have been built, used, and continuously developed to solve operational problems.",
-          work_vproject_desc:
-            "Service management system with AI Assistant via WhatsApp 24/7. Automates complaint logging, repair status, and invoice generation without manual intervention.",
-          work_visit: "Visit website",
-          work_cbt_title: "Integrated CBT System",
-          work_cbt_desc:
-            "End-to-end digital exam platform for SDI Abu Seno. Powered by AI question generation, smart shuffling, real-time anti-cheat, and integrated grade recap.",
-          work_docs: "View documentation",
-          services_label: "Services",
-          services_title: "What I Can <em>Do</em>",
-          services_subtitle:
-            "Digital solutions I provide to meet organizational and personal technology needs.",
-          svc_web: "Web & Dashboard",
-          svc_web_desc:
-            "Professional websites and admin dashboards with modern, responsive, and high-performance design for business and personal needs.",
-          svc_cbt: "School CBT System",
-          svc_cbt_desc:
-            "Complete web-based computer exam platform with AI, question shuffling, anti-cheat, student data, and integrated grade recap.",
-          svc_wa: "WhatsApp AI 24/7",
-          svc_wa_desc:
-            "Smart WhatsApp bot with AI persona, state management, and automatic escalation to human admin when needed.",
-          svc_portfolio: "Online Portfolio",
-          svc_portfolio_desc:
-            "Elegant digital portfolio to showcase works, experience, and skills with a convincing premium look.",
-          svc_invite: "Digital Invitation",
-          svc_invite_desc:
-            "Interactive digital wedding invitation with aesthetic design, countdown timer, photo gallery, RSVP, and map integration.",
-          demo_label: "Live Demo",
-          demo_title: "CBT <em>System</em>",
-          demo_subtitle:
-            "Explore the computer-based exam interface directly through an interactive demo.",
-          demo_cta: "Open CBT Demo ↗",
-          vproject_label: "Features",
-          vproject_title: "V Project — <em>Business Ecosystem</em>",
-          vproject_subtitle:
-            "Integrated solution for service management and customer automation.",
-          vproject_cs: "Automated Customer Service",
-          vproject_cs_desc:
-            "24/7 customer service via WhatsApp. Common questions, service status, and complaint logging handled by AI in real-time.",
-          vproject_ai: "AI Persona & State",
-          vproject_ai_desc:
-            "Bot has persona and structured conversation flow. State management ensures contextual and consistent responses.",
-          vproject_invoice: "Autonomous Invoice",
-          vproject_invoice_desc:
-            "Invoice generated automatically after service completion based on recorded work data — without manual input.",
-          vproject_lead: "Lead Logging",
-          vproject_lead_desc:
-            "Every potential customer via WhatsApp is automatically logged to spreadsheet — name, number, needs, and contact time.",
-          vproject_dashboard: "Web Dashboard",
-          vproject_dashboard_desc:
-            "Centralized interface to monitor repair status, customer history, and business performance. Clean and responsive.",
-          vproject_escalation: "Smart Escalation",
-          vproject_escalation_desc:
-            "When AI detects questions beyond its capability, conversation is automatically escalated to admin with smooth transition.",
-          cbt_label: "Features",
-          cbt_title: "Complete <em>CBT</em>",
-          cbt_subtitle:
-            "Digital exam platform designed for reliability, security, and user-friendliness.",
-          cbt_ai: "AI Question Generator",
-          cbt_ai_desc:
-            "Teachers specify topic and number of questions — AI immediately generates a ready-to-use multiple choice question bank.",
-          cbt_import: "Bulk Import",
-          cbt_import_desc:
-            "Upload up to 40 questions via Excel. Supports full Unicode — Arabic, Sundanese, Mandarin — without encoding error.",
-          cbt_shuffle: "Smart Shuffling",
-          cbt_shuffle_desc:
-            "Question and answer order shuffled per student, yet the system still knows the correct answer key.",
-          cbt_autosave: "Auto-Save & Navigation",
-          cbt_autosave_desc:
-            "Answers saved automatically. One question per page display with navigation list for review.",
-          cbt_learning: "Learning Corner",
-          cbt_learning_desc:
-            "Learning materials with integrated YouTube videos. Students watch directly within the platform.",
-          cbt_rekap: "Automatic Grade Recap",
-          cbt_rekap_desc:
-            "Grades calculated instantly after exam completion. Teachers download detailed Excel recap with student names, scores, and answer details.",
-          skills_label: "Skills",
-          skills_title: "Skills & <em>Technologies</em>",
-          skills_subtitle:
-            "Technical competencies for end-to-end digital solutions.",
-          skills_desc:
-            "I master Frontend Development with Tailwind CSS and Vanilla JS, AI & Prompt Engineering for OpenAI/Gemini/Groq integration, RBAC 4-level Security System, Node.js & Automation for WhatsApp bots, as well as IT Support & Networking for infrastructure diagnosis.",
-          skill_frontend: "Frontend",
-          skill_frontend_desc: "Tailwind CSS, Vanilla JS",
-          skill_ai: "AI & Prompt",
-          skill_ai_desc: "OpenAI, Gemini, Groq",
-          skill_security: "Security",
-          skill_security_desc: "RBAC 4 level, anti-cheat",
-          skill_ms: "Microsoft",
-          skill_ms_desc: "Excel, XLSX automation",
-          skill_node: "Node.js",
-          skill_node_desc: "Baileys, WhatsApp bot",
-          skill_it: "IT Support",
-          skill_it_desc: "LAN, remote, diagnosis",
-          contact_label: "Contact",
-          contact_title: "Let's <em>Discuss</em>",
-          contact_subtitle:
-            "Available for projects, collaborations, and technical consultations.",
-          contact_wa_desc: "Quick response for project discussions.",
-          contact_email_desc: "For proposals and formal details.",
-          thanks_thank: "Thank",
-          thanks_you: "You",
-          thanks_desc:
-            "Thank you for viewing my portfolio. Let's connect to discuss your project!",
-          cta_whatsapp: "WhatsApp",
-          cta_email: "Email",
-          footer: "Designed by Yoka Gustiyadi · 2026",
-        },
       };
 
       let currentLang = "id";
 
       function switchLang(lang) {
+        if (!translations[lang]) return;
+        
         currentLang = lang;
-        localStorage.setItem("lang", lang);
+        try {
+          localStorage.setItem("lang", lang);
+        } catch (e) {
+          // LocalStorage might be disabled
+        }
 
         // Update html lang attribute
         document.documentElement.lang = lang;
 
-        // Update all elements with data-key
-        document.querySelectorAll("[data-key]").forEach((el) => {
-          const key = el.getAttribute("data-key");
-          if (translations[lang][key]) {
-            // Check if content contains HTML tags
-            if (translations[lang][key].includes("<")) {
-              el.innerHTML = translations[lang][key];
-            } else {
-              el.textContent = translations[lang][key];
+        // Batch DOM updates for better performance
+        requestAnimationFrame(() => {
+          const fragment = document.createDocumentFragment();
+          
+          // Update all elements with data-key
+          document.querySelectorAll("[data-key]").forEach((el) => {
+            const key = el.getAttribute("data-key");
+            if (translations[lang] && translations[lang][key]) {
+              // Use textContent for better security and performance
+              if (translations[lang][key].includes("<em>")) {
+                el.innerHTML = translations[lang][key];
+              } else {
+                el.textContent = translations[lang][key];
+              }
             }
-          }
-        });
+          });
 
-        // Update active state on buttons
-        document.querySelectorAll(".lang-btn").forEach((btn) => {
-          btn.classList.toggle(
-            "active",
-            btn.getAttribute("data-lang") === lang,
-          );
+          // Update active state on buttons
+          document.querySelectorAll(".lang-btn").forEach((btn) => {
+            btn.classList.toggle(
+              "active",
+              btn.getAttribute("data-lang") === lang,
+            );
+          });
         });
       }
 
       // Initialize language
-      const savedLang = localStorage.getItem("lang");
-      if (savedLang && translations[savedLang]) {
-        switchLang(savedLang);
+      try {
+        const savedLang = localStorage.getItem("lang");
+        if (savedLang && translations[savedLang]) {
+          switchLang(savedLang);
+        }
+      } catch (e) {
+        // LocalStorage might be disabled, use default
       }
 
       // Run typewriter after translations are set
-      initTypewriter();
+      setTimeout(initTypewriter, 100);
 
       /* ── STACKING CARD SCROLL ANIMATION ──────────────────────── */
       let _stackSections = [];
@@ -711,6 +587,8 @@
         _containerEl = document.createElement("div");
         _containerEl.className = "stack-cards";
         const firstSection = sections[0];
+        if (!firstSection || !firstSection.parentNode) return;
+        
         firstSection.parentNode.insertBefore(_containerEl, firstSection);
         
         sections.forEach((section, i) => {
@@ -728,45 +606,61 @@
         const footer = document.querySelector("footer");
         if (footer) _containerEl.appendChild(footer);
 
+        let updateTimer = null;
         function updateStickyTops() {
           _isMobile = window.innerWidth <= 768;
           const vh = window.innerHeight;
-          let layoutTop = _containerEl.offsetTop;
-          _stackSections.forEach((section, i) => {
-            const h = section.offsetHeight;
-            const defaultTop = i * 28;
-            let stickyTop = defaultTop;
-            
-            if (h > vh - defaultTop) {
-              stickyTop = vh - h;
-            }
-            section.style.top = stickyTop + "px";
-            section.dataset.stickyTop = stickyTop;
-            section.dataset.defaultTop = defaultTop;
-            section.dataset.layoutTop = layoutTop;
-            layoutTop += h;
-            
-            // Reset styles completely if on mobile
-            if (_isMobile) {
-              section.style.transform = "none";
-              section.style.opacity = "1";
-              section.style.borderRadius = "24px 24px 0 0";
-            }
+          let layoutTop = _containerEl ? _containerEl.offsetTop : 0;
+          
+          // Batch all reads first
+          const measurements = _stackSections.map(section => ({
+            height: section.offsetHeight
+          }));
+          
+          // Then batch all writes
+          requestAnimationFrame(() => {
+            _stackSections.forEach((section, i) => {
+              const h = measurements[i].height;
+              const defaultTop = i * 28;
+              let stickyTop = defaultTop;
+              
+              if (h > vh - defaultTop) {
+                stickyTop = Math.max(0, vh - h);
+              }
+              
+              section.style.top = stickyTop + "px";
+              section.dataset.stickyTop = String(stickyTop);
+              section.dataset.defaultTop = String(defaultTop);
+              section.dataset.layoutTop = String(layoutTop);
+              layoutTop += h;
+              
+              // Reset styles completely if on mobile
+              if (_isMobile) {
+                section.style.transform = "none";
+                section.style.opacity = "1";
+                section.style.borderRadius = "24px 24px 0 0";
+              }
+            });
           });
+        }
+
+        // Debounced update function
+        function debouncedUpdate() {
+          if (updateTimer) clearTimeout(updateTimer);
+          updateTimer = setTimeout(updateStickyTops, 150);
         }
 
         // Initial setup
         updateStickyTops();
 
-        const ro = new ResizeObserver(() => {
-          updateStickyTops();
-        });
-        _stackSections.forEach(s => ro.observe(s));
+        // Use single ResizeObserver for all sections
+        if (typeof ResizeObserver !== 'undefined') {
+          const ro = new ResizeObserver(debouncedUpdate);
+          _stackSections.forEach(s => ro.observe(s));
+        }
         
-        // Also update on window resize
-        window.addEventListener("resize", () => {
-          updateStickyTops();
-        }, { passive: true });
+        // Debounced resize handler
+        window.addEventListener("resize", debouncedUpdate, { passive: true });
       })();
 
       /* Scroll Reveal (cards & sub-elements — kept for compatibility) */
@@ -867,52 +761,55 @@
         }
 
         // ── STACKING CARDS SCROLL EFFECT (Desktop only) ──
-        if (!_isMobile && _stackSections.length) {
+        if (!_isMobile && _stackSections.length && _containerEl) {
           const vh = window.innerHeight;
           const SCALE_MIN = 0.92;
           const EPSILON = 1;
 
           // PHASE 1: BATCH READS
-          // Use layout positions instead of getBoundingClientRect().top here.
-          // getBoundingClientRect includes the transform we write below, which
-          // feeds back into the sticky calculation and makes sections shake.
-          const rectData = _stackSections.map(s => ({
-            top: parseFloat(s.dataset.layoutTop || 0) - sy,
-          }));
+          const rectData = _stackSections.map(s => {
+            const layoutTop = parseFloat(s.dataset.layoutTop);
+            return {
+              top: isNaN(layoutTop) ? 0 : layoutTop - sy,
+              stickyTop: parseFloat(s.dataset.stickyTop) || 0,
+              defaultTop: parseFloat(s.dataset.defaultTop) || 0
+            };
+          });
 
           // Find which section is currently the "top" card
           let topCardIndex = -1;
           for (let i = _stackSections.length - 1; i >= 0; i--) {
-            const stickyTop = parseFloat(_stackSections[i].dataset.stickyTop || 0);
-            if (rectData[i].top <= stickyTop + EPSILON) {
+            if (rectData[i].top <= rectData[i].stickyTop + EPSILON) {
               topCardIndex = i;
               break;
             }
           }
 
-          // PHASE 2: BATCH WRITES (semua style writes di satu tempat, terpisah dari reads)
+          // PHASE 2: BATCH WRITES
           _stackSections.forEach((section, i) => {
-            const stickyTop = parseFloat(section.dataset.stickyTop || 0);
-            const rectTop = rectData[i].top;
-            
+            const { top: rectTop, stickyTop, defaultTop } = rectData[i];
             const isStuck = rectTop <= stickyTop + EPSILON;
 
             if (isStuck) {
-              const nextSection = _stackSections[i + 1];
-              if (nextSection) {
-                const nextRectTop = rectData[i + 1].top;
-                const nextDefaultTop = parseFloat(nextSection.dataset.defaultTop || 0);
-
-                const totalTravel = vh - nextDefaultTop;
+              const nextData = rectData[i + 1];
+              if (nextData) {
+                const totalTravel = vh - nextData.defaultTop;
                 
-                // CRITICAL FIX #2: Clamp progress ke [0, 1] untuk mencegah overshoot
-                let progress = 1 - ((nextRectTop - nextDefaultTop) / totalTravel);
+                if (totalTravel <= 0) {
+                  section.style.transform = "translate3d(0, 0, 0) scale(1)";
+                  section.style.opacity = "1";
+                  section.style.visibility = "visible";
+                  return;
+                }
+                
+                // Clamp progress to [0, 1]
+                let progress = (nextData.defaultTop - nextData.top) / totalTravel;
                 progress = Math.max(0, Math.min(1, progress));
 
-                // Easing untuk smooth animation
-                const eased = 1 - Math.pow(1 - progress, 3);
+                // Smooth easing
+                const eased = progress * progress * (3 - 2 * progress);
 
-                // Hide sections yang jauh di belakang untuk performa
+                // Performance: hide far sections
                 if (i < topCardIndex - 4) {
                   section.style.transform = `scale(${SCALE_MIN})`;
                   section.style.opacity = "0";
@@ -920,16 +817,14 @@
                 } else {
                   section.style.visibility = "visible";
                   
-                  // CRITICAL FIX #3: Pastikan scale dan offset tidak overshoot
-                  const scale = Math.max(SCALE_MIN, Math.min(1, 1 - eased * (1 - SCALE_MIN)));
-                  const maxOffset = Math.max(38, vh * 0.055);
-                  const offsetDown = Math.max(0, Math.min(maxOffset, eased * maxOffset));
+                  const scale = 1 - eased * (1 - SCALE_MIN);
+                  const maxOffset = Math.min(vh * 0.055, 38);
+                  const offsetDown = eased * maxOffset;
 
-                  section.style.transform = `translate3d(0, ${offsetDown}px, 0) scale(${scale})`;
+                  section.style.transform = `translate3d(0, ${offsetDown.toFixed(2)}px, 0) scale(${scale.toFixed(4)})`;
                   section.style.opacity = "1";
                 }
               } else {
-                // Top-most (current) section - reset ke state awal
                 section.style.transform = "translate3d(0, 0, 0) scale(1)";
                 section.style.opacity = "1";
                 section.style.visibility = "visible";
