@@ -469,19 +469,20 @@
         -webkit-backface-visibility: hidden;
       }
       
-      /* On mobile: keep stacking but adjust top position for full content visibility */
+      /* On mobile: disable sticky to allow full content scroll */
       @media (max-width: 768px) {
         .stack-cards {
-          perspective: 1500px;
-          perspective-origin: center top;
+          /* Remove stacking context on mobile */
         }
         
         .stack-card {
-          position: sticky;
-          /* Lower top value on mobile so content isn't cut off */
-          top: 60px !important;
+          position: relative !important;
+          top: auto !important;
+          transform: none !important;
+          opacity: 1 !important;
           overflow: visible;
           border-radius: 24px 24px 0 0;
+          margin-bottom: 0;
         }
       }
       .stack-card[data-bg="soft"] {
