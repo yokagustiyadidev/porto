@@ -675,10 +675,8 @@
               section.dataset.layoutTop = String(layoutTop);
               layoutTop += h;
               
-              // Reset styles completely if on mobile
+              // Keep border radius on mobile but allow animations
               if (_isMobile) {
-                section.style.transform = "none";
-                section.style.opacity = "1";
                 section.style.borderRadius = "24px 24px 0 0";
               }
             });
@@ -801,8 +799,8 @@
           });
         }
 
-        // ── STACKING CARDS SCROLL EFFECT (Desktop only) ──
-        if (!_isMobile && _stackSections.length && _containerEl) {
+        // ── STACKING CARDS SCROLL EFFECT ──
+        if (_stackSections.length && _containerEl) {
           const vh = window.innerHeight;
           const SCALE_MIN = 0.92;
           const EPSILON = 1;
