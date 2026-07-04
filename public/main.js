@@ -705,7 +705,7 @@
       let _containerEl = null;
 
       (function initStackingCards() {
-        const sections = document.querySelectorAll("section:not(#hero)");
+        const sections = document.querySelectorAll("section:not(#hero):not(#thank-you)");
         if (!sections.length) return;
 
         _containerEl = document.createElement("div");

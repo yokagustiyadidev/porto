@@ -475,6 +475,16 @@
       html.dark .stack-card {
         box-shadow: 0 -15px 50px rgba(0,0,0,0.5);
       }
+      
+      /* Exclude thank-you section from stacking animation */
+      .thank-you-section.stack-card {
+        position: relative !important;
+        top: auto !important;
+        transform: none !important;
+        opacity: 1 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+      }
 
       /* ── NAVIGATION ───────────────────────────────────────── */
       nav {
@@ -1559,6 +1569,8 @@
       .thank-you-section {
         position: relative;
         height: 100vh;
+        min-height: 100vh;
+        max-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1566,6 +1578,7 @@
         overflow: hidden;
         padding: 0;
         margin: 0;
+        flex-shrink: 0;
       }
 
       .thank-you-splash {
