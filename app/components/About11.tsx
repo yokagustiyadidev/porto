@@ -36,6 +36,7 @@ export default function About11() {
                   <polyline points="7 10 12 15 17 10"></polyline>
                   <line x1="12" y1="15" x2="12" y2="3"></line>
                 </svg>
+                <span data-key="about_resume">Lihat CV</span>
               </a>
               <a href="https://www.linkedin.com/in/yoka-gustiyadi" target="_blank" class="magnetic-btn" aria-label="LinkedIn">
                 <svg class="icon-outline" viewBox="0 0 24 24">
@@ -43,6 +44,7 @@ export default function About11() {
                   <rect x="2" y="9" width="4" height="12"></rect>
                   <circle cx="4" cy="4" r="2"></circle>
                 </svg>
+                <span data-key="about_linkedin">LinkedIn</span>
               </a>
             </div>
             <div class="about-meta">

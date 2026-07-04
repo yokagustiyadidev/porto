@@ -217,6 +217,7 @@
           about_desc:
             "Berlatar belakang pendidikan teknis SMK, saya berkembang menjadi pengembang yang praktis dan cepat beradaptasi. Fokus utama saya adalah mentransformasi proses administrasi dan ujian konvensional menjadi sistem digital yang aman, efisien, dan berkelanjutan.",
           about_resume: "Lihat CV",
+          about_linkedin: "LinkedIn",
           about_location_label: "Lokasi",
           about_location: "Bandung, Indonesia",
           about_focus_label: "Fokus",
@@ -394,6 +395,7 @@
           about_desc:
             "With a technical vocational education background, I have grown into a practical and adaptable developer. My main focus is transforming conventional administration and exam processes into secure, efficient, and sustainable digital systems.",
           about_resume: "Download Resume",
+          about_linkedin: "LinkedIn",
           about_location_label: "Location",
           about_location: "Bandung, Indonesia",
           about_focus_label: "Focus",
