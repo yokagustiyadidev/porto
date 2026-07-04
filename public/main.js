@@ -142,7 +142,40 @@
             const target = document.querySelector(this.getAttribute("href"));
             if (!target) return;
             e.preventDefault();
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            
+            // Close mobile nav immediately for instant feedback
+            const mobileNav = document.getElementById("mobileNav");
+            const hamburger = document.getElementById("hamburger");
+            if (mobileNav && mobileNav.classList.contains("active")) {
+              mobileNav.classList.remove("active");
+              hamburger.classList.remove("active");
+              hamburger.setAttribute("aria-expanded", "false");
+              document.body.style.overflow = "";
+            }
+            
+            // Fast custom smooth scroll (400ms instead of default ~1000ms)
+            const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+            const startPosition = window.scrollY;
+            const distance = targetPosition - startPosition;
+            const duration = 400; // Fast scroll duration
+            let start = null;
+            
+            function animation(currentTime) {
+              if (start === null) start = currentTime;
+              const timeElapsed = currentTime - start;
+              const progress = Math.min(timeElapsed / duration, 1);
+              
+              // Ease out cubic for smooth deceleration
+              const ease = 1 - Math.pow(1 - progress, 3);
+              
+              window.scrollTo(0, startPosition + distance * ease);
+              
+              if (timeElapsed < duration) {
+                requestAnimationFrame(animation);
+              }
+            }
+            
+            requestAnimationFrame(animation);
           });
         });
       })();
