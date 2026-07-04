@@ -468,6 +468,18 @@
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
       }
+      
+      /* Disable stacking effect on mobile */
+      @media (max-width: 768px) {
+        .stack-card {
+          position: relative !important;
+          top: auto !important;
+          transform: none !important;
+          opacity: 1 !important;
+          margin-bottom: 0;
+          box-shadow: none;
+        }
+      }
       .stack-card[data-bg="soft"] {
         background: var(--bg-soft);
       }
