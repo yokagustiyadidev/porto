@@ -5,8 +5,8 @@ export default function ThankYou25() {
       <div class="thank-you-splash">
         <div class="thank-you-content reveal-scale">
           <h1 class="thank-you-heading">
-            <span class="thank-you-text">Thank</span>
-            <em class="thank-you-accent">You</em>
+            <span class="thank-you-text" data-key="thanks_thank">Thank</span>
+            <em class="thank-you-accent" data-key="thanks_you">You</em>
           </h1>
           <p class="thank-you-description" data-key="thanks_desc">
             Terima kasih telah melihat portfolio saya. Mari terhubung untuk membahas proyek Anda!

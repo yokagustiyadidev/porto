@@ -490,6 +490,171 @@
             "Available for projects, collaborations, and technical consultations.",
           contact_wa_desc: "Quick response for project discussions.",
           contact_email_desc: "For proposals and formal details.",
+          thanks_thank: "Terima",
+          thanks_you: "Kasih",
+          thanks_desc:
+            "Terima kasih telah melihat portfolio saya. Mari terhubung untuk membahas proyek Anda!",
+          cta_whatsapp: "WhatsApp",
+          cta_email: "Email",
+          footer: "Designed by Yoka Gustiyadi · 2026",
+        },
+        en: {
+          hero_label: "Hello, I'm Yoka Gustiyadi",
+          hero_title:
+            "Building <em>Intelligent Systems</em> That Work Autonomously",
+          hero_role: "Developer & Digital Architect",
+          hero_desc:
+            "Building digital architecture that transforms manual workflows into autonomous ecosystems — from AI-integrated exam systems to WhatsApp-based business automation.",
+          hero_cta: "View Projects",
+          about_title:
+            "Transforming manual workflows into <em>digital ecosystems</em>.",
+          about_desc:
+            "With a technical vocational education background, I have grown into a practical and adaptable developer. My main focus is transforming conventional administration and exam processes into secure, efficient, and sustainable digital systems.",
+          about_resume: "Download Resume",
+          about_location_label: "Location",
+          about_location: "Bandung, Indonesia",
+          about_focus_label: "Focus",
+          about_focus: "Technical & AI Config",
+          about_contact_label: "Contact",
+          about_contact: "0882-0165-94700",
+          case_label: "Case Study",
+          case_title: "From <em>Problem</em> to <em>Solution</em>",
+          case_subtitle:
+            "Transformation of exam processes at SDI Abu Seno — from manual to full automation.",
+          case_problem: "Problem",
+          case_problem_desc:
+            "Teachers manually input questions and grade records. Exams were conducted on Google Forms without question shuffling, without anti-cheat, and without auto-save — taking hours for preparation and grading.",
+          case_solution: "Solution",
+          case_solution_desc:
+            "I built an integrated CBT system with AI Question Generator, 4-level RBAC, real-time anti-cheat, question & answer shuffling, per-click auto-save, automatic grade recap, and centralized admin dashboard.",
+          case_result: "Result",
+          case_result_desc:
+            "The system has been used at SDI Abu Seno since early 2026. Exam preparation to grading time has been significantly reduced. Teachers focus on teaching, students take exams comfortably, and data is neatly stored automatically.",
+          exp_label: "Career",
+          exp_title: "Work <em>Experience</em>",
+          exp_role_admin: "Admin Staff",
+          exp_role_freelance: "Part-time Work",
+          exp_role_operator: "Production Operator",
+          exp_role_admin2: "Administration",
+          exp_role_polish: "Car Detailing",
+          exp_year_1: "2024 — Present",
+          stat_years: "Years Experience",
+          stat_years_desc: "Tech & digital administration",
+          stat_services: "Digital Services",
+          stat_services_desc: "Ready to build for you",
+          stat_bot: "Bot Active",
+          stat_bot_desc: "WhatsApp AI non-stop",
+          stat_certs: "Certifications",
+          stat_certs_desc: "Issued by Anthropic",
+          work_label: "Portfolio",
+          work_title: "Selected <em>Projects</em>",
+          work_subtitle:
+            "Real works that have been built, used, and continuously developed to solve operational problems.",
+          work_vproject_desc:
+            "Service management system with AI Assistant via WhatsApp 24/7. Automates complaint logging, repair status, and invoice generation without manual intervention.",
+          work_visit: "Visit website",
+          work_cbt_title: "Integrated CBT System",
+          work_cbt_desc:
+            "End-to-end digital exam platform for SDI Abu Seno. Powered by AI question generation, smart shuffling, real-time anti-cheat, and integrated grade recap.",
+          work_docs: "View documentation",
+          services_label: "Services",
+          services_title: "What I Can <em>Do</em>",
+          services_subtitle:
+            "Digital solutions I provide to meet organizational and personal technology needs.",
+          svc_web: "Web & Dashboard",
+          svc_web_desc:
+            "Professional websites and admin dashboards with modern, responsive, and high-performance design for business and personal needs.",
+          svc_cbt: "School CBT System",
+          svc_cbt_desc:
+            "Complete web-based computer exam platform with AI, question shuffling, anti-cheat, student data, and integrated grade recap.",
+          svc_wa: "WhatsApp AI 24/7",
+          svc_wa_desc:
+            "Smart WhatsApp bot with AI persona, state management, and automatic escalation to human admin when needed.",
+          svc_portfolio: "Online Portfolio",
+          svc_portfolio_desc:
+            "Elegant digital portfolio to showcase works, experience, and skills with a convincing premium look.",
+          svc_invite: "Digital Invitation",
+          svc_invite_desc:
+            "Interactive digital wedding invitation with aesthetic design, countdown timer, photo gallery, RSVP, and map integration.",
+          demo_label: "Live Demo",
+          demo_title: "CBT <em>System</em>",
+          demo_subtitle:
+            "Explore the computer-based exam interface directly through an interactive demo.",
+          demo_cta: "Open CBT Demo ↗",
+          vproject_label: "Features",
+          vproject_title: "V Project — <em>Business Ecosystem</em>",
+          vproject_subtitle:
+            "Integrated solution for service management and customer automation.",
+          vproject_cs: "Automated Customer Service",
+          vproject_cs_desc:
+            "24/7 customer service via WhatsApp. Common questions, service status, and complaint logging handled by AI in real-time.",
+          vproject_ai: "AI Persona & State",
+          vproject_ai_desc:
+            "Bot has persona and structured conversation flow. State management ensures contextual and consistent responses.",
+          vproject_invoice: "Autonomous Invoice",
+          vproject_invoice_desc:
+            "Invoice generated automatically after service completion based on recorded work data — without manual input.",
+          vproject_lead: "Lead Logging",
+          vproject_lead_desc:
+            "Every potential customer via WhatsApp is automatically logged to spreadsheet — name, number, needs, and contact time.",
+          vproject_dashboard: "Web Dashboard",
+          vproject_dashboard_desc:
+            "Centralized interface to monitor repair status, customer history, and business performance. Clean and responsive.",
+          vproject_escalation: "Smart Escalation",
+          vproject_escalation_desc:
+            "When AI detects questions beyond its capability, conversation is automatically escalated to admin with smooth transition.",
+          cbt_label: "Features",
+          cbt_title: "Complete <em>CBT</em>",
+          cbt_subtitle:
+            "Digital exam platform designed for reliability, security, and user-friendliness.",
+          cbt_ai: "AI Question Generator",
+          cbt_ai_desc:
+            "Teachers specify topic and number of questions — AI immediately generates a ready-to-use multiple choice question bank.",
+          cbt_import: "Bulk Import",
+          cbt_import_desc:
+            "Upload up to 40 questions via Excel. Supports full Unicode — Arabic, Sundanese, Mandarin — without encoding error.",
+          cbt_shuffle: "Smart Shuffling",
+          cbt_shuffle_desc:
+            "Question and answer order shuffled per student, yet the system still knows the correct answer key.",
+          cbt_autosave: "Auto-Save & Navigation",
+          cbt_autosave_desc:
+            "Answers saved automatically. One question per page display with navigation list for review.",
+          cbt_learning: "Learning Corner",
+          cbt_learning_desc:
+            "Learning materials with integrated YouTube videos. Students watch directly within the platform.",
+          cbt_rekap: "Automatic Grade Recap",
+          cbt_rekap_desc:
+            "Grades calculated instantly after exam completion. Teachers download detailed Excel recap with student names, scores, and answer details.",
+          skills_label: "Skills",
+          skills_title: "Skills & <em>Technologies</em>",
+          skills_subtitle:
+            "Technical competencies for end-to-end digital solutions.",
+          skills_desc:
+            "I master Frontend Development with Tailwind CSS and Vanilla JS, AI & Prompt Engineering for OpenAI/Gemini/Groq integration, RBAC 4-level Security System, Node.js & Automation for WhatsApp bots, as well as IT Support & Networking for infrastructure diagnosis.",
+          skill_frontend: "Frontend",
+          skill_frontend_desc: "Tailwind CSS, Vanilla JS",
+          skill_ai: "AI & Prompt",
+          skill_ai_desc: "OpenAI, Gemini, Groq",
+          skill_security: "Security",
+          skill_security_desc: "RBAC 4 level, anti-cheat",
+          skill_ms: "Microsoft",
+          skill_ms_desc: "Excel, XLSX automation",
+          skill_node: "Node.js",
+          skill_node_desc: "Baileys, WhatsApp bot",
+          skill_it: "IT Support",
+          skill_it_desc: "LAN, remote, diagnosis",
+          contact_label: "Contact",
+          contact_title: "Let's <em>Discuss</em>",
+          contact_subtitle:
+            "Available for projects, collaborations, and technical consultations.",
+          contact_wa_desc: "Quick response for project discussions.",
+          contact_email_desc: "For proposals and formal details.",
+          thanks_thank: "Thank",
+          thanks_you: "You",
+          thanks_desc:
+            "Thank you for viewing my portfolio. Let's connect to discuss your project!",
+          cta_whatsapp: "WhatsApp",
+          cta_email: "Email",
           footer: "Designed by Yoka Gustiyadi · 2026",
         },
       };

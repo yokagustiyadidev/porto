@@ -1558,13 +1558,14 @@
       /* ── THANK YOU SECTION ───────────────────────────────── */
       .thank-you-section {
         position: relative;
-        min-height: 100vh;
+        height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
         background: var(--bg);
         overflow: hidden;
         padding: 0;
+        margin: 0;
       }
 
       .thank-you-splash {
