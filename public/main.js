@@ -799,8 +799,8 @@
           });
         }
 
-        // ── STACKING CARDS SCROLL EFFECT (Desktop only) ──
-        if (!_isMobile && _stackSections.length && _containerEl) {
+        // ── STACKING CARDS SCROLL EFFECT ──
+        if (_stackSections.length && _containerEl) {
           const vh = window.innerHeight;
           const SCALE_MIN = 0.92;
           const EPSILON = 1;
