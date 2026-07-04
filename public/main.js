@@ -338,6 +338,12 @@
             "Tersedia untuk proyek, kolaborasi, dan konsultasi teknis.",
           contact_wa_desc: "Respons cepat untuk diskusi proyek.",
           contact_email_desc: "Untuk penawaran dan detail formal.",
+          thanks_thank: "Terima",
+          thanks_you: "Kasih",
+          thanks_desc:
+            "Terima kasih telah melihat portfolio saya. Mari terhubung untuk membahas proyek Anda!",
+          cta_whatsapp: "WhatsApp",
+          cta_email: "Email",
           footer: "Dirancang oleh Yoka Gustiyadi · 2026",
         },
         en: {
@@ -510,10 +516,10 @@
             "Available for projects, collaborations, and technical consultations.",
           contact_wa_desc: "Quick response for project discussions.",
           contact_email_desc: "For proposals and formal details.",
-          thanks_thank: "Terima",
-          thanks_you: "Kasih",
+          thanks_thank: "Thank",
+          thanks_you: "You",
           thanks_desc:
-            "Terima kasih telah melihat portfolio saya. Mari terhubung untuk membahas proyek Anda!",
+            "Thank you for viewing my portfolio. Let's connect to discuss your project!",
           cta_whatsapp: "WhatsApp",
           cta_email: "Email",
           footer: "Designed by Yoka Gustiyadi · 2026",
