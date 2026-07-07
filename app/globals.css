@@ -3272,12 +3272,15 @@
         justify-content: center;
         padding: 60px;
         position: relative;
+        z-index: 1;
       }
 
       .splash-content {
         max-width: 500px;
         width: 100%;
         animation: contentFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        position: relative;
+        z-index: 2;
       }
 
       .splash-logo {
@@ -3355,6 +3358,8 @@
         cursor: pointer;
         transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         position: relative;
+        z-index: 10;
+        pointer-events: auto;
       }
 
       .splash-next-btn::before {
@@ -3364,6 +3369,7 @@
         border-radius: 50%;
         border: 2px solid rgba(230, 57, 70, 0.3);
         animation: splashPulse 2s ease-out infinite;
+        pointer-events: none;
       }
 
       .splash-next-btn:hover {
@@ -3381,6 +3387,7 @@
         height: 22px;
         transition: all 0.3s ease;
         flex-shrink: 0;
+        pointer-events: none;
       }
 
       /* Right Side - Artwork */
@@ -3447,17 +3454,25 @@
         }
 
         .splash-left {
-          flex: none;
+          flex: 1;
           width: 100%;
-          height: 50%;
-          padding: 40px;
+          height: auto;
+          min-height: 50vh;
+          padding: 40px 30px;
+          justify-content: flex-start;
+          padding-top: 80px;
         }
 
         .splash-right {
-          flex: none;
+          flex: 1;
           width: 100%;
-          height: 50%;
+          height: auto;
+          min-height: 50vh;
           padding: 0;
+        }
+
+        .splash-content {
+          max-width: 100%;
         }
 
         .splash-logo {
@@ -3469,6 +3484,10 @@
           font-size: 20px;
         }
 
+        .splash-creator {
+          margin-bottom: 30px;
+        }
+
         .splash-artwork {
           border-radius: 0;
         }
@@ -3476,20 +3495,30 @@
 
       @media (max-width: 640px) {
         .splash-left {
-          padding: 30px;
+          padding: 60px 24px 40px;
+          min-height: 55vh;
         }
 
         .splash-right {
-          padding: 0;
+          min-height: 45vh;
         }
 
         .splash-logo {
           font-size: 2rem;
+          margin-bottom: 16px;
         }
 
         .splash-divider {
           width: 50px;
           margin-bottom: 20px;
+        }
+
+        .splash-creator {
+          margin-bottom: 24px;
+        }
+
+        .creator-label {
+          font-size: 11px;
         }
 
         .creator-name {
@@ -3498,6 +3527,36 @@
 
         .splash-copyright {
           font-size: 11px;
+          margin-bottom: 8px;
+        }
+
+        .splash-hint {
+          font-size: 11px;
+          margin-bottom: 24px;
+        }
+
+        .splash-next-btn {
+          width: 50px;
+          height: 50px;
+        }
+
+        .splash-next-btn svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .splash-left {
+          padding: 50px 20px 30px;
+        }
+
+        .splash-logo {
+          font-size: 1.75rem;
+        }
+
+        .creator-name {
+          font-size: 16px;
         }
       }
 
