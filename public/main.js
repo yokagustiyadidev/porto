@@ -1113,7 +1113,7 @@
         window.addEventListener("load", showImages, { once: true, passive: true });
       }
 
-      // ── SPLASH SCREEN LOGIC + CONSTELLATION ────────────────────
+      // ── SPLASH SCREEN LOGIC ────────────────────────────────────
       (function initSplashScreen() {
         if ('scrollRestoration' in history) {
           history.scrollRestoration = 'manual';
@@ -1122,148 +1122,42 @@
 
         const splash = document.getElementById("splashScreen");
         const nextBtn = document.getElementById("splashNextBtn");
-        const canvas = document.getElementById("splashCanvas");
+        
         if (!splash) return;
 
+        // Lock scroll while splash is visible
         document.body.style.overflow = "hidden";
 
-        // Break the title into animated fragments so it can assemble smoothly.
-        splash.querySelectorAll(".blocky-text").forEach((word, wordIndex) => {
-          if (word.dataset.fragmented) return;
-          const text = word.textContent || "";
-          word.setAttribute("aria-label", text);
-          word.textContent = "";
-          text.split("").forEach((char, charIndex) => {
-            const span = document.createElement("span");
-            span.className = "splash-letter";
-            span.textContent = char;
-            span.style.setProperty("--letter-delay", `${0.55 + wordIndex * 0.18 + charIndex * 0.055}s`);
-            span.style.setProperty("--scatter-x", `${(charIndex - (text.length - 1) / 2) * 20}px`);
-            span.style.setProperty("--scatter-y", `${wordIndex === 0 ? -34 : 34}px`);
-            span.style.setProperty("--scatter-rotate", `${(charIndex % 2 === 0 ? -1 : 1) * (12 + charIndex * 3)}deg`);
-            word.appendChild(span);
-          });
-          word.dataset.fragmented = "true";
-        });
-        requestAnimationFrame(() => splash.classList.add("splash-ready"));
-
-        // --- Constellation canvas ---
-        if (canvas) {
-          const ctx = canvas.getContext("2d");
-          let W, H, stars, animFrame;
-          const STAR_COUNT = 140;
-          const MAX_DIST = 130;
-          let mouse = { x: -9999, y: -9999 };
-
-          function resize() {
-            W = canvas.width = canvas.offsetWidth;
-            H = canvas.height = canvas.offsetHeight;
-          }
-
-          function mkStar() {
-            return {
-              x: Math.random() * W,
-              y: Math.random() * H,
-              r: Math.random() * 1.6 + 0.3,
-              vx: (Math.random() - 0.5) * 0.18,
-              vy: (Math.random() - 0.5) * 0.18,
-              alpha: Math.random() * 0.5 + 0.4,
-              twinkleSpeed: Math.random() * 0.012 + 0.004,
-              twinklePhase: Math.random() * Math.PI * 2,
-            };
-          }
-
-          function init() {
-            resize();
-            stars = Array.from({ length: STAR_COUNT }, mkStar);
-          }
-
-          function draw(ts) {
-            ctx.clearRect(0, 0, W, H);
-
-            // Update + draw stars
-            stars.forEach((s) => {
-              s.x += s.vx;
-              s.y += s.vy;
-              if (s.x < 0) s.x = W;
-              if (s.x > W) s.x = 0;
-              if (s.y < 0) s.y = H;
-              if (s.y > H) s.y = 0;
-
-              s.twinklePhase += s.twinkleSpeed;
-              const a = s.alpha * (0.7 + 0.3 * Math.sin(s.twinklePhase));
-
-              ctx.beginPath();
-              ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-              ctx.fillStyle = `rgba(255,255,255,${a})`;
-              ctx.fill();
-            });
-
-            // Draw constellation lines
-            for (let i = 0; i < stars.length; i++) {
-              for (let j = i + 1; j < stars.length; j++) {
-                const dx = stars[i].x - stars[j].x;
-                const dy = stars[i].y - stars[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < MAX_DIST) {
-                  const opacity = (1 - dist / MAX_DIST) * 0.18;
-                  ctx.beginPath();
-                  ctx.moveTo(stars[i].x, stars[i].y);
-                  ctx.lineTo(stars[j].x, stars[j].y);
-                  ctx.strokeStyle = `rgba(194,39,39,${opacity})`;
-                  ctx.lineWidth = 0.6;
-                  ctx.stroke();
-                }
-              }
-            }
-
-            // Mouse proximity glow
-            stars.forEach((s) => {
-              const dx = s.x - mouse.x,
-                dy = s.y - mouse.y;
-              const dist = Math.sqrt(dx * dx + dy * dy);
-              if (dist < 90) {
-                const glow = (1 - dist / 90) * 0.7;
-                ctx.beginPath();
-                ctx.arc(s.x, s.y, s.r * 2.5, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(194,39,39,${glow})`;
-                ctx.fill();
-              }
-            });
-
-            animFrame = requestAnimationFrame(draw);
-          }
-
-          window.addEventListener("resize", () => {
-            resize();
-          });
-          splash.addEventListener("mousemove", (e) => {
-            const rect = canvas.getBoundingClientRect();
-            mouse.x = e.clientX - rect.left;
-            mouse.y = e.clientY - rect.top;
-          });
-          splash.addEventListener("mouseleave", () => {
-            mouse.x = -9999;
-            mouse.y = -9999;
-          });
-
-          init();
-          animFrame = requestAnimationFrame(draw);
-
-          // Stop animation when splash hides
-          splash.addEventListener("transitionend", () => {
-            if (splash.classList.contains("hidden")) {
-              cancelAnimationFrame(animFrame);
-            }
-          });
-        }
-
-        // --- Next button ---
+        // Next button click handler
         if (nextBtn) {
-          nextBtn.addEventListener("click", () => {
+          nextBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Splash next button clicked'); // Debug log
+            
             splash.classList.add("hidden");
+            
             setTimeout(() => {
               document.body.style.overflow = "";
+              if (splash.parentNode) {
+                splash.remove();
+              }
+            }, 900);
+          });
+
+          // Also add touch event for mobile
+          nextBtn.addEventListener("touchend", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Splash next button touched'); // Debug log
+            
+            splash.classList.add("hidden");
+            
+            setTimeout(() => {
+              document.body.style.overflow = "";
+              if (splash.parentNode) {
+                splash.remove();
+              }
             }, 900);
           });
         }
