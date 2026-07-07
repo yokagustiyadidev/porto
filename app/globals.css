@@ -3325,19 +3325,12 @@
       }
 
       .splash-copyright {
-        font-size: 12px;
-        color: #666;
-        line-height: 1.6;
-        margin-bottom: 20px;
-        font-family: var(--font-body);
-      }
-
-      .splash-info {
         font-size: 13px;
-        color: #999;
+        color: #888;
+        line-height: 1.6;
         margin-bottom: 30px;
         font-family: var(--font-body);
-        font-style: italic;
+        letter-spacing: 0.02em;
       }
 
       .splash-next-btn {

@@ -10,8 +10,7 @@ export default function SplashScreen() {
             <div class="creator-label">Created by</div>
             <div class="creator-name">Yoka Gustiyadi</div>
           </div>
-          <div class="splash-copyright">©2026 Yoka. All rights reserved<br/>For more details and legal notices, go to<br/>the About Portfolio section</div>
-          <div class="splash-info">Initializing...</div>
+          <div class="splash-copyright">© 2026 Yoka Gustiyadi — All Rights Reserved</div>
           <button class="splash-next-btn" id="splashNextBtn" aria-label="Enter Portfolio">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
