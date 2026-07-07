@@ -1123,44 +1123,69 @@
         const splash = document.getElementById("splashScreen");
         const nextBtn = document.getElementById("splashNextBtn");
         
-        if (!splash) return;
+        if (!splash) {
+          console.log('Splash screen not found');
+          return;
+        }
+
+        if (!nextBtn) {
+          console.log('Splash button not found');
+          return;
+        }
+
+        console.log('Splash screen initialized', { splash, nextBtn });
 
         // Lock scroll while splash is visible
         document.body.style.overflow = "hidden";
 
-        // Next button click handler
-        if (nextBtn) {
-          nextBtn.addEventListener("click", function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('Splash next button clicked'); // Debug log
-            
-            splash.classList.add("hidden");
-            
-            setTimeout(() => {
-              document.body.style.overflow = "";
-              if (splash.parentNode) {
-                splash.remove();
-              }
-            }, 900);
-          });
-
-          // Also add touch event for mobile
-          nextBtn.addEventListener("touchend", function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('Splash next button touched'); // Debug log
-            
-            splash.classList.add("hidden");
-            
-            setTimeout(() => {
-              document.body.style.overflow = "";
-              if (splash.parentNode) {
-                splash.remove();
-              }
-            }, 900);
-          });
+        // Function to hide splash
+        function hideSplash() {
+          console.log('Hiding splash screen...');
+          splash.classList.add("hidden");
+          
+          setTimeout(() => {
+            document.body.style.overflow = "";
+            if (splash.parentNode) {
+              splash.remove();
+              console.log('Splash screen removed');
+            }
+          }, 900);
         }
+
+        // Multiple event listeners for maximum compatibility
+        nextBtn.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log('Button clicked');
+          hideSplash();
+        }, { passive: false });
+
+        nextBtn.addEventListener("touchstart", function(e) {
+          e.preventDefault();
+          console.log('Button touched (touchstart)');
+          hideSplash();
+        }, { passive: false });
+
+        nextBtn.addEventListener("pointerdown", function(e) {
+          e.preventDefault();
+          console.log('Button pressed (pointerdown)');
+          hideSplash();
+        }, { passive: false });
+
+        // Fallback: Click anywhere on splash to close
+        splash.addEventListener("click", function(e) {
+          if (e.target === splash || e.target.closest('.splash-left')) {
+            console.log('Splash area clicked');
+            hideSplash();
+          }
+        });
+
+        // Debug: Log button style
+        console.log('Button styles:', {
+          zIndex: window.getComputedStyle(nextBtn).zIndex,
+          pointerEvents: window.getComputedStyle(nextBtn).pointerEvents,
+          position: window.getComputedStyle(nextBtn).position
+        });
       })();
     
       // -- BIND DATA-ONCLICK ---------------------------
