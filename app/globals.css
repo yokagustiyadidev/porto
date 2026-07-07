@@ -3248,15 +3248,12 @@
         display: block !important;
       }
 
-      /* ── SPLASH SCREEN (Terminal Style) ───────────────────────── */
+      /* ── SPLASH SCREEN (Split Design) ───────────────────────── */
       .splash-screen {
         position: fixed;
         inset: 0;
-        background: #111111; /* Dark gray, close to terminal color */
         z-index: 100000;
         display: flex;
-        align-items: center;
-        justify-content: center;
         transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.9s ease;
         overflow: hidden;
       }
@@ -3265,171 +3262,89 @@
         opacity: 0;
         pointer-events: none;
       }
-      #splashCanvas {
-        position: absolute;
-        inset: 0;
+
+      /* Left Side - Black Background with Text */
+      .splash-left {
+        flex: 1;
+        background: #0a0a0a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 60px;
+        position: relative;
+      }
+
+      .splash-content {
+        max-width: 500px;
         width: 100%;
-        height: 100%;
-        z-index: 1;
+        animation: contentFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
-      
-      .terminal-window {
-        position: relative;
-        z-index: 10;
-        background: #191919;
-        width: 90%;
-        max-width: 650px;
-        border-radius: 8px;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-        transform: rotate(-2.5deg);
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        border: 1px solid #333;
-        font-family: 'Courier New', Courier, monospace;
-        animation: terminalPop 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        transition: transform 0.3s ease;
-      }
-      .terminal-window:hover {
-        transform: rotate(-1.5deg) scale(1.02);
-      }
-      
-      .terminal-header {
-        height: 36px;
-        background: #2a2a2a;
-        display: flex;
-        align-items: center;
-        padding: 0 16px;
-        gap: 8px;
-      }
-      .dot { width: 12px; height: 12px; border-radius: 50%; }
-      .dot.red { background: #ff5f56; }
-      .dot.yellow { background: #ffbd2e; }
-      .dot.green { background: #27c93f; }
-      
-      .terminal-body {
-        padding: 40px 40px;
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-      }
-      
-      .terminal-welcome {
-        border: none;
-        color: rgba(255, 255, 255, 0.85);
-        padding: 0;
-        align-self: flex-start;
-        font-family: var(--font-vt323), monospace;
-        font-style: normal;
-        font-size: 1.6rem;
-        letter-spacing: 0.15em;
-        font-weight: normal;
-        opacity: 0;
-        animation: welcomeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        animation-delay: 0.3s;
-      }
-      
-      @keyframes welcomeFadeIn {
-        0% { opacity: 0; transform: translateY(15px); }
-        100% { opacity: 0.85; transform: translateY(0); }
-      }
-      
-      .terminal-title {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin: 10px 0;
-      }
-      
-      .blocky-text {
-        font-size: clamp(3.5rem, 10vw, 5.5rem);
+
+      .splash-logo {
+        font-size: clamp(3rem, 8vw, 5rem);
         font-weight: 900;
-        color: transparent;
+        color: #ffffff;
+        margin-bottom: 30px;
+        letter-spacing: -0.02em;
+        font-family: var(--font-head);
         line-height: 1;
-        letter-spacing: 0.1em;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.04em;
-        position: relative;
-        isolation: isolate;
-      }
-      .blocky-text::before {
-        content: "";
-        position: absolute;
-        inset: -0.08em -0.12em;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.16),
-          transparent
-        );
-        opacity: 0;
-        transform: translateX(-130%);
-        pointer-events: none;
-        mix-blend-mode: screen;
-        z-index: 2;
-      }
-      .splash-ready .blocky-text::before {
-        animation: splashScan 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        animation-delay: 1.05s;
-      }
-      .splash-ready .blocky-text.orange::before {
-        animation-delay: 1.22s;
-      }
-      .splash-letter {
-        display: inline-block;
-        opacity: 0;
-        transform:
-          translate3d(var(--scatter-x), var(--scatter-y), 0)
-          rotate(var(--scatter-rotate))
-          scale(1.18);
-        filter: blur(10px);
-        clip-path: polygon(0 36%, 100% 18%, 100% 64%, 0 86%);
-      }
-      .splash-ready .splash-letter {
-        animation: letterAssemble 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        animation-delay: var(--letter-delay);
-      }
-      .blocky-text.white {
-        -webkit-text-stroke: 2px #ffffff;
-        text-shadow: 
-          -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff,
-           6px 6px 0px rgba(255, 255, 255, 0.3);
-      }
-      .blocky-text.orange {
-        -webkit-text-stroke: 2px #c22727;
-        text-shadow: 
-          -1px -1px 0 #c22727, 1px -1px 0 #c22727, -1px 1px 0 #c22727, 1px 1px 0 #c22727,
-           6px 6px 0px rgba(194, 39, 39, 0.4);
-      }
-      
-      .terminal-subtitle {
-        font-family: var(--font-body);
-        color: #888;
-        font-size: clamp(0.75rem, 1.5vw, 0.95rem);
-        letter-spacing: 0.25em;
         text-transform: uppercase;
-        margin-top: -10px;
-        opacity: 0;
-        transform: translateY(12px);
-        filter: blur(6px);
       }
-      .splash-ready .terminal-subtitle {
-        animation: subtitleResolve 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        animation-delay: 1.35s;
+
+      .logo-highlight {
+        color: #e63946;
+        font-style: italic;
       }
-      
-      .terminal-footer {
-        display: flex;
-        align-items: center;
-        margin-top: 10px;
-      }
-      
-      .splash-next-btn {
+
+      .splash-divider {
         width: 60px;
-        height: 60px;
+        height: 3px;
+        background: #e63946;
+        margin-bottom: 30px;
+        border-radius: 2px;
+      }
+
+      .splash-creator {
+        margin-bottom: 40px;
+      }
+
+      .creator-label {
+        font-size: 13px;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 8px;
+        font-family: var(--font-body);
+      }
+
+      .creator-name {
+        font-size: 24px;
+        color: #ffffff;
+        font-weight: 600;
+        font-family: var(--font-body);
+      }
+
+      .splash-copyright {
+        font-size: 12px;
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-family: var(--font-body);
+      }
+
+      .splash-info {
+        font-size: 13px;
+        color: #999;
+        margin-bottom: 30px;
+        font-family: var(--font-body);
+        font-style: italic;
+      }
+
+      .splash-next-btn {
+        width: 56px;
+        height: 56px;
         border-radius: 50%;
-        background: #c22727;
+        background: #e63946;
         color: #fff;
         border: none;
         display: flex;
@@ -3438,97 +3353,157 @@
         cursor: pointer;
         transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         position: relative;
-        box-shadow: 0 0 0 0 rgba(194, 39, 39, 0.5);
       }
+
       .splash-next-btn::before {
         content: "";
         position: absolute;
         inset: -8px;
         border-radius: 50%;
-        border: 1px solid rgba(194, 39, 39, 0.4);
+        border: 2px solid rgba(230, 57, 70, 0.3);
         animation: splashPulse 2s ease-out infinite;
       }
+
       .splash-next-btn:hover {
         background: #fff;
         transform: scale(1.1);
       }
+
       .splash-next-btn:hover svg {
+        stroke: #e63946;
         transform: translateX(3px);
       }
+
       .splash-next-btn svg {
-        width: 24px;
-        height: 24px;
-        transition: transform 0.3s ease;
+        width: 22px;
+        height: 22px;
+        transition: all 0.3s ease;
         flex-shrink: 0;
       }
-      
-      @keyframes terminalPop {
-        0% { opacity: 0; transform: translateY(40px) rotate(0deg) scale(0.9); }
-        100% { opacity: 1; transform: translateY(0) rotate(-2.5deg) scale(1); }
+
+      /* Right Side - Artwork */
+      .splash-right {
+        flex: 1;
+        background: #f5f5f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
       }
-      @keyframes letterAssemble {
+
+      .splash-artwork {
+        width: 100%;
+        height: 100%;
+        background-image: url('/splash-artwork.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 0;
+        box-shadow: none;
+        animation: artworkZoom 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      @keyframes contentFadeIn {
         0% {
           opacity: 0;
-          transform:
-            translate3d(var(--scatter-x), var(--scatter-y), 0)
-            rotate(var(--scatter-rotate))
-            scale(1.18);
-          filter: blur(10px);
-          clip-path: polygon(0 36%, 100% 18%, 100% 64%, 0 86%);
-        }
-        55% {
-          opacity: 1;
-          filter: blur(1px);
-          clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
-        }
-        100% {
-          opacity: 1;
-          transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
-          filter: blur(0);
-          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        }
-      }
-      @keyframes splashScan {
-        0% {
-          opacity: 0;
-          transform: translateX(-130%);
-        }
-        35% {
-          opacity: 1;
-        }
-        100% {
-          opacity: 0;
-          transform: translateX(130%);
-        }
-      }
-      @keyframes subtitleResolve {
-        0% {
-          opacity: 0;
-          transform: translateY(12px);
-          filter: blur(6px);
+          transform: translateY(30px);
         }
         100% {
           opacity: 1;
           transform: translateY(0);
-          filter: blur(0);
         }
       }
-      @keyframes splashPulse {
-        0% { transform: scale(1); opacity: 1; }
-        100% { transform: scale(1.5); opacity: 0; }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .splash-ready .blocky-text::before,
-        .splash-ready .splash-letter,
-        .splash-ready .terminal-subtitle {
-          animation: none;
+
+      @keyframes artworkZoom {
+        0% {
+          opacity: 0;
+          transform: scale(1.1);
         }
-        .splash-letter,
-        .terminal-subtitle {
+        100% {
           opacity: 1;
-          transform: none;
-          filter: none;
-          clip-path: none;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes splashPulse {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1.4);
+          opacity: 0;
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 968px) {
+        .splash-screen {
+          flex-direction: column;
+        }
+
+        .splash-left {
+          flex: none;
+          width: 100%;
+          height: 50%;
+          padding: 40px;
+        }
+
+        .splash-right {
+          flex: none;
+          width: 100%;
+          height: 50%;
+          padding: 0;
+        }
+
+        .splash-logo {
+          font-size: 2.5rem;
+          margin-bottom: 20px;
+        }
+
+        .creator-name {
+          font-size: 20px;
+        }
+
+        .splash-artwork {
+          border-radius: 0;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .splash-left {
+          padding: 30px;
+        }
+
+        .splash-right {
+          padding: 0;
+        }
+
+        .splash-logo {
+          font-size: 2rem;
+        }
+
+        .splash-divider {
+          width: 50px;
+          margin-bottom: 20px;
+        }
+
+        .creator-name {
+          font-size: 18px;
+        }
+
+        .splash-copyright {
+          font-size: 11px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .splash-content,
+        .splash-artwork,
+        .splash-next-btn::before {
+          animation: none;
         }
       }
     
