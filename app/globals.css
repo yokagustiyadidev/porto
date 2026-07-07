@@ -3328,9 +3328,18 @@
         font-size: 13px;
         color: #888;
         line-height: 1.6;
-        margin-bottom: 30px;
+        margin-bottom: 12px;
         font-family: var(--font-body);
         letter-spacing: 0.02em;
+      }
+
+      .splash-hint {
+        font-size: 12px;
+        color: #666;
+        font-family: var(--font-body);
+        font-style: italic;
+        margin-bottom: 30px;
+        opacity: 0.8;
       }
 
       .splash-next-btn {
