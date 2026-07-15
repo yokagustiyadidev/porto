@@ -469,6 +469,22 @@
         -webkit-backface-visibility: hidden;
       }
       
+      /* On mobile: disable sticky to allow full content scroll */
+      @media (max-width: 768px) {
+        .stack-cards {
+          /* Remove stacking context on mobile */
+        }
+        
+        .stack-card {
+          position: relative !important;
+          top: auto !important;
+          transform: none !important;
+          opacity: 1 !important;
+          overflow: visible;
+          border-radius: 24px 24px 0 0;
+          margin-bottom: 0;
+        }
+      }
       
       .stack-card[data-bg="soft"] {
         background: var(--bg-soft);
