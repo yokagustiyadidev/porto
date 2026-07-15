@@ -4,7 +4,7 @@ export default function SplashScreen() {
   const html = `<div class="splash-screen" id="splashScreen">
       <div class="splash-left">
         <div class="splash-content">
-          <div class="splash-logo">PORTO<span class="logo-highlight">FOLIO</span></div>
+          <div class="splash-logo">Porto<span class="logo-highlight">folio</span></div>
           <div class="splash-divider"></div>
           <div class="splash-creator">
             <div class="creator-label">Created by</div>

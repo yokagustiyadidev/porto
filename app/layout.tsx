@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Instrument_Serif, Merriweather, VT323 } from "next/font/google";
+import { Geist, VT323 } from "next/font/google";
+import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
 
@@ -8,18 +9,10 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument",
-  weight: ["400"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-});
-
-const merriweather = Merriweather({
-  variable: "--font-merriweather",
-  weight: ["300", "400", "700", "900"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
+const coolvetica = localFont({
+  src: "../public/fonts/Coolvetica-Rg.otf",
+  variable: "--font-coolvetica",
+  display: "swap",
 });
 
 const vt323 = VT323({
@@ -71,7 +64,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${geistSans.variable} ${instrumentSerif.variable} ${merriweather.variable} ${vt323.variable}`}
+      className={`${geistSans.variable} ${coolvetica.variable} ${vt323.variable}`}
     >
       <body>
         {children}

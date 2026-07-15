@@ -188,7 +188,7 @@
             for (const entry of list.getEntries()) {
               if (!entry.hadRecentInput && entry.value > 0.1) {
                 // Silently track significant layout shifts in dev mode
-                if (process.env.NODE_ENV === 'development') {
+                if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development') {
                   console.warn('Layout shift detected:', entry.value, entry);
                 }
               }
@@ -799,8 +799,8 @@
           });
         }
 
-        // ── STACKING CARDS SCROLL EFFECT (Desktop only) ──
-        if (!_isMobile && _stackSections.length && _containerEl) {
+        // ── STACKING CARDS SCROLL EFFECT ──
+        if (_stackSections.length && _containerEl) {
           const vh = window.innerHeight;
           const SCALE_MIN = 0.92;
           const EPSILON = 1;
