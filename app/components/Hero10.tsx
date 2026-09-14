@@ -52,9 +52,26 @@ export default function Hero10() {
           "></div>
       </div>
       <div class="wrap">
-        <div class="hero-inner">
-          <span class="hero-eyebrow" data-key="hero_eyebrow">Available for Collaboration</span>
-          <h1 class="hero-title">Yoka <em>Gustiyadi</em></h1>
+        <div class="hero-inner slop-hero">
+          <h1 class="slop-hero-title" aria-label="Available for Collaboration, Yoka Gustiyadi">
+            <span class="slop-row">
+              <span class="slop-w" data-key="hero_w_avail">Available</span>
+              <span class="slop-pill"><img src="splash-artwork.jpg" alt=""></span>
+            </span>
+            <span class="slop-row">
+              <span class="slop-serif" data-key="hero_w_for">for</span>
+              <span class="slop-w" data-key="hero_w_collab">Collaboration</span>
+            </span>
+            <span class="slop-row">
+              <svg class="slop-ic slop-spark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 0 C12.5 7 13.5 11 24 12 C13.5 13 12.5 17 12 24 C11.5 17 10.5 13 0 12 C10.5 11 11.5 7 12 0 Z" fill="#ff6b00"></path></svg>
+              <span class="slop-w slop-navy">Yoka</span>
+              <span class="slop-pill"><img src="profiless.png" alt=""></span>
+            </span>
+            <span class="slop-row">
+              <span class="slop-w slop-red">Gustiyadi</span>
+              <svg class="slop-ic slop-flame" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 1.5 C8.4 5.6 6 9 6 13.2 C6 17.5 8.7 21 12.4 21 C16 21 18 17.8 18 13.6 C18 10.6 16.4 8.4 14.8 6.4 C13.7 8.6 12.8 8.6 12.2 7.4 C11.7 6 11.6 4 12 1.5 Z" fill="#c5302d"></path><path d="M12 9.5 C10.6 11.4 9.5 12.6 9.5 14.7 C9.5 16.8 10.7 18.4 12.3 18.4 C14 18.4 15 16.8 15 14.8 C15 13.4 14.2 12.5 13.4 11.4 C12.9 12.4 12.3 12.4 12 11.6 C11.8 10.9 11.8 10.3 12 9.5 Z" fill="#ff6b00"></path></svg>
+            </span>
+          </h1>
           <p class="hero-role">
             <span class="typewriter" id="typewriterText" data-key="hero_role">Staff Administrasi &amp; IT Support</span>
           </p>
@@ -91,6 +108,11 @@ export default function Hero10() {
               </a>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="hero-hand" id="heroHand" aria-hidden="true">
+        <div class="hero-hand-float">
+          <img src="tangan.png" alt="">
         </div>
       </div>
     </section>`;

@@ -208,6 +208,9 @@
           nav_services: "Layanan",
           nav_contact: "Hubungi",
           hero_eyebrow: "Available for Collaboration",
+          hero_w_avail: "Available",
+          hero_w_for: "for",
+          hero_w_collab: "Collaboration",
           hero_role: "Staff Administrasi & IT Support",
           hero_desc:
             "Membangun arsitektur digital yang mengubah alur kerja manual menjadi ekosistem otonom — dari sistem ujian terintegrasi AI hingga otomasi bisnis berbasis WhatsApp.",
@@ -264,6 +267,19 @@
           work_cbt_desc:
             "Platform ujian digital end-to-end untuk SDI Abu Seno. Ditenagai AI pembuat soal, pengacakan pintar, anti-cheat real-time, dan rekap nilai terintegrasi.",
           work_docs: "Lihat dokumentasi",
+          work_hermes_title: "Hermes Agent Automation",
+          work_hermes_desc:
+            "Workflow otomasi berbasis AI agent yang mengeksekusi tugas berantai — dari pemicu pesan hingga eksekusi dan pelaporan — tanpa sentuhan manual.",
+          work_siswa_title: "Data Siswa & Perpus Digital",
+          work_siswa_desc:
+            "Sistem pendataan siswa terpusat yang terhubung dengan katalog perpustakaan digital — peminjaman, stok buku, dan riwayat tercatat otomatis.",
+          work_guru_title: "Dashboard Pekerjaan Guru",
+          work_guru_desc:
+            "Panel administrasi guru: kelengkapan perangkat, agenda harian, rekap kehadiran, dan progres tugas — terpantau dalam satu layar.",
+          work_contact: "Hubungi untuk info",
+          work_edu_title: "EduDevToolkit Agent Skill",
+          work_edu_desc:
+            "Kumpulan agent skill siap pakai untuk pengembangan solusi edukasi — standarisasi workflow, snippet otomasi, dan template integrasi dalam satu paket.",
           services_label: "Layanan",
           services_title: "Yang Bisa Saya <em>Lakukan</em>",
           services_subtitle:
@@ -283,6 +299,9 @@
           svc_invite: "Undangan Digital",
           svc_invite_desc:
             "Undangan pernikahan digital interaktif dengan desain estetis, countdown timer, galeri foto, RSVP, dan integrasi peta.",
+          svc_hermes: "Hermes Agent Setup",
+          svc_hermes_desc:
+            "Instalasi dan konfigurasi AI agent Hermes: perancangan workflow, integrasi tools, dan otomasi tugas berulang hingga berjalan mandiri.",
           demo_label: "Live Demo",
           demo_title: "Sistem <em>CBT</em>",
           demo_subtitle:
@@ -366,6 +385,8 @@
           skill_node_desc: "Baileys, bot WhatsApp",
           skill_it: "IT Support",
           skill_it_desc: "LAN, remote, diagnosis",
+          skill_hermes: "Hermes Agent",
+          skill_hermes_desc: "Setup, workflow, otomasi",
           contact_label: "Kontak",
           contact_title: "Mari <em>Berdiskusi</em>",
           contact_subtitle:
@@ -386,6 +407,9 @@
           nav_services: "Services",
           nav_contact: "Contact",
           hero_eyebrow: "Available for Collaboration",
+          hero_w_avail: "Available",
+          hero_w_for: "for",
+          hero_w_collab: "Collaboration",
           hero_role: "Admin Staff & IT Support",
           hero_desc:
             "Building digital architecture that transforms manual workflows into autonomous ecosystems — from AI-integrated exam systems to WhatsApp-based business automation.",
@@ -442,6 +466,19 @@
           work_cbt_desc:
             "End-to-end digital exam platform for SDI Abu Seno. Powered by AI question generation, smart shuffling, real-time anti-cheat, and integrated grade recap.",
           work_docs: "View documentation",
+          work_hermes_title: "Hermes Agent Automation",
+          work_hermes_desc:
+            "AI agent-based automation workflow that executes chained tasks — from message triggers to execution and reporting — without manual touch.",
+          work_siswa_title: "Student Data & Digital Library",
+          work_siswa_desc:
+            "Centralized student data system connected to a digital library catalog — loans, book stock, and history recorded automatically.",
+          work_guru_title: "Teacher Work Dashboard",
+          work_guru_desc:
+            "Teacher administration panel: device completeness, daily agenda, attendance recap, and task progress — monitored in one screen.",
+          work_contact: "Contact for info",
+          work_edu_title: "EduDevToolkit Agent Skill",
+          work_edu_desc:
+            "Ready-to-use agent skill collection for education solution development — standardized workflows, automation snippets, and integration templates in one package.",
           services_label: "Services",
           services_title: "What I Can <em>Do</em>",
           services_subtitle:
@@ -461,6 +498,9 @@
           svc_invite: "Digital Invitation",
           svc_invite_desc:
             "Interactive digital wedding invitation with aesthetic design, countdown timer, photo gallery, RSVP, and map integration.",
+          svc_hermes: "Hermes Agent Setup",
+          svc_hermes_desc:
+            "Installation and configuration of the Hermes AI agent: workflow design, tool integration, and recurring-task automation until fully autonomous.",
           demo_label: "Live Demo",
           demo_title: "CBT <em>System</em>",
           demo_subtitle:
@@ -545,6 +585,8 @@
           skill_node_desc: "Baileys, WhatsApp bot",
           skill_it: "IT Support",
           skill_it_desc: "LAN, remote, diagnosis",
+          skill_hermes: "Hermes Agent",
+          skill_hermes_desc: "Setup, workflow, automation",
           contact_label: "Contact",
           contact_title: "Let's <em>Discuss</em>",
           contact_subtitle:
@@ -1095,4 +1137,43 @@
           });
         });
         observer.observe(document.body, { childList: true, subtree: true });
+      })();
+
+      /* ── HERO HAND: parallax kursor + scroll ────────────────── */
+      (function initHeroHand() {
+        const hero = document.querySelector(".hero");
+        const hand = document.getElementById("heroHand");
+        if (!hero || !hand) return;
+
+        // entrance: tangan naik setelah hero sempat tampil
+        requestAnimationFrame(() => hero.classList.add("hand-in"));
+
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduce || "ontouchstart" in window) return;
+
+        let tx = 0, ty = 0, cx = 0, cy = 0, sy = 0, raf = null, active = false;
+
+        function kick() {
+          if (!active) { active = true; raf = requestAnimationFrame(loop); }
+        }
+        document.addEventListener("mousemove", (e) => {
+          tx = (e.clientX / window.innerWidth - 0.5) * 2;
+          ty = (e.clientY / window.innerHeight - 0.5) * 2;
+          kick();
+        }, { passive: true });
+        window.addEventListener("scroll", () => { sy = window.scrollY; kick(); }, { passive: true });
+
+        function loop() {
+          cx += (tx - cx) * 0.08;
+          cy += (ty - cy) * 0.08;
+          const lift = Math.min(sy, 480) * 0.12;
+          hand.style.transform =
+            "translate(" + (cx * 18).toFixed(2) + "px, " + (cy * 10 - lift).toFixed(2) + "px) rotate(" + (cx * -1.6).toFixed(2) + "deg)";
+          if (Math.abs(tx - cx) < 0.002 && Math.abs(ty - cy) < 0.002 && lift === lastLift) {
+            active = false; return;
+          }
+          lastLift = lift;
+          raf = requestAnimationFrame(loop);
+        }
+        var lastLift = -1;
       })();

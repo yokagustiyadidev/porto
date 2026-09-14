@@ -94,6 +94,21 @@ export default function Services16() {
               countdown timer, galeri foto, RSVP, dan integrasi peta.
             </p>
           </div>
+          <div class="service-card reveal">
+            <div class="card-accent-border"></div>
+            <span class="card-index">06</span>
+            <div class="service-icon icon-glow">
+              <svg class="icon-outline" viewBox="0 0 24 24">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3 data-key="svc_hermes">Hermes Agent Setup</h3>
+            <p data-key="svc_hermes_desc">
+              Instalasi dan konfigurasi AI agent Hermes: perancangan workflow,
+              integrasi tools, dan otomasi tugas berulang hingga berjalan
+              mandiri.
+            </p>
+          </div>
         </div>
       </div>
     </section>`;

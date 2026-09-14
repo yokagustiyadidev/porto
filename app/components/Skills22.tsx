@@ -135,6 +135,22 @@ export default function Skills22() {
               <h4 data-key="skill_it">IT Support</h4>
               <p data-key="skill_it_desc">LAN, remote, diagnosis</p>
             </div>
+            <div class="skill-item reveal">
+              <div class="card-accent-border"></div>
+              <div class="skill-progress" style="--progress: 22">
+                <svg viewBox="0 0 36 36">
+                  <circle class="bg" cx="18" cy="18" r="16"></circle>
+                  <circle class="fg" cx="18" cy="18" r="16"></circle>
+                </svg>
+              </div>
+              <div class="skill-icon icon-glow">
+                <svg class="icon-outline" viewBox="0 0 24 24">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <h4 data-key="skill_hermes">Hermes Agent</h4>
+              <p data-key="skill_hermes_desc">Setup, workflow, otomasi</p>
+            </div>
           </div>
         </div>
       </div>

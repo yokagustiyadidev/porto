@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, VT323, Space_Grotesk, Space_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Manrope, Playfair_Display, VT323, Space_Grotesk, Space_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
@@ -24,6 +24,21 @@ const vt323 = VT323({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  weight: ["400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-taste-serif",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -83,7 +98,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${geistSans.variable} ${coolvetica.variable} ${vt323.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${spaceMono.variable}`}
+      className={`${geistSans.variable} ${coolvetica.variable} ${vt323.variable} ${geistMono.variable} ${manrope.variable} ${playfair.variable} ${spaceGrotesk.variable} ${spaceMono.variable}`}
     >
       <body>
         {children}
