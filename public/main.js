@@ -616,90 +616,43 @@
       // Run typewriter after translations are set
       setTimeout(initTypewriter, 100);
 
-      /* ── STACKING CARD SCROLL ANIMATION ──────────────────────── */
+      /* ── STACKING CARD SCROLL ANIMATION: DISABLED ────────────── */
+      /* Card-stack dimatikan agar scroll smooth & tidak ada layout
+         yang terpotong (sticky + scale + overflow:hidden adalah
+         sumber jitter & cropping). Variabel dipertahankan agar
+         sisa kode scroll-loop tetap aman. */
       let _stackSections = [];
       let _isMobile = false;
       let _containerEl = null;
 
       (function initStackingCards() {
-        const sections = document.querySelectorAll("section:not(#hero):not(#thank-you)");
-        if (!sections.length) return;
-
-        _containerEl = document.createElement("div");
-        _containerEl.className = "stack-cards";
-        const firstSection = sections[0];
-        if (!firstSection || !firstSection.parentNode) return;
-        
-        firstSection.parentNode.insertBefore(_containerEl, firstSection);
-        
-        sections.forEach((section, i) => {
-          const bg = section.style.background || "";
-          if (bg.includes("bg-soft")) {
-            section.setAttribute("data-bg", "soft");
-            section.style.background = "";
-          }
-          section.classList.add("stack-card");
-          section.style.zIndex = i + 1;
-          _containerEl.appendChild(section);
-          _stackSections.push(section);
+        // Cleanup: kembalikan section yang pernah jadi .stack-card
+        // ke flow normal (tanpa sticky / transform / overflow hidden).
+        document.querySelectorAll(".stack-card").forEach((section) => {
+          section.classList.remove("stack-card");
+          section.style.position = "";
+          section.style.top = "";
+          section.style.zIndex = "";
+          section.style.transform = "";
+          section.style.opacity = "";
+          section.style.visibility = "";
+          section.style.overflow = "";
+          section.style.borderRadius = "";
+          section.style.boxShadow = "";
+          delete section.dataset.stickyTop;
+          delete section.dataset.defaultTop;
+          delete section.dataset.layoutTop;
         });
-
-        const footer = document.querySelector("footer");
-        if (footer) _containerEl.appendChild(footer);
-
-        let updateTimer = null;
-        function updateStickyTops() {
-          _isMobile = window.innerWidth <= 768;
-          const vh = window.innerHeight;
-          let layoutTop = _containerEl ? _containerEl.offsetTop : 0;
-          
-          // Batch all reads first
-          const measurements = _stackSections.map(section => ({
-            height: section.offsetHeight
-          }));
-          
-          // Then batch all writes
-          requestAnimationFrame(() => {
-            _stackSections.forEach((section, i) => {
-              const h = measurements[i].height;
-              const defaultTop = i * 28;
-              let stickyTop = defaultTop;
-              
-              if (h > vh - defaultTop) {
-                stickyTop = Math.max(0, vh - h);
-              }
-              
-              section.style.top = stickyTop + "px";
-              section.dataset.stickyTop = String(stickyTop);
-              section.dataset.defaultTop = String(defaultTop);
-              section.dataset.layoutTop = String(layoutTop);
-              layoutTop += h;
-              
-              // Keep border radius on mobile but allow animations
-              if (_isMobile) {
-                section.style.borderRadius = "24px 24px 0 0";
-              }
-            });
-          });
-        }
-
-        // Debounced update function
-        function debouncedUpdate() {
-          if (updateTimer) clearTimeout(updateTimer);
-          updateTimer = setTimeout(updateStickyTops, 150);
-        }
-
-        // Initial setup
-        updateStickyTops();
-
-        // Use single ResizeObserver for all sections
-        if (typeof ResizeObserver !== 'undefined') {
-          const ro = new ResizeObserver(debouncedUpdate);
-          _stackSections.forEach(s => ro.observe(s));
-        }
-        
-        // Debounced resize handler
-        window.addEventListener("resize", debouncedUpdate, { passive: true });
+        // Unwrap .stack-cards jika pernah dibuat JS versi lama.
+        document.querySelectorAll(".stack-cards").forEach((wrap) => {
+          const parent = wrap.parentNode;
+          if (!parent) return;
+          while (wrap.firstChild) parent.insertBefore(wrap.firstChild, wrap);
+          parent.removeChild(wrap);
+        });
+        _stackSections = [];
+        _containerEl = null;
+        _isMobile = window.innerWidth <= 768;
       })();
 
       /* Scroll Reveal (cards & sub-elements — kept for compatibility) */
@@ -799,82 +752,7 @@
           });
         }
 
-        // ── STACKING CARDS SCROLL EFFECT (Desktop only) ──
-        if (!_isMobile && _stackSections.length && _containerEl) {
-          const vh = window.innerHeight;
-          const SCALE_MIN = 0.92;
-          const EPSILON = 1;
-
-          // PHASE 1: BATCH READS
-          const rectData = _stackSections.map(s => {
-            const layoutTop = parseFloat(s.dataset.layoutTop);
-            return {
-              top: isNaN(layoutTop) ? 0 : layoutTop - sy,
-              stickyTop: parseFloat(s.dataset.stickyTop) || 0,
-              defaultTop: parseFloat(s.dataset.defaultTop) || 0
-            };
-          });
-
-          // Find which section is currently the "top" card
-          let topCardIndex = -1;
-          for (let i = _stackSections.length - 1; i >= 0; i--) {
-            if (rectData[i].top <= rectData[i].stickyTop + EPSILON) {
-              topCardIndex = i;
-              break;
-            }
-          }
-
-          // PHASE 2: BATCH WRITES
-          _stackSections.forEach((section, i) => {
-            const { top: rectTop, stickyTop, defaultTop } = rectData[i];
-            const isStuck = rectTop <= stickyTop + EPSILON;
-
-            if (isStuck) {
-              const nextData = rectData[i + 1];
-              if (nextData) {
-                const totalTravel = vh - nextData.defaultTop;
-                
-                if (totalTravel <= 0) {
-                  section.style.transform = "translate3d(0, 0, 0) scale(1)";
-                  section.style.opacity = "1";
-                  section.style.visibility = "visible";
-                  return;
-                }
-                
-                // Clamp progress to [0, 1]
-                let progress = (nextData.defaultTop - nextData.top) / totalTravel;
-                progress = Math.max(0, Math.min(1, progress));
-
-                // Smooth easing
-                const eased = progress * progress * (3 - 2 * progress);
-
-                // Performance: hide far sections
-                if (i < topCardIndex - 4) {
-                  section.style.transform = `scale(${SCALE_MIN})`;
-                  section.style.opacity = "0";
-                  section.style.visibility = "hidden";
-                } else {
-                  section.style.visibility = "visible";
-                  
-                  const scale = 1 - eased * (1 - SCALE_MIN);
-                  const maxOffset = Math.min(vh * 0.055, 38);
-                  const offsetDown = eased * maxOffset;
-
-                  section.style.transform = `translate3d(0, ${offsetDown.toFixed(2)}px, 0) scale(${scale.toFixed(4)})`;
-                  section.style.opacity = "1";
-                }
-              } else {
-                section.style.transform = "translate3d(0, 0, 0) scale(1)";
-                section.style.opacity = "1";
-                section.style.visibility = "visible";
-              }
-            } else {
-              section.style.transform = "translate3d(0, 0, 0) scale(1)";
-              section.style.opacity = "1";
-              section.style.visibility = "visible";
-            }
-          });
-        }
+        // ── STACKING CARDS: REMOVED (aliran normal, tanpa scale) ──
       }
 
       window.addEventListener("scroll", () => {

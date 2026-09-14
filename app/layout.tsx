@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, VT323 } from "next/font/google";
+import { Geist, Geist_Mono, VT323, Space_Grotesk, Space_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
@@ -21,8 +21,27 @@ const vt323 = VT323({
   subsets: ["latin"],
 });
 
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-neo-body",
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
+const spaceMono = Space_Mono({
+  variable: "--font-neo-mono",
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
+
 export const viewport = {
-  themeColor: "#F8F9FA",
+  themeColor: "#fafaf9",
 };
 
 export const metadata: Metadata = {
@@ -52,7 +71,7 @@ export const metadata: Metadata = {
     images: ["https://yokagustiyadi.vercel.app/og-image.jpg"],
   },
   icons: {
-    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F8F9FA' rx='16'/><text y='.9em' font-size='56' x='50%' text-anchor='middle' dominant-baseline='middle' fill='%23DE7356' font-family='Georgia'>Y</text></svg>",
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.92em' font-size='72' x='50%' text-anchor='middle' dominant-baseline='middle' fill='%231c1917' font-family='Georgia'>Y</text></svg>",
   },
 };
 
@@ -64,7 +83,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${geistSans.variable} ${coolvetica.variable} ${vt323.variable}`}
+      className={`${geistSans.variable} ${coolvetica.variable} ${vt323.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${spaceMono.variable}`}
     >
       <body>
         {children}
