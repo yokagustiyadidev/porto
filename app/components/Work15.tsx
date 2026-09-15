@@ -30,7 +30,7 @@ export default function Work15() {
             <div class="card-shimmer"></div>
             <span class="card-index">01</span>
             <div class="work-img-wrap">
-              <img src="09.png" alt="V Project" class="img-zoom" loading="lazy">
+              <img src="oy.png" alt="V Project" class="img-zoom" loading="lazy">
             </div>
             <div class="work-body">
               <div class="work-tags">
