@@ -5665,7 +5665,7 @@
       }
       .slop-w {
         font-family: var(--font-manrope), -apple-system, sans-serif !important;
-        font-size: clamp(3rem, 8vw, 8rem) !important;
+        font-size: clamp(2rem, 5.5vw, 5rem) !important;
         line-height: 0.92 !important;
         font-weight: 600 !important;
         letter-spacing: -0.055em !important;
@@ -5680,7 +5680,7 @@
         font-family: var(--font-taste-serif), Georgia, serif !important;
         font-style: italic !important;
         font-weight: 500 !important;
-        font-size: clamp(3rem, 8vw, 8rem) !important;
+        font-size: clamp(2rem, 5.5vw, 5rem) !important;
         line-height: 0.92 !important;
         letter-spacing: -0.02em !important;
         color: #ff6b00 !important;
@@ -5695,28 +5695,8 @@
       .slop-w.slop-red { color: #c5302d !important; animation-delay: 0.45s; }
       .slop-row:nth-child(1) .slop-w { animation-delay: 0.05s; }
       .slop-row:nth-child(2) .slop-w { animation-delay: 0.25s; }
-      .slop-pill {
-        display: inline-block;
-        overflow: hidden;
-        border-radius: 999px;
-        outline: 1px solid rgba(0, 0, 0, 0.1);
-        box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.28);
-        width: clamp(96px, 14vw, 178px);
-        height: clamp(38px, 5.5vw, 76px);
-        flex-shrink: 0;
-        opacity: 0;
-        transform: scale(0.45) rotate(-22deg);
-        animation: slopPillL 0.9s cubic-bezier(0, 0, 0.2, 1) forwards;
-        animation-delay: 0.2s;
-      }
-      .slop-row:nth-child(3) .slop-pill {
-        width: clamp(110px, 15vw, 200px);
-        height: clamp(40px, 5.8vw, 80px);
-        transform: scale(0.5) rotate(18deg);
-        animation-name: slopPillR;
-        animation-delay: 0.5s;
-      }
-      .slop-pill img { width: 100% !important; height: 100% !important; object-fit: cover; display: block !important; opacity: 1 !important; visibility: visible !important; }
+      .slop-pill { display: none !important; }
+      .slop-row:nth-child(3) .slop-pill { display: none !important; }
       .slop-ic { flex-shrink: 0; opacity: 0; }
       .slop-spark { width: clamp(34px, 4.5vw, 64px); height: auto; transform: scale(0) rotate(-90deg); animation: slopSpark 0.8s cubic-bezier(0, 0, 0.2, 1) forwards; animation-delay: 0.3s; }
       .slop-flame { width: clamp(28px, 3.6vw, 52px); height: auto; transform: translateY(8px) scale(0) rotate(20deg); animation: slopFlame 0.8s cubic-bezier(0, 0, 0.2, 1) forwards; animation-delay: 0.6s; }
