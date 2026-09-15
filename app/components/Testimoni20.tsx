@@ -1,7 +1,7 @@
 import parse from 'html-react-parser';
 
 export default function Testimoni20() {
-  const html = `<section id="testimoni" style="background: var(--bg-soft)">
+  const html = `<section id="testimoni" class="testimoni-bg-glass">
       <div class="wrap">
         <div class="sec-header center">
           <span class="sec-label" data-key="testi_label">Testimoni</span>

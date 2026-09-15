@@ -1215,6 +1215,55 @@
       }
 
       /* ── TESTIMONIALS ─────────────────────────────────────── */
+      .testimoni-bg-glass {
+        position: relative;
+        background: var(--bg-soft);
+        overflow: hidden;
+      }
+      .testimoni-bg-glass::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.22) 0%,
+            rgba(168, 85, 247, 0.18) 40%,
+            rgba(236, 72, 153, 0.14) 75%,
+            rgba(14, 165, 233, 0.18) 100%
+          ),
+          url("/rating.png") center / cover no-repeat;
+        opacity: 0.5;
+        z-index: 0;
+        backdrop-filter: blur(0px);
+      }
+      .testimoni-bg-glass::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.08) 100%
+        );
+        z-index: 0;
+      }
+      .testimoni-bg-glass > .wrap {
+        position: relative;
+        z-index: 1;
+      }
+      html.dark .testimoni-bg-glass::before {
+        background:
+          linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.25) 0%,
+            rgba(168, 85, 247, 0.2) 40%,
+            rgba(236, 72, 153, 0.16) 75%,
+            rgba(14, 165, 233, 0.2) 100%
+          ),
+          url("/rating.png") center / cover no-repeat;
+        opacity: 0.4;
+      }
       .testimonials-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
