@@ -3266,7 +3266,7 @@
         max-width: 520px;
       }
       .exp-year {
-        font-family: var(--font-body);
+        font-family: var(--font-mono);
         font-size: 13px;
         font-weight: 500;
         color: var(--text-light);
@@ -3279,6 +3279,126 @@
         height: 1px;
         background: var(--border);
         width: 100%;
+      }
+
+      /* ── EXPERIENCE TIMELINE ─────────────────────────────────── */
+      .exp-tl-item {
+        position: relative;
+        padding: 20px 0 20px 48px;
+        display: block;
+      }
+      .exp-tl-item::before {
+        content: '';
+        position: absolute;
+        left: 15px;
+        top: 32px;
+        bottom: -20px;
+        width: 2px;
+        background: linear-gradient(
+          180deg,
+          var(--accent) 0%,
+          var(--accent-soft) 60%,
+          transparent 100%
+        );
+      }
+      .exp-tl-item:last-child::before {
+        display: none;
+      }
+      .exp-tl-dot {
+        position: absolute;
+        left: 0;
+        top: 28px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--surface);
+        border: 2px solid var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+        transition: all 0.3s ease;
+      }
+      .exp-tl-dot::after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        transition: all 0.3s ease;
+      }
+      .exp-tl-item:hover .exp-tl-dot {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 6px var(--accent-soft);
+      }
+      .exp-tl-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px 28px;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .exp-tl-item:hover .exp-tl-card {
+        transform: translateX(6px);
+        border-color: var(--accent);
+        box-shadow: var(--shadow-hover);
+      }
+      .exp-tl-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 10px;
+      }
+      .exp-tl-header .exp-year {
+        padding-top: 2px;
+        background: var(--accent-soft);
+        color: var(--accent-hover);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 600;
+        padding: 5px 12px;
+        border-radius: 999px;
+        text-transform: none;
+        letter-spacing: 0.03em;
+        flex-shrink: 0;
+      }
+      .exp-tl-card .exp-company {
+        margin-bottom: 0;
+        font-size: 18px;
+      }
+      .exp-tl-card .exp-role {
+        margin-bottom: 0;
+        font-size: 14px;
+      }
+
+      @media (max-width: 640px) {
+        .exp-tl-item {
+          padding-left: 40px;
+        }
+        .exp-tl-dot {
+          width: 28px;
+          height: 28px;
+          top: 24px;
+        }
+        .exp-tl-item::before {
+          left: 13px;
+          top: 28px;
+        }
+        .exp-tl-header {
+          flex-direction: column;
+          gap: 8px;
+        }
+        .exp-tl-card {
+          padding: 20px;
+        }
+      }
+
+      .exp-timeline-section {
+        padding: 100px 0;
+      }
+      .exp-sec-header {
+        margin-bottom: 56px;
       }
 
       @media (max-width: 640px) {
@@ -3965,11 +4085,36 @@
         padding: 20px 24px !important;
         margin-bottom: 16px;
       }
+      .exp-tl-item {
+        padding: 0 !important;
+        margin-bottom: 0 !important;
+      }
+      .exp-tl-card {
+        background: var(--surface);
+        border: var(--border-width) solid var(--border);
+        box-shadow: var(--shadow);
+        border-radius: var(--radius);
+        padding: 20px 24px;
+      }
+      .exp-tl-item:hover .exp-tl-card {
+        border-color: var(--accent);
+        box-shadow: var(--shadow-hover);
+        transform: translateX(4px);
+      }
+      .exp-tl-dot {
+        background: var(--surface);
+        border: 2px solid var(--accent);
+      }
       .exp-company { font-family: var(--font-head) !important; text-transform: uppercase; color: var(--text) !important; }
-      .exp-year {
-        background: #111; color: var(--neo-yellow) !important;
-        border: 2px solid #111; padding: 4px 10px;
-        font-family: var(--font-mono) !important; font-weight: 700 !important;
+      .exp-tl-header .exp-year {
+        background: var(--accent-soft) !important;
+        color: var(--accent-hover) !important;
+        border: none !important;
+        padding: 4px 10px !important;
+        font-family: var(--font-mono) !important;
+        font-weight: 600 !important;
+        border-radius: 999px;
+        text-transform: none;
       }
       html.dark .exp-year { background: var(--neo-yellow); color: #111 !important; }
       .exp-divider { display: none; }
@@ -4387,14 +4532,36 @@
         padding: 26px 0 !important;
         margin-bottom: 0 !important;
       }
+      .exp-tl-item {
+        padding: 20px 0 20px 48px !important;
+        margin-bottom: 0 !important;
+        border-bottom: none !important;
+      }
+      .exp-tl-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px 28px;
+        box-shadow: none;
+      }
+      .exp-tl-item:hover .exp-tl-card {
+        border-color: var(--accent);
+        transform: translateX(6px);
+      }
+      .exp-tl-dot {
+        background: var(--surface);
+        border: 2px solid var(--accent);
+      }
       .exp-company { font-family: var(--font-head) !important; font-weight: 600 !important; text-transform: none !important; color: var(--text) !important; }
-      .exp-year {
-        background: none !important;
-        color: var(--text-muted) !important;
+      .exp-tl-header .exp-year {
+        background: var(--accent-soft) !important;
+        color: var(--accent-hover) !important;
         border: none !important;
-        padding: 0 !important;
+        padding: 5px 12px !important;
         font-family: var(--font-mono) !important;
-        font-weight: 400 !important;
+        font-weight: 600 !important;
+        border-radius: 999px;
+        text-transform: none;
       }
       html.dark .exp-year { background: none !important; }
       .exp-divider { display: none; }
@@ -5183,9 +5350,38 @@
       .about-meta-item strong { font-family: var(--font-body) !important; }
       .exp-item { background: none !important; border: none !important; border-bottom: 1px solid var(--border) !important; box-shadow: none !important; border-radius: 0 !important; padding: 26px 0 !important; margin-bottom: 0 !important; }
       .exp-item:first-child { border-top: 1px solid var(--border) !important; }
+      .exp-tl-item {
+        padding: 20px 0 20px 48px !important;
+        margin-bottom: 0 !important;
+        border-bottom: none !important;
+      }
+      .exp-tl-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px 28px;
+        box-shadow: none;
+      }
+      .exp-tl-item:hover .exp-tl-card {
+        border-color: var(--accent);
+        transform: translateX(6px);
+      }
+      .exp-tl-dot {
+        background: var(--surface);
+        border: 2px solid var(--accent);
+      }
       .exp-company { font-family: var(--font-head) !important; font-weight: 700 !important; font-size: 1.1rem !important; letter-spacing: -0.01em !important; text-transform: none !important; color: var(--text) !important; }
       .exp-role { font-family: var(--font-body) !important; }
-      .exp-year { background: none !important; color: var(--text-muted) !important; border: none !important; padding: 0 !important; font-family: var(--font-mono) !important; font-weight: 400 !important; font-size: 12px !important; }
+      .exp-tl-header .exp-year {
+        background: var(--accent-soft) !important;
+        color: var(--accent-hover) !important;
+        border: none !important;
+        padding: 5px 12px !important;
+        font-family: var(--font-mono) !important;
+        font-weight: 600 !important;
+        border-radius: 999px;
+        text-transform: none;
+      }
       html.dark .exp-year { background: none !important; }
       .exp-divider { display: none; }
 
