@@ -2893,8 +2893,9 @@
           font-size: 12px;
         }
         .hero-socials a {
-          width: 36px;
-          height: 36px;
+          height: 3rem !important;
+          padding: 0 1.1rem !important;
+          font-size: 13px !important;
         }
         .hero-socials a .icon-outline {
           width: 15px;
@@ -5661,6 +5662,13 @@
         font-weight: 500 !important;
         letter-spacing: -0.01em !important;
         gap: 0 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+        text-decoration: none !important;
       }
       .hero-socials a::after { content: attr(aria-label); }
 
@@ -6082,7 +6090,14 @@
         }
         .hero-cta { flex: 0 0 auto !important; }
         .hero-socials { flex-wrap: wrap !important; justify-content: center !important; gap: 8px !important; }
-        .hero-socials a { width: 36px !important; height: 36px !important; }
+        .hero-socials a {
+          width: auto !important;
+          height: 3rem !important;
+          padding: 0 1.1rem !important;
+          font-size: 13px !important;
+          flex: 0 0 auto !important;
+          white-space: nowrap !important;
+        }
         /* Rocket dikecilkan & ditempel ke pojok kanan-atas agar tidak
            menutupi judul (sebelumnya selebar 46% layar). */
         .hero-rocket {
