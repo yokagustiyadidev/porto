@@ -8,6 +8,7 @@ export default function Navbar8() {
           <a href="#about" data-key="nav_about">Ikhtisar</a>
           <a href="#work" data-key="nav_work">Proyek</a>
           <a href="#services" data-key="nav_services">Layanan</a>
+          <a href="/blog" data-key="nav_blog">Blog</a>
           <div class="lang-switcher">
             <button class="lang-btn active" data-lang="id" data-onclick="switchLang('id')">
               ID

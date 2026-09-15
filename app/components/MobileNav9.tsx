@@ -11,6 +11,7 @@ export default function MobileNav9() {
       <a href="#about" data-onclick="closeMobileNav()" data-key="nav_about">Ikhtisar</a>
       <a href="#work" data-onclick="closeMobileNav()" data-key="nav_work">Proyek</a>
       <a href="#services" data-onclick="closeMobileNav()" data-key="nav_services">Layanan</a>
+      <a href="/blog" data-onclick="closeMobileNav()" data-key="nav_blog">Blog</a>
       <a href="#kontak" class="nav-cta-mobile" data-onclick="closeMobileNav()" data-key="nav_contact">Hubungi</a>
     </div>`;
   return parse(html);
