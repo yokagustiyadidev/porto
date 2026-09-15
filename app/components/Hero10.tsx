@@ -110,9 +110,18 @@ export default function Hero10() {
           </div>
         </div>
       </div>
-      <div class="hero-hand" id="heroHand" aria-hidden="true">
-        <div class="hero-hand-float">
-          <img src="tangan.png" alt="">
+      <div class="hero-hand" id="heroHand" aria-label="Interactive Hero Accent">
+        <div class="hero-hand-floria">
+          <div class="hero-hand-float">
+            <img src="hand.png" alt="Futuristic Robotic Hand" class="hero-hand-img" draggable="false">
+          </div>
+        </div>
+      </div>
+      <div class="hero-rocket" id="heroRocket" aria-label="Interactive Rocket Accent">
+        <div class="hero-rocket-floria">
+          <div class="hero-rocket-float">
+            <img src="rocket.png" alt="Rocket Launching" class="hero-rocket-img" draggable="false">
+          </div>
         </div>
       </div>
     </section>`;

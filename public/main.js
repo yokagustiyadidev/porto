@@ -913,6 +913,11 @@
         const preloader = document.getElementById("preloader");
         if (!preloader) return;
 
+        if (window.location.search.includes('nosplash')) {
+          preloader.remove();
+          return;
+        }
+
         const hidePreloader = () => {
           setTimeout(() => {
             preloader.classList.add("hidden");
@@ -1043,6 +1048,13 @@
         const splash = document.getElementById("splashScreen");
         const nextBtn = document.getElementById("splashNextBtn");
         
+        if (window.location.search.includes('nosplash')) {
+          if (splash) splash.remove();
+          const hero = document.querySelector('.hero');
+          if (hero) setTimeout(() => hero.classList.add('hand-in'), 100);
+          return;
+        }
+
         if (!splash) {
           console.log('Splash screen not found');
           return;
@@ -1062,6 +1074,10 @@
         function hideSplash() {
           console.log('Hiding splash screen...');
           splash.classList.add("hidden");
+          const hero = document.querySelector(".hero");
+          if (hero) {
+            setTimeout(() => hero.classList.add("hand-in"), 250);
+          }
           
           setTimeout(() => {
             document.body.style.overflow = "";
@@ -1139,19 +1155,37 @@
         observer.observe(document.body, { childList: true, subtree: true });
       })();
 
-      /* ── HERO HAND: parallax kursor + scroll ────────────────── */
+      /* ── HERO HAND & ROCKET: parallax kursor + scroll (Floria-inspired) ─ */
       (function initHeroHand() {
         const hero = document.querySelector(".hero");
         const hand = document.getElementById("heroHand");
+        const rocket = document.getElementById("heroRocket");
         if (!hero || !hand) return;
 
-        // entrance: tangan naik setelah hero sempat tampil
-        requestAnimationFrame(() => hero.classList.add("hand-in"));
+        function triggerEntrance() {
+          setTimeout(() => {
+            hero.classList.add("hand-in");
+          }, 300);
+        }
+
+        const splash = document.getElementById("splashScreen");
+        if (!splash || splash.classList.contains("hidden") || window.getComputedStyle(splash).display === "none") {
+          triggerEntrance();
+        } else {
+          const observer = new MutationObserver(() => {
+            if (!document.getElementById("splashScreen") || splash.classList.contains("hidden")) {
+              observer.disconnect();
+              triggerEntrance();
+            }
+          });
+          observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["class", "style"] });
+        }
 
         const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         if (reduce || "ontouchstart" in window) return;
 
         let tx = 0, ty = 0, cx = 0, cy = 0, sy = 0, raf = null, active = false;
+        let lastLift = -1;
 
         function kick() {
           if (!active) { active = true; raf = requestAnimationFrame(loop); }
@@ -1167,13 +1201,18 @@
           cx += (tx - cx) * 0.08;
           cy += (ty - cy) * 0.08;
           const lift = Math.min(sy, 480) * 0.12;
-          hand.style.transform =
-            "translate(" + (cx * 18).toFixed(2) + "px, " + (cy * 10 - lift).toFixed(2) + "px) rotate(" + (cx * -1.6).toFixed(2) + "deg)";
+          hand.style.setProperty("--hand-px", (cx * 22).toFixed(2) + "px");
+          hand.style.setProperty("--hand-py", (cy * 14 - lift).toFixed(2) + "px");
+          hand.style.setProperty("--hand-tilt", (cx * -1.8).toFixed(2) + "deg");
+          if (rocket) {
+            rocket.style.setProperty("--rocket-px", (cx * -26).toFixed(2) + "px");
+            rocket.style.setProperty("--rocket-py", (cy * 18 + lift).toFixed(2) + "px");
+            rocket.style.setProperty("--rocket-tilt", (cx * 2.2).toFixed(2) + "deg");
+          }
           if (Math.abs(tx - cx) < 0.002 && Math.abs(ty - cy) < 0.002 && lift === lastLift) {
             active = false; return;
           }
           lastLift = lift;
           raf = requestAnimationFrame(loop);
         }
-        var lastLift = -1;
       })();

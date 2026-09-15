@@ -5774,46 +5774,214 @@
         .slop-w, .slop-serif, .slop-pill, .slop-ic,
         .slop-hero .hero-role, .slop-hero .hero-desc, .slop-hero .hero-actions > * { animation: none !important; opacity: 1 !important; filter: none !important; transform: none !important; }
         .hero-hand-float { animation: none !important; }
-        .hero-hand { opacity: 1 !important; transform: none !important; }
+        .hero-hand-floria { opacity: 1 !important; transform: none !important; }
+        .hero-hand { opacity: 1 !important; }
+        .hero-rocket-float { animation: none !important; }
+        .hero-rocket-floria { opacity: 1 !important; transform: none !important; }
+        .hero-rocket { opacity: 1 !important; }
       }
 
       /* ═══════════════════════════════════════════════════════════
-         TANGAN MENYAMBUT DARI BAWAH HERO (ala Floria / tasteskill)
-         Muncul dari bawah garis hero, melayang pelan, parallax
-         mengikuti kursor + scroll. Foto bg.png sudah di-keying
-         transparan (tangan.png).
+         TANGAN MENYAMBUT DARI PINGGIR KIRI HERO (FLORIA-INSPIRED ANIMATION)
+         Ref: https://floria-landing-page.vercel.app/
+         1. Posisi di tepi kiri agar tidak menutupi teks/CTA hero
+         2. Entrance: duration 1.5s, cubic-bezier(0.16, 1, 0.3, 1), delay 0.35s
+            starts at scale(0.86), rotate(-14deg), translateY(80px), translateX(-50px), opacity 0
+            glides to scale(1), rotate(0deg), translateY(0), opacity 1
+         3. Floating: organic slow breathing oscillation (5.6s infinite)
+         4. Interactive whileHover: scale(1.12), tilt rotate(2deg),
+            cybernetic red-orange neon glow drop-shadow & brightness boost
+         5. Parallax: cursor tracking + scroll lift via CSS translate vars
          ═══════════════════════════════════════════════════════════ */
 
       .hero-hand {
         position: absolute;
-        left: 50%;
-        bottom: -6%;
-        z-index: 5;
-        pointer-events: none;
-        width: clamp(240px, 34vw, 460px);
-        translate: -50% 0;
-        opacity: 0;
-        transform: translateY(60px);
-        transition: opacity 1s cubic-bezier(0, 0, 0.2, 1) 1.15s, transform 1.1s cubic-bezier(0, 0, 0.2, 1) 1.15s;
+        left: clamp(-30px, 1.5vw, 40px);
+        bottom: clamp(-20px, 0vh, 20px);
+        z-index: 6;
+        width: clamp(280px, 32vw, 480px);
+        pointer-events: auto;
+        cursor: pointer;
+        translate: var(--hand-px, 0px) var(--hand-py, 0px);
+        rotate: var(--hand-tilt, 0deg);
+        will-change: translate, rotate;
+      }
+
+      .hero-hand-floria {
+        width: 100%;
+        height: 100%;
+        animation: floriaEntrance 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
         will-change: transform, opacity;
+        transform-origin: 15% 85%;
       }
-      .hero.hand-in .hero-hand { opacity: 1; transform: translateY(0); }
+
+      .hero.hand-in .hero-hand-floria {
+        opacity: 1;
+        transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+      }
+
       .hero-hand-float {
-        animation: handFloat 5.2s ease-in-out 2.4s infinite;
-        transform-origin: 50% 100%;
+        width: 100%;
+        height: 100%;
+        transform-origin: 15% 85%;
+        animation: floriaHandFloat 5.6s ease-in-out 1.8s infinite;
+        transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                    filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, filter;
       }
-      .hero-hand img {
+
+      .hero-hand:hover .hero-hand-float {
+        transform: scale(1.12) rotate(2.5deg) translateY(-8px) translateX(6px);
+        filter: drop-shadow(0 32px 52px rgba(0, 0, 0, 0.55))
+                drop-shadow(0 0 38px rgba(255, 75, 43, 0.5))
+                drop-shadow(0 0 16px rgba(255, 170, 0, 0.4))
+                brightness(1.1) contrast(1.08) !important;
+      }
+
+      .hero-hand-img {
         display: block;
         width: 100%;
         height: auto;
-        filter: saturate(1.06) contrast(1.04);
+        user-select: none;
+        -webkit-user-drag: none;
+        filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.38))
+                drop-shadow(0 0 18px rgba(197, 48, 45, 0.25))
+                saturate(1.08) contrast(1.05);
+        transition: filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      @keyframes handFloat {
-        0%, 100% { transform: translateY(0) rotate(0.6deg); }
-        50% { transform: translateY(-14px) rotate(-1.2deg); }
+
+      @keyframes floriaEntrance {
+        0% {
+          opacity: 0;
+          transform: translateY(80px) translateX(-50px) scale(0.86) rotate(-14deg);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+        }
       }
+
+      @keyframes floriaHandFloat {
+        0%, 100% {
+          transform: translateY(0px) rotate(0deg) scale(1);
+        }
+        36% {
+          transform: translateY(-16px) rotate(1.8deg) scale(1.015);
+        }
+        72% {
+          transform: translateY(-6px) rotate(-1.5deg) scale(0.992);
+        }
+      }
+
       @media (max-width: 900px) {
-        .hero-hand { bottom: -4%; width: clamp(180px, 52vw, 300px); opacity: 0; }
+        .hero-hand {
+          left: -20px;
+          bottom: -10px;
+          width: clamp(200px, 46vw, 280px);
+          opacity: 0.92;
+        }
+      }
+
+      /* ═══════════════════════════════════════════════════════════
+         ROCKET DI POJOK KANAN ATAS HERO — perilaku persis hand,
+         tapi cerminan di sisi kanan:
+         1. Posisi di pojok kanan atas (top/right negatif kecil agar
+            sedikit tersembunyi di luar frame, seperti hand di kiri bawah)
+         2. Entrance: dari atas-kanan (translateY(-80px), translateX(50px),
+            rotate(14deg), scale(0.86)) -> settle di identitas
+         3. Floating: organic slow oscillation (6.4s, offset berbeda dari
+            hand 5.6s agar gerakan tidak sinkron)
+         4. whileHover: scale(1.12), tilt kiri -2.5deg, glow neon
+            oranye-biru (tema launch) + brightness boost
+         5. Parallax: cursor tracking + scroll lift (mirror sign hand)
+         ═══════════════════════════════════════════════════════════ */
+
+      .hero-rocket {
+        position: absolute;
+        right: clamp(-24px, 1.5vw, 32px);
+        top: clamp(-16px, 0vh, 16px);
+        z-index: 6;
+        width: clamp(200px, 22vw, 330px);
+        pointer-events: auto;
+        cursor: pointer;
+        translate: var(--rocket-px, 0px) var(--rocket-py, 0px);
+        rotate: var(--rocket-tilt, 0deg);
+        will-change: translate, rotate;
+      }
+
+      .hero-rocket-floria {
+        width: 100%;
+        height: 100%;
+        animation: rocketEntrance 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+        will-change: transform, opacity;
+        transform-origin: 85% 15%;
+      }
+
+      .hero.hand-in .hero-rocket-floria {
+        opacity: 1;
+        transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+      }
+
+      .hero-rocket-float {
+        width: 100%;
+        height: 100%;
+        transform-origin: 85% 15%;
+        animation: rocketFloat 6.4s ease-in-out 2.2s infinite;
+        transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                    filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, filter;
+      }
+
+      .hero-rocket:hover .hero-rocket-float {
+        transform: scale(1.12) rotate(-2.5deg) translateY(-8px) translateX(-6px);
+        filter: drop-shadow(0 32px 52px rgba(0, 0, 0, 0.55))
+                drop-shadow(0 0 38px rgba(255, 107, 0, 0.5))
+                drop-shadow(0 0 16px rgba(122, 196, 255, 0.4))
+                brightness(1.1) contrast(1.08) !important;
+      }
+
+      .hero-rocket-img {
+        display: block;
+        width: 100%;
+        height: auto;
+        user-select: none;
+        -webkit-user-drag: none;
+        filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.38))
+                drop-shadow(0 0 18px rgba(255, 107, 0, 0.28))
+                saturate(1.08) contrast(1.05);
+        transition: filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      @keyframes rocketEntrance {
+        0% {
+          opacity: 0;
+          transform: translateY(-80px) translateX(50px) scale(0.86) rotate(14deg);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+        }
+      }
+
+      @keyframes rocketFloat {
+        0%, 100% {
+          transform: translateY(0px) rotate(0deg) scale(1);
+        }
+        38% {
+          transform: translateY(14px) rotate(-1.6deg) scale(1.015);
+        }
+        74% {
+          transform: translateY(5px) rotate(1.4deg) scale(0.992);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .hero-rocket {
+          right: -14px;
+          top: -8px;
+          width: clamp(180px, 40vw, 280px);
+          opacity: 0.92;
+        }
       }
 
       /* ═══════════════════════════════════════════════════════════
