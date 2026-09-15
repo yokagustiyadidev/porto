@@ -21,7 +21,7 @@ export default function Modalvproject6() {
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
-        <img src="09.png" alt="V Project" class="modal-image">
+        <img src="oy.png" alt="V Project" class="modal-image">
         <div class="modal-content">
           <h2>V Project</h2>
           <div class="modal-tags">
