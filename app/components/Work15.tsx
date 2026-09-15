@@ -52,7 +52,7 @@ export default function Work15() {
             <div class="card-shimmer"></div>
             <span class="card-index">02</span>
             <div class="work-img-wrap">
-              <img src="47778.png" alt="Sistem CBT" class="img-zoom" loading="lazy">
+              <img src="dcbt.png" alt="Sistem CBT" class="img-zoom" loading="lazy">
             </div>
             <div class="work-body">
               <div class="work-tags">
@@ -74,7 +74,7 @@ export default function Work15() {
             <div class="card-shimmer"></div>
             <span class="card-index">03</span>
             <div class="work-img-wrap">
-              <img src="47777.png" alt="Hermes Agent" class="img-zoom" loading="lazy">
+              <img src="hermes.png" alt="Hermes Agent" class="img-zoom" loading="lazy">
             </div>
             <div class="work-body">
               <div class="work-tags">
@@ -96,7 +96,7 @@ export default function Work15() {
             <div class="card-shimmer"></div>
             <span class="card-index">04</span>
             <div class="work-img-wrap">
-              <img src="50.png" alt="Data Siswa dan Perpustakaan" class="img-zoom" loading="lazy">
+              <img src="perpus.png" alt="Data Siswa dan Perpustakaan" class="img-zoom" loading="lazy">
             </div>
             <div class="work-body">
               <div class="work-tags">
@@ -135,13 +135,12 @@ export default function Work15() {
               <span class="work-link" data-key="work_contact">Hubungi untuk info</span>
             </div>
           </div>
-          <!-- TODO: ganti src di bawah dengan screenshot asli EduDevToolkit (mis. public/edudevtoolkit.png) -->
           <div class="work-card reveal" data-onclick="window.open('https://wa.me/62882016594700?text=Halo%20Yoka%2C%20saya%20tertarik%20dengan%20EduDevToolkit', '_blank')" data-tooltip="Hubungi untuk info">
             <div class="card-accent-border"></div>
             <div class="card-shimmer"></div>
             <span class="card-index">06</span>
             <div class="work-img-wrap">
-              <img src="47778.png" alt="EduDevToolkit" class="img-zoom" loading="lazy">
+              <img src="edudev.png" alt="EduDevToolkit" class="img-zoom" loading="lazy">
             </div>
             <div class="work-body">
               <div class="work-tags">
