@@ -458,6 +458,36 @@
         padding: 140px 0;
       }
 
+      /* ── PROYEK TERPILIH: background dark (selalu, override light & dark mode) ── */
+      #work {
+        background: #0c0a09 !important;
+        color: #fafaf9 !important;
+      }
+      #work .sec-label, #work .sec-title, #work .sec-subtitle {
+        color: #fafaf9 !important;
+      }
+      #work .sec-title em { color: var(--accent) !important; }
+      #work .work-card {
+        background: #1c1917 !important;
+        border-color: #292524 !important;
+        color: #fafaf9 !important;
+      }
+      #work .work-card h3, #work .work-card .work-link {
+        color: #fafaf9 !important;
+      }
+      #work .work-card p { color: #a8a29e !important; }
+      #work .work-card .work-tag {
+        background: rgba(255, 255, 255, 0.06) !important;
+        color: #fafaf9 !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      }
+      #work .work-card .work-tag.accent {
+        background: var(--accent) !important;
+        color: #fff !important;
+        border-color: var(--accent) !important;
+      }
+
+
       /* ── STACKING CARD SCROLL ──────────────────────────────── */
       .stack-cards {
         /* Stacking dimatikan: container netral, konten mengalir normal. */

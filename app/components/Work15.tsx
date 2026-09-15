@@ -118,7 +118,7 @@ export default function Work15() {
             <div class="card-shimmer"></div>
             <span class="card-index">05</span>
             <div class="work-img-wrap">
-              <img src="47781.png" alt="Dashboard Guru" class="img-zoom" loading="lazy">
+              <img src="kin.png" alt="Dashboard Kinerja Guru" class="img-zoom" loading="lazy">
             </div>
             <div class="work-body">
               <div class="work-tags">
