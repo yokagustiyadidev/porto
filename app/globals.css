@@ -1652,11 +1652,51 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--bg);
-        overflow: visible;
+        background: var(--bg-soft);
+        overflow: hidden;
         padding: 80px 0;
         margin: 0;
         flex-shrink: 0;
+      }
+      .thank-you-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.22) 0%,
+            rgba(168, 85, 247, 0.18) 40%,
+            rgba(236, 72, 153, 0.14) 75%,
+            rgba(14, 165, 233, 0.18) 100%
+          ),
+          url("/tq.png") center / cover no-repeat;
+        opacity: 0.5;
+        z-index: 0;
+      }
+      .thank-you-section::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.08) 100%
+        );
+        z-index: 0;
+        pointer-events: none;
+      }
+      html.dark .thank-you-section::before {
+        background:
+          linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.25) 0%,
+            rgba(168, 85, 247, 0.2) 40%,
+            rgba(236, 72, 153, 0.16) 75%,
+            rgba(14, 165, 233, 0.2) 100%
+          ),
+          url("/tq.png") center / cover no-repeat;
+        opacity: 0.4;
       }
 
       .thank-you-splash {
