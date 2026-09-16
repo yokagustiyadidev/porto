@@ -3490,7 +3490,7 @@
 
       /* Left Side - Light Background with Text */
       .splash-left {
-        flex: 1;
+        flex: 0.9;
         background: #f8f9fa;
         display: flex;
         align-items: center;
@@ -3617,7 +3617,7 @@
 
       /* Right Side - Artwork */
       .splash-right {
-        flex: 1;
+        flex: 1.2;
         background: #f5f5f0;
         display: flex;
         align-items: center;
