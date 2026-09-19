@@ -53,15 +53,15 @@ export default function Hero10() {
       </div>
       <div class="wrap">
         <div class="hero-inner slop-hero">
-          <h1 class="slop-hero-title" aria-label="Available for Collaboration, Yoka Gustiyadi">
-            <span class="slop-row">
-              <span class="slop-w" data-key="hero_w_avail">Available</span>
-              <span class="slop-pill"><img src="splash-artwork.jpg" alt=""></span>
-            </span>
-            <span class="slop-row">
-              <span class="slop-serif" data-key="hero_w_for">for</span>
-              <span class="slop-w" data-key="hero_w_collab">Collaboration</span>
-            </span>
+          <h1 class="slop-hero-title" aria-label="Bikin sistem yang beneran dipakai, Yoka Gustiyadi">
+                      <span class="slop-row">
+                        <span class="slop-w" data-key="hero_w_avail">Bikin sistem</span>
+                        <span class="slop-pill"><img src="splash-artwork.jpg" alt=""></span>
+                      </span>
+                      <span class="slop-row">
+                        <span class="slop-serif" data-key="hero_w_for">yang</span>
+                        <span class="slop-w" data-key="hero_w_collab">beneran dipakai</span>
+                      </span>
             <span class="slop-row">
               <svg class="slop-ic slop-spark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 0 C12.5 7 13.5 11 24 12 C13.5 13 12.5 17 12 24 C11.5 17 10.5 13 0 12 C10.5 11 11.5 7 12 0 Z" fill="#ff6b00"></path></svg>
               <span class="slop-w slop-navy">Yoka</span>
@@ -73,10 +73,10 @@ export default function Hero10() {
             <span class="typewriter" id="typewriterText" data-key="hero_role">Staff Administrasi &amp; IT Support</span>
           </p>
           <p class="hero-desc" data-key="hero_desc">
-            Membangun arsitektur digital yang mengubah alur kerja manual menjadi
-            ekosistem otonom — dari sistem ujian terintegrasi AI hingga otomasi
-            bisnis berbasis WhatsApp.
-          </p>
+                      Bantu sekolah dan tim kerja pindah dari catatan manual ke sistem
+                      digital yang ringan — dari ujian online, daftar hadir QR, sampai
+                      otomasi WhatsApp.
+                    </p>
           <div class="hero-actions">
             <a href="#work" class="hero-cta magnetic-btn ripple-btn" data-key="hero_cta">Lihat Proyek</a>
             <div class="hero-socials">
